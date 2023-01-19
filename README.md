@@ -8,3 +8,4 @@ intuitive visuals and searchable spreadsheets.
 ## Technical Notes
 - Any modules should be added via the `poetry add [module]` command.
   - Example: `poetry add pytest`
+- Data from external APIs should be saved in JSON format in the `./data` folder. It will have to be pulled by each dev individually as we cannot save the data in a public repository, as per our agreement.
