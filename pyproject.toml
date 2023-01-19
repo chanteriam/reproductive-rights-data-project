@@ -10,6 +10,7 @@ packages = [{include = "reproductive_rights_data_project"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pytest = "^7.2.1"
+pylint = "^2.15.10"
 
 
 [build-system]
