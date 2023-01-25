@@ -1,6 +1,5 @@
 # Reproductive Rights Data Project
-A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create 
-intuitive visuals and searchable spreadsheets.
+A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals and searchable spreadsheets.
 
 ## Project Requirements
 - [Poetry](https://python-poetry.org/docs/basic-usage/)
@@ -18,3 +17,7 @@ intuitive visuals and searchable spreadsheets.
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command: `poetry shell`
 2. Run the command `poetry install` to install the package dependencies within the project.
 3. ADD MORE THINGS AS WE GET MORE FUNCTIONALITY
+
+### Datasets courtesy of:
+- _Abortion Policy API_: https://www.abortionpolicyapi.com/
+- _ANSIRH Abortion Facility Database_: https://abortionfacilitydatabase-ucsf.hub.arcgis.com/
