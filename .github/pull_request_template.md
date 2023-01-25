@@ -8,3 +8,4 @@
 - [ ] I wrote test cases.
 - [ ] Previously working test cases are still passing.
 - [ ] I have run `pylint` and have made the bulk of changes that it has requested.
+- [ ] I ran the `black` formatter and pushed the changes.
