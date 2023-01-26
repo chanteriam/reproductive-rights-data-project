@@ -1,0 +1,8 @@
+./test @chanteriam @michplunkett @ehabich @necabotheking
+
+# People are marked as code owners in the order of: primary_person, secondary_person
+*py @michplunkett @ehabich
+
+./visualization @necabotheking @michplunkett
+./apis @chanteriam @necabotheking
+./models @ehabich @chanteriam

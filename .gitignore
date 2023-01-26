@@ -1,3 +1,10 @@
+# IDE files
+.idea
+.vscode
+
+# Stored data
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

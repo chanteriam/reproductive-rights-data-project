@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "reproductive-rights-data-project"
+version = "0.1.0"
+description = "A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals and searchable spreadsheets."
+authors = ["Aïcha Camara <aichacamara@ucicago.edu>", "Chanteria Milner <milnerca@uchicago.edu>",
+    "Kate Habich <ehabich@uchicago.edu>", "Michael Plunkett <michplunkett@uchicago.edu>"]
+readme = "README.md"
+packages = [{include = "reproductive_rights_data_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.2.1"
+pylint = "^2.15.10"
+black = "^22.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
