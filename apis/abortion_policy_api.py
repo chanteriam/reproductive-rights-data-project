@@ -4,8 +4,8 @@ import requests
 import os
 import json
 
-APIKEY = os.environ.get('ABORTION_POLICY_API_KEY')
-HEADERS = {'token': APIKEY}
+APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
+HEADERS = {"token": APIKEY}
 
 
 def get_states(filepath):
@@ -35,10 +35,14 @@ def get_state_data():
     """
 
     # URLS for API data
-    gestational_limits_url = 'http://api.abortionpolicyapi.com/v1/gestational_limits/states'
-    insurance_coverage_url = 'http://api.abortionpolicyapi.com/v1/insurance_coverage/states/'
-    minors_url = 'http://api.abortionpolicyapi.com/v1/minors/states/'
-    waiting_periods_url = 'http://api.abortionpolicyapi.com/v1/waiting_periods/states/'
+    gestational_limits_url = (
+        "http://api.abortionpolicyapi.com/v1/gestational_limits/states"
+    )
+    insurance_coverage_url = (
+        "http://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
+    )
+    minors_url = "http://api.abortionpolicyapi.com/v1/minors/states/"
+    waiting_periods_url = "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
 
     r_gestational = requests.get(gestational_limits_url, headers=HEADERS)
     r_insurance = requests.get(insurance_coverage_url, headers=HEADERS)
