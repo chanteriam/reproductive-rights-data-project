@@ -113,6 +113,7 @@ def to_json(g, i, m, w):
     """
 
     print("Writing out to json file")
+    file_names = ["data/abortion_policy_api_gestational.json", "data/abortion_policy_api_insurance.json", "data/abortion_policy_api_minors.json"]
     with open("data/abortion_policy_api_gestational.json", "w") as f:
         json.dump(g, f, indent=1)
 
