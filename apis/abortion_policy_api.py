@@ -10,6 +10,22 @@ HEADERS = {"token": APIKEY}
 TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 
 
+def main():
+    # get API data
+    policy_areas = get_api_data()
+
+    # fill in missing data
+    for state_policies in policy_areas:
+        fill_in_missing_data(state_policies)
+
+    # convert dataset to json
+    g, i, m, w = policy_areas
+
+    # Dump to json
+    print("Writing out to json file")
+    to_json(g, i, m, w)
+
+
 def get_api_data():
     """
     Return state policy data for: gestational limits, insurance coverage,
@@ -38,20 +54,6 @@ def get_api_data():
     states_insurance = r_insurance.json()
     states_minors = r_minors.json()
     states_waiting = r_waiting.json()
-
-    # Dump to json
-    # print("Writing out to json file")
-    # with open("data/abortion_policy_api_gestational_unclean.json", "w") as f:
-    #     json.dump(states_gestational, f, indent=1)
-
-    # with open("data/abortion_policy_api_insurance_unclean.json", "w") as f:
-    #     json.dump(states_insurance, f, indent=1)
-
-    # with open("data/abortion_policy_api_minors_unclean.json", "w") as f:
-    #     json.dump(states_minors, f, indent=1)
-
-    # with open("data/abortion_policy_api_waiting_unclean.json", "w") as f:
-    #     json.dump(states_waiting, f, indent=1)
 
     return [states_gestational, states_insurance, states_minors, states_waiting]
 
@@ -124,35 +126,3 @@ def to_json(g, i, m, w):
 
     with open("data/abortion_policy_api_waiting.json", "w") as f:
         json.dump(w, f, indent=1)
-
-
-def clean():
-    """
-    Cleans API dataset by filling in missing values.
-    """
-
-    # get API data
-    policy_areas = get_api_data()
-
-    # with open("data/abortion_policy_api_gestational_unclean.json", "r") as f:
-    #     policy_areas.append(json.load(f))
-
-    # with open("data/abortion_policy_api_insurance_unclean.json", "r") as f:
-    #     policy_areas.append(json.load(f))
-
-    # with open("data/abortion_policy_api_minors_unclean.json", "r") as f:
-    #     policy_areas.append(json.load(f))
-
-    # with open("data/abortion_policy_api_waiting_unclean.json", "r") as f:
-    #     policy_areas.append(json.load(f))
-
-    # fill in missing data
-    for state_policies in policy_areas:
-        fill_in_missing_data(state_policies)
-
-    # convert dataset to json
-    g, i, m, w = policy_areas
-
-    # Dump to json
-    print("Writing out to json file")
-    to_json(g, i, m, w)
