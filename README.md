@@ -11,6 +11,7 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 
 ## Standard Commands
 - `make format`: Formats the python files within the project using the Python formatter [Black](https://github.com/psf/black)
+- `make lint`: Runs `pytlint` on the codebase
 - `make test`: Runs test cases in the `test` directory
 - `make api`: Runs the `api` portion of the codebase
 - `make parse-data`: Parses the data output of the `api` layer

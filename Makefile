@@ -12,7 +12,7 @@ test-and-fail:
 
 .PHONY: lint
 lint:
-	pylint ./apis/* ./models/* ./test/* ./visualizations/*
+	pylint ./apis/ ./models/ ./test/ ./visualizations/
 
 .PHONY: api
 api:
