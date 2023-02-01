@@ -12,6 +12,9 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 ## Standard Commands
 - `make format`: Formats the python files within the project using the Python formatter [Black](https://github.com/psf/black)
 - `make test`: Runs test cases in the `test` directory
+- `make api`: Runs the `api` portion of the codebase
+- `make parse-data`: Parses the data output of the `api` layer
+- `make visualize`: Takes the data produced from the `parse-data` layer and creates the project's visualizations
 
 ## How do we run this thing?
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command: `poetry shell`

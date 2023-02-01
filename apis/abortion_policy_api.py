@@ -33,18 +33,23 @@ def get_states(filepath):
 
 def get_api_data():
     """
-    Return state policy data for: gestational limits, insurance coverage, minors,
-        and waiting periods
+    Return state policy data for: gestational limits, insurance coverage,
+        minors, and waiting periods
 
     Returns:
         (tuple) tuple of dictionaries for each state and policy type
     """
 
     # URLS for API data
-    gestational_limits_url = 'http://api.abortionpolicyapi.com/v1/gestational_limits/states'
-    insurance_coverage_url = 'http://api.abortionpolicyapi.com/v1/insurance_coverage/states/'
-    minors_url = 'http://api.abortionpolicyapi.com/v1/minors/states/'
-    waiting_periods_url = 'http://api.abortionpolicyapi.com/v1/waiting_periods/states/'
+    gestational_limits_url = (
+        "http://api.abortionpolicyapi.com/v1/gestational_limits/states"
+    )
+    insurance_coverage_url = (
+        "http://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
+    )
+    minors_url = "http://api.abortionpolicyapi.com/v1/minors/states/"
+    waiting_periods_url = \
+        "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
 
     r_gestational = requests.get(gestational_limits_url, headers=HEADERS)
     r_insurance = requests.get(insurance_coverage_url, headers=HEADERS)
