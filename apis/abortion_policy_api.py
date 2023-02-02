@@ -16,14 +16,14 @@ def main():
         cleaned data into .json files.
     """
 
-    # get API data
+    # Get API data
     policy_areas = get_api_data()
 
-    # fill in missing data
+    # Fill in missing data
     for state_policies in policy_areas:
-        fill_in_missing_data(state_policies)
+        clean(state_policies)
 
-    # convert dataset to json
+    # Convert dataset to json
     print("Writing out to json file")
     to_json(policy_areas)
 
@@ -47,13 +47,13 @@ def get_api_data():
     minors_url = "http://api.abortionpolicyapi.com/v1/minors/states/"
     waiting_periods_url = "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
 
-    # get API response objects
+    # Get API response objects
     r_gestational = requests.get(gestational_limits_url, headers=HEADERS)
     r_insurance = requests.get(insurance_coverage_url, headers=HEADERS)
     r_minors = requests.get(minors_url, headers=HEADERS)
     r_waiting = requests.get(waiting_periods_url, headers=HEADERS)
 
-    # convert response objects to .json
+    # Convert response objects to .json
     states_gestational = r_gestational.json()
     states_insurance = r_insurance.json()
     states_minors = r_minors.json()
@@ -62,48 +62,95 @@ def get_api_data():
     return [states_gestational, states_insurance, states_minors, states_waiting]
 
 
-def fill_in_missing_data(state_policies):
+def clean(state_policies):
     """
-    Fill in missing characteristics for each state
+    Fill in missing characteristics for each state.
 
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
     """
 
-    pattern = r'[!.,\'"?:<>]'
-    keys_and_defaults = {}
-
-    # get list of states for data cleaning
+    # Get list of states for data cleaning
     states = []
 
     with open("data/states.txt", "r") as f:
         for state in f:
             states.append(state.strip())
 
-    # set default types for each state policy
+    # Set default types for each state policy
+    policy_defaults = set_default_types(state_policies)
+
+    # Fill in missing data for current states
+    fill_in_missing_data(state_policies, policy_defaults)
+
+    # Add states missing in the dataset
+    add_missing_states(state_policies, policy_defaults, states)
+
+    # Sort dataset by state name
+    # Code adapted from: https://www.geeksforgeeks.org/python-sort-a-dictionary/
+    state_policies = {
+        key: val for key, val in sorted(state_policies.items(), key=lambda ele: ele[0])
+    }
+
+
+def add_missing_states(state_policies, defaults, states):
+    """
+    Adds missing state entries to the dataset.
+
+    Inputs:
+        state_policies (dict): dictionary of dictionaries containing abortion
+            policies by U.S. states.
+        defaults (dict): default policy entries and associated values
+        states (list): list of total states that should be in dataset
+    """
+
+    non_present_states = list(set(states) - set(state_policies.keys()))
+    for state in non_present_states:
+        state_policies[state] = defaults
+
+
+def fill_in_missing_data(state_policies, defaults):
+    """
+    Fills in missing policy entries for states currently in the dataset.
+
+    Inputs:
+        state_policies (dict): dictionary of dictionaries containing abortion
+            policies by U.S. states.
+        defaults (dict): default policy entries and associated values
+    """
+
+    # Fill in missing data for states currently in the dataset
+    for _, state_info in state_policies.items():
+        for k, v in defaults.items():
+            if k not in state_info.keys():
+                state_info[k] = v
+
+
+def set_default_types(state_policies):
+    """
+    Finds the number and type of policy entries in each state dictionary and
+        assigns default values to those policy entries.
+
+    Inputs:
+        state_policies (dict): dictionary of dictionaries containing abortion
+            policies by U.S. states.
+
+    Returns:
+        (dictionary) name of policy entry and default type associated with entry
+    """
+
+    pattern = r'[!.,\'"?:<>]'
+    keys_and_defaults = {}
+
+    # Set default types for each state policy
     for _, state_info in state_policies.items():
         for k, v in state_info.items():
             if k not in keys_and_defaults.keys():
                 key = re.sub(pattern, "", str(type(v))).split()[-1]
                 keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
-    # fill in missing data for states currently in the dataset
-    for _, state_info in state_policies.items():
-        for k, v in keys_and_defaults.items():
-            if k not in state_info.keys():
-                state_info[k] = v
-
-    # add non-present states with default values
-    non_present_states = list(set(states) - set(state_policies.keys()))
-    for state in non_present_states:
-        state_policies[state] = keys_and_defaults
-
-    # sort dataset by state name
-    # code adapted from: https://www.geeksforgeeks.org/python-sort-a-dictionary/
-    state_policies = {
-        key: val for key, val in sorted(state_policies.items(), key=lambda ele: ele[0])
-    }
+    return keys_and_defaults
 
 
 def to_json(policy_areas):
