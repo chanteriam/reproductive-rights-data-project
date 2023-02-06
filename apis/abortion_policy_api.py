@@ -184,6 +184,6 @@ def to_json(policy_areas):
         file_names
     ), "Incorrect number of policy areas passed"
 
-    for i, file in enumerate(file_names):
-        with open(file, "w", encoding="utf-8") as f:
+    for i, file_name in enumerate(file_names):
+        with open(file_name, "w", encoding="utf-8") as f:
             json.dump(policy_areas[i], f, indent=1)
