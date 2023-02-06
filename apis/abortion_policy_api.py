@@ -7,6 +7,7 @@ import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
 HEADERS = {"token": APIKEY}
+REQUEST_TIMEOUT = 10
 TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 
 
@@ -45,13 +46,23 @@ def get_api_data():
         "http://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
     )
     minors_url = "http://api.abortionpolicyapi.com/v1/minors/states/"
-    waiting_periods_url = "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
+    waiting_periods_url = (
+        "http://api.abortionpolicyapi.com/v1" "/waiting_periods/states/ "
+    )
 
     # Get API response objects
-    r_gestational = requests.get(gestational_limits_url, headers=HEADERS)
-    r_insurance = requests.get(insurance_coverage_url, headers=HEADERS)
-    r_minors = requests.get(minors_url, headers=HEADERS)
-    r_waiting = requests.get(waiting_periods_url, headers=HEADERS)
+    r_gestational = requests.get(
+        gestational_limits_url, headers=HEADERS, timeout=REQUEST_TIMEOUT
+    )
+    r_insurance = requests.get(
+        insurance_coverage_url, headers=HEADERS, timeout=REQUEST_TIMEOUT
+    )
+    r_minors = requests.get(
+        minors_url, headers=HEADERS, timeout=REQUEST_TIMEOUT
+    )
+    r_waiting = requests.get(
+        waiting_periods_url, headers=HEADERS, timeout=REQUEST_TIMEOUT
+    )
 
     # Convert response objects to .json
     states_gestational = r_gestational.json()
@@ -74,7 +85,7 @@ def clean(state_policies):
     # Get list of states for data cleaning
     states = []
 
-    with open("data/states.txt", "r") as f:
+    with open("data/states.txt", "r", encoding="utf-8") as f:
         for state in f:
             states.append(state.strip())
 
@@ -88,10 +99,9 @@ def clean(state_policies):
     add_missing_states(state_policies, policy_defaults, states)
 
     # Sort dataset by state name
-    # Code adapted from: https://www.geeksforgeeks.org/python-sort-a-dictionary/
-    state_policies = {
-        key: val for key, val in sorted(state_policies.items(), key=lambda ele: ele[0])
-    }
+    state_policies = dict(
+        sorted(state_policies.items(), key=lambda ele: ele[0])
+    )
 
 
 def add_missing_states(state_policies, defaults, states):
@@ -175,5 +185,5 @@ def to_json(policy_areas):
     ), "Incorrect number of policy areas passed"
 
     for i, file in enumerate(file_names):
-        with open(file, "w") as f:
+        with open(file, "w", encoding="utf-8") as f:
             json.dump(policy_areas[i], f, indent=1)
