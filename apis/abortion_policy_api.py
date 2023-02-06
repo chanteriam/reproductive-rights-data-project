@@ -42,8 +42,7 @@ def get_state_data():
         "http://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
     )
     minors_url = "http://api.abortionpolicyapi.com/v1/minors/states/"
-    waiting_periods_url = \
-        "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
+    waiting_periods_url = "http://api.abortionpolicyapi.com/v1/waiting_periods/states/"
 
     r_gestational = requests.get(gestational_limits_url, headers=HEADERS)
     r_insurance = requests.get(insurance_coverage_url, headers=HEADERS)
