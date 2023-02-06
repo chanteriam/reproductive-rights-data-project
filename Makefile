@@ -1,6 +1,6 @@
 .PHONY: format
 format:
-	black ./apis/* ./models/* ./test/* ./visualizations/*
+	black ./apis/* ./models/* ./test/* ./visualizations/* --line-length=80
 
 .PHONY: test
 test:
