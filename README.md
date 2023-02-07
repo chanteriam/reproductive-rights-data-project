@@ -22,8 +22,10 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 2. Run the command `poetry install` to install the package dependencies within the project.
 3. ADD MORE THINGS AS WE GET MORE FUNCTIONALITY
 
-### Datasets courtesy of:
+### We would like to thank the following organizations for providing our reference data:
 - _Abortion Policy API_: https://www.abortionpolicyapi.com/
 - _ANSIRH Abortion Facility Database_: https://abortionfacilitydatabase-ucsf.hub.arcgis.com/
 - _i need an a_: https://www.ineedana.com/
+  - If you or someone you love needs an abortion, you can up-to-date help at ineedana.com. <3
+  - The data was given to us by ineedana.com on 2/7/2023.
 - _United States Census Bureau_: https://data.census.gov/
