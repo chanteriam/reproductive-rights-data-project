@@ -26,6 +26,6 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 - _Abortion Policy API_: https://www.abortionpolicyapi.com/
 - _ANSIRH Abortion Facility Database_: https://abortionfacilitydatabase-ucsf.hub.arcgis.com/
 - _i need an a_: https://www.ineedana.com/
-  - If you or someone you love needs an abortion, you can up-to-date help at ineedana.com. <3
+  - If you or someone you love needs an abortion, you can up-to-date help at ineedana.com. ❤️
   - The data was given to us by ineedana.com on 2/7/2023.
 - _United States Census Bureau_: https://data.census.gov/
