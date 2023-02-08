@@ -1,6 +1,6 @@
 .PHONY: format
 format:
-	black ./apis/* ./models/* ./test/* ./visualizations/* --line-length=80
+	black ./__main__.py ./apis/ ./test/ ./visualizations/ --line-length=80
 
 .PHONY: test
 test:
@@ -12,7 +12,7 @@ test-and-fail:
 
 .PHONY: lint
 lint:
-	pylint ./apis/ ./models/ ./test/ ./visualizations/
+	pylint ./apis/ ./test/ ./visualizations/
 
 .PHONY: api
 api:
