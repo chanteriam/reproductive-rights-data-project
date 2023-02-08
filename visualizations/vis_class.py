@@ -10,7 +10,7 @@ class Visualization(MutableMapping):
     @abstractmethod
     def _import_file(self):
         """
-        This method accesses a JSON file and returns a dictionary of data for  
+        This method accesses a JSON file and returns a dictionary of data for
         the visualization.
         """
         pass
@@ -18,7 +18,7 @@ class Visualization(MutableMapping):
     @abstractmethod
     def create(self):
         """
-        This method takes the dictionary made in the _import_file() method and 
-        creates a visualization with it. 
+        This method takes the dictionary made in the _import_file() method and
+        creates a visualization with it.
         """
         pass
