@@ -4,7 +4,7 @@ from abc import abstractmethod
 
 class Visualization(MutableMapping):
     @abstractmethod
-    def __init__(self, filename):
+    def __init__(self, file_name):
         pass
 
     @abstractmethod
