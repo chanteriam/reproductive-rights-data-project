@@ -5,6 +5,7 @@ packages based on the flags that are passed to it.
 
 import argparse
 import visualizations.service
+import apis.abortion_policy_api
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.api:
-        print("We are gonna do some API work")
+        apis.abortion_policy_api.main()
 
     if args.parse_data:
         print("We are gonna do some data parsing work")
