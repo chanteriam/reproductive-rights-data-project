@@ -5,7 +5,8 @@ Authors: Kate Habich
 """
 
 import pandas as pd
-from .apis.abortion_policy_api import TYPE_DEFAULTS
+import re
+from apis.abortion_policy_api import TYPE_DEFAULTS
 
 # TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 
@@ -21,11 +22,23 @@ def clean_data():
 
     complete_ansirh = replace_missing_values(ansirh)
 
-    # TODO: lowercase everything
-    # TODO: turn 'yes' to True, 'no' to False
+    for col in complete_ansirh.columns:
+        if col != "facility name" and col != "full address" and \
+            type(complete_ansirh[col][0]) == str or \
+            complete_ansirh[col][0] == None:
 
-    # return cleaned_data
-    pass
+            for row in complete_ansirh[col]:
+                # lowercase everything
+                row.lower().strip('\"')
+
+                # turn 'yes' to True, 'no' to False
+                ### is this actually going to replace the value?###
+                if row == 'yes':
+                    row = True
+                if row == 'no':
+                    row = False
+
+    return complete_ansirh
 
 
 def replace_missing_values(data):
@@ -39,8 +52,9 @@ def replace_missing_values(data):
         for dtype, _ in TYPE_DEFAULTS.items():
             ### TODO: cant index row of this non-NA column ###
             ### TODO: replace eval() with getattr()
-            print(type(data[col][data[col].notnull()][1]))
-            if isinstance(type(data[col][data[col].notnull()][0]), eval(dtype)):
+            not_null = data[col][data[col].notnull()]
+            print(type(not_null))
+            if isinstance(type((data[col])[data[col].notnull()][0]), eval(dtype)):
                 print(f"{col}: {eval(dtype)}")
                 data[col].fillna(TYPE_DEFAULTS[dtype])
 
