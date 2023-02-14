@@ -8,7 +8,6 @@ import responses
 from api.abortion_policy_api import (
     get_api_data,
     HEADERS,
-    REQUEST_TIMEOUT,
     URL_AP_COVERAGE,
     URL_AP_GESTATIONAL_LIMITS,
     URL_AP_MINORS,
