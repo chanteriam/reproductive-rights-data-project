@@ -3,6 +3,10 @@ from abc import abstractmethod
 
 
 class Visualization(MutableMapping):
+    """
+    This abstract class is the one that all visualizations will be built on.
+    """
+
     @abstractmethod
     def __init__(self, filename):
         pass

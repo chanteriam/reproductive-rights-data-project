@@ -1,4 +1,7 @@
-# Dataset courtesy of Abortion Policy API (https://www.abortionpolicyapi.com/)
+"""
+Contains all functions that have to do with fetching data from abortion policy
+APIs and saving that data to the `../data` folder.
+"""
 
 import requests
 import os
