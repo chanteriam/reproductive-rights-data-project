@@ -1,3 +1,8 @@
+"""
+This file contains the abstract class that will be used to build all the
+visualizations for this repository.
+"""
+
 from collections.abc import MutableMapping
 from abc import abstractmethod
 
@@ -8,7 +13,7 @@ class Visualization(MutableMapping):
     """
 
     @abstractmethod
-    def __init__(self, filename):
+    def __init__(self, file_name):
         pass
 
     @abstractmethod

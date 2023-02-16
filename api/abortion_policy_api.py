@@ -6,12 +6,11 @@ APIs and saving that data to the `../data` folder.
 import requests
 import os
 import json
-import re
+from util.state_dictionaries import set_default_types, fill_in_missing_data
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
 HEADERS = {"token": APIKEY}
 REQUEST_TIMEOUT = 10
-TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 
 
 def main():
@@ -121,49 +120,6 @@ def add_missing_states(state_policies, defaults, states):
     non_present_states = list(set(states) - set(state_policies.keys()))
     for state in non_present_states:
         state_policies[state] = defaults
-
-
-def fill_in_missing_data(state_policies, defaults):
-    """
-    Fills in missing policy entries for states currently in the dataset.
-
-    Inputs:
-        state_policies (dict): dictionary of dictionaries containing abortion
-            policies by U.S. states.
-        defaults (dict): default policy entries and associated values
-    """
-
-    # Fill in missing data for states currently in the dataset
-    for _, state_info in state_policies.items():
-        for k, v in defaults.items():
-            if k not in state_info.keys():
-                state_info[k] = v
-
-
-def set_default_types(state_policies):
-    """
-    Finds the number and type of policy entries in each state dictionary and
-        assigns default values to those policy entries.
-
-    Inputs:
-        state_policies (dict): dictionary of dictionaries containing abortion
-            policies by U.S. states.
-
-    Returns:
-        (dictionary) name of policy entry and default type associated with entry
-    """
-
-    pattern = r'[!.,\'"?:<>]'
-    keys_and_defaults = {}
-
-    # Set default types for each state policy
-    for _, state_info in state_policies.items():
-        for k, v in state_info.items():
-            if k not in keys_and_defaults.keys():
-                key = re.sub(pattern, "", str(type(v))).split()[-1]
-                keys_and_defaults[k] = TYPE_DEFAULTS[key]
-
-    return keys_and_defaults
 
 
 def to_json(policy_areas):
