@@ -1,18 +1,18 @@
 .PHONY: format
 format:
-	black ./__main__.py ./apis/ ./test/ ./visualizations/ ./data_handling/ --line-length=80
+	black ./__main__.py ./api/ ./test/ ./visualizations/ ./data_handling/ --line-length=80
 
 .PHONY: test
 test:
-	pytest -vs ./test/*
+	pytest -vs ./test/
 
 .PHONY: test-and-fail
 test-and-fail:
-	pytest -vsx ./test/*
+	pytest -vsx ./test/
 
 .PHONY: lint
 lint:
-	pylint ./apis/ ./test/ ./visualizations/ ./data_handling/
+	pylint ./api/ ./test/ ./visualizations/ ./data_handling/
 
 .PHONY: api
 api:
