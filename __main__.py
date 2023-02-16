@@ -4,7 +4,7 @@ packages based on the flags that are passed to it.
 """
 
 import argparse
-import visualizations.service
+import visualization.service
 import api.abortion_policy_api
 
 if __name__ == "__main__":
@@ -41,4 +41,4 @@ if __name__ == "__main__":
         print("We are gonna do some data parsing work")
 
     if args.visualize:
-        visualizations.service.main()
+        visualization.service.main()
