@@ -20,23 +20,31 @@ def clean_data():
 
     ansirh = read_data().drop(columns="Unnamed: 2")
 
+    # replace missing values with correct empty type
     complete_ansirh = replace_missing_values(ansirh)
 
+    # cleanexisting data for continuity and readability
     for col in complete_ansirh.columns:
 
-        if complete_ansirh[col].dtype is str or \
-            complete_ansirh[col][0] == None:
+        print(col, complete_ansirh[col].dtype)
+        
+        # clean string-type entries
+        if complete_ansirh[col].dtype == object:
+            complete_ansirh[col].astype("str")
 
             for row in complete_ansirh[col]:
-                # lowercase everything
-                row.lower().strip('\"')
+                if row:
+                    print("row:", row)
 
-                # turn 'yes' to True, 'no' to False
-                ### is this actually going to replace the value?###
-                if row == 'yes':
-                    row = True
-                if row == 'no':
-                    row = False
+                    # lowercase everything
+                    row.lower().strip('\"')
+
+                    # turn 'yes' to True, 'no' to False
+                    ### is this actually going to replace the value?###
+                    if row == 'yes':
+                        row = True
+                    if row == 'no':
+                        row = False
 
         ### TODO: turn zip into strings ###
 
@@ -72,6 +80,10 @@ def read_data():
 
     file_name = "./data/AFD_2021_for_ArcGIS_Upload.csv"
 
+    with open(file_name) as f:
+        reader = csv.DictReader(f)
+
+        
     ansirh = pd.read_csv(file_name)
 
     return ansirh
