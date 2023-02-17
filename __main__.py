@@ -1,11 +1,13 @@
 """
 The __main__.py file serves as the project running file and calls on particular
 packages based on the flags that are passed to it.
+
+Author(s): Michael Plunkett, Kate Habich
 """
 
 import argparse
-import visualizations.service
-import apis.abortion_policy_api
+import visualization.service
+import api.abortion_policy_api
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -35,10 +37,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.api:
-        apis.abortion_policy_api.main()
+        api.abortion_policy_api.main()
 
     if args.parse_data:
         print("We are gonna do some data parsing work")
 
     if args.visualize:
-        visualizations.service.main()
+        visualization.service.main()
