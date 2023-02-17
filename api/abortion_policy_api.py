@@ -1,6 +1,8 @@
 """
 Contains all functions that have to do with fetching data from abortion policy
 APIs and saving that data to the `../data` folder.
+
+Author(s): Chanteria Milner, Michael Plunkett
 """
 
 import requests

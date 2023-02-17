@@ -1,3 +1,4 @@
+# Author(s): Michael Plunkett
 .PHONY: format
 format:
 	black ./__main__.py ./api/ ./test/ ./visualization/ ./data_handling/ --line-length=80

@@ -1,6 +1,8 @@
 """
 The __main__.py file serves as the project running file and calls on particular
 packages based on the flags that are passed to it.
+
+Author(s): Michael Plunkett, Kate Habich
 """
 
 import argparse
