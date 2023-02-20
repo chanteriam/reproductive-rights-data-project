@@ -12,14 +12,14 @@ TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 def set_default_types(state_policies):
     """
     Finds the number and type of policy entries in each state dictionary and
-        assigns default values to those policy entries.
+    assigns default values to those policy entries.
 
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
 
-    Returns:
-        (dictionary) name of policy entry and default type associated with entry
+    Returns (dictionary):
+        name of policy entry and default type associated with entry
     """
 
     pattern = r'[!.,\'"?:<>]'

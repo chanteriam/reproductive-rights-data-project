@@ -30,7 +30,7 @@ URL_AP_WAITING_PERIODS = (
 def main():
     """
     Retrieves API data from abortionpolicyapi.org, cleans dataset, and exports
-        cleaned data into .json files.
+    cleaned data into .json files.
     """
 
     # Get API data
@@ -47,11 +47,11 @@ def main():
 
 def get_api_data():
     """
-    Return state policy data for: gestational limits, insurance coverage,
-        minors, and waiting periods
+    Returns state policy data for: gestational limits, insurance coverage,
+    minors, and waiting periods
 
-    Returns:
-        (tuple) tuple of dictionaries for each state and policy type
+    Returns (tuple):
+        tuple of dictionaries for each state and policy type
     """
 
     # Get API response objects
@@ -79,7 +79,7 @@ def get_api_data():
 
 def clean(state_policies):
     """
-    Fill in missing characteristics for each state.
+    Fills in missing characteristics for each state.
 
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
@@ -126,7 +126,7 @@ def add_missing_states(state_policies, defaults, states):
 
 def to_json(policy_areas):
     """
-    Dump state policy data to json file(s)
+    Dumps state policy data to json file(s)
 
     Inputs:
         policy_areas (dict): list of dictionaries containing abortion
