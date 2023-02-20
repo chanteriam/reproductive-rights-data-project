@@ -3,8 +3,8 @@ Munge ANSIRH data into JSON files binned by state.
 """
 
 import pandas as pd
-
-# from .clean_ansirh import clean_ansirh
+import json
+from .clean_ansirh import clean_ansirh
 
 
 def main_ansirh():
@@ -20,19 +20,18 @@ def main_ansirh():
     # make dictionaries of every row in dataset
     row_dicts = make_row_dicts(ansirh)
 
-    # TODO: clean data
-    # send through modified shays clean functions
-    # clean_row_dicts = clean_ansirh(row_dicts)
+    # clean data
+    clean_row_dicts = clean_ansirh(row_dicts)
 
-    #####
-    # TODO: sort by state
-    # state_dict = split_by_state(clean_row_dicts)
-    state_dict = split_by_state(row_dicts)
+    # sort by state
+    state_dict = split_by_state(clean_row_dicts)
 
-    # TODO: sort by zipcode
+    # sort by zipcode
     zip_dict = split_by_zip(state_dict)
 
     # TODO: write to JSON
+    with open("data/clean_ansirh.json", "w", encoding="utf-8") as outfile:
+        json.dump(zip_dict, outfile, indent=1)
 
     return zip_dict
 
@@ -50,6 +49,7 @@ def split_by_state(rows):
 
         # create states dictionary with row dicts list as value
         if full_state not in state_dict:
+            # print(f"{full_state}: {type(full_state)}")
             state_dict[full_state] = [row]
         else:
             state_dict[full_state].append(row)
@@ -66,7 +66,7 @@ def translate_code_to_state(state_abr):
     file_name = "./data/state_abbreviations.csv"
     state = pd.read_csv(file_name)
 
-    state_name = state["state"][state["code"] == state_abr.upper()]
+    state_name = state["state"][state["code"] == state_abr.upper()].values[0]
 
     return state_name
 
