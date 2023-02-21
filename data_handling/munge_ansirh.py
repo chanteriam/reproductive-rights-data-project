@@ -73,7 +73,6 @@ def translate_code_to_state(state_abr):
         state_abr (str): two letter state abbreviation
 
     Returns (str): full state name
-
     """
 
     # read in state abreviation data
