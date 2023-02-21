@@ -1,7 +1,7 @@
 """
 Clean ANSIRH data to be munged.
 
-Authors: Kate Habich
+Author(s): Kate Habich, Chanteria Milner
 """
 
 import re
@@ -15,15 +15,11 @@ def clean_ansirh(rows):
     Inputs:
         rows (list): list of row dictionaries to clean
 
-    Returns (list ): list of cleaned ANSIRH row dictionaries
+    Returns (list): list of cleaned ANSIRH row dictionaries
     """
 
     # instantiating
-    print("cleaning")
-
-    default_col_types = set_default_types(
-        rows
-    )  # needs to happen after all types are corrected
+    default_col_types = set_default_types(rows)
     clean_row_list = []
 
     for row in rows:
@@ -70,13 +66,14 @@ def set_default_types(rows):
     Returns:
         (dict) name of column and default type associated with column
     """
-    # from shay
+
     pattern = r'[!.,\'"?:<>]'
     keys_and_defaults = {}
 
     for row in rows:
-        for k, v in row.items():
-            if k not in keys_and_defaults.keys():
+        for k, v in [r for r in row if r not in keys_and_defaults].items():
+        # for k, v in row.items():
+        #     if k not in keys_and_defaults.keys():
                 key = re.sub(pattern, "", str(type(v))).split()[-1]
                 keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
