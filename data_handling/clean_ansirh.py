@@ -72,9 +72,9 @@ def set_default_types(rows):
 
     for row in rows:
         for k, v in [r for r in row if r not in keys_and_defaults].items():
-        # for k, v in row.items():
-        #     if k not in keys_and_defaults.keys():
-                key = re.sub(pattern, "", str(type(v))).split()[-1]
-                keys_and_defaults[k] = TYPE_DEFAULTS[key]
+            # for k, v in row.items():
+            #     if k not in keys_and_defaults.keys():
+            key = re.sub(pattern, "", str(type(v))).split()[-1]
+            keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults

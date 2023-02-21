@@ -13,7 +13,7 @@ def main_ansirh():
     """
     Creates state dictionary of data from ANSIRH.
 
-    Returns (None): 
+    Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
     """
 
@@ -46,7 +46,7 @@ def split_by_state(rows):
     Inputs:
         rows (list): list of row dictionaries
 
-    Returns (dict): 
+    Returns (dict):
         The state_dict keyed to state containing lists of rows in that state
     """
 
@@ -69,7 +69,7 @@ def translate_code_to_state(state_abr):
     """
     Turns two-letter state code into the full state name.
 
-    Inputs: 
+    Inputs:
         state_abr (str): two letter state abbreviation
 
     Returns (str): full state name
@@ -94,8 +94,8 @@ def split_by_zip(state_dict):
         state_dict (dict): dictionary of states with values set to list of
             row dicts
 
-    Returns (dict): 
-        The state_dict keyed by zip codes containing lists of rows in that 
+    Returns (dict):
+        The state_dict keyed by zip codes containing lists of rows in that
         zip code
     """
 
