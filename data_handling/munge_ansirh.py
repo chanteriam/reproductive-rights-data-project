@@ -9,32 +9,28 @@ import json
 from .clean_ansirh import clean_ansirh
 
 
-def main_ansirh():
+def main():
     """
     Creates state dictionary of data from ANSIRH.
 
     Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
     """
-
+    # TODO: Will refactor with csv in the near future
     ansirh_data = pd.read_csv("./data/AFD_2021_for_ArcGIS_Upload.csv")
 
-    # drop empty column
+    # Drop empty column
     ansirh_data = ansirh_data.drop(["Unnamed: 2"], axis=1)
 
-    # make dictionaries of every row in dataset
+    # Make dictionaries of every row in dataset
     row_dicts = make_row_dicts(ansirh_data)
 
-    # clean data
+    # Clean and sort data
     clean_row_dicts = clean_ansirh(row_dicts)
-
-    # sort by state
     state_dict = split_by_state(clean_row_dicts)
-
-    # sort by zipcode
     zip_dict = split_by_zip(state_dict)
 
-    # write to JSON
+    # Write to JSON
     with open("data/clean_ansirh.json", "w", encoding="utf-8") as outfile:
         json.dump(zip_dict, outfile, indent=1)
 
@@ -53,10 +49,10 @@ def split_by_state(rows):
     state_dict = {}
     for row in rows:
 
-        # translate two letter state code to full name
+        # Translate two letter state code to full name
         full_state = str(translate_code_to_state(row["state"]))
 
-        # create states dictionary with row dicts list as value
+        # Create states dictionary with row dicts list as value
         if full_state not in state_dict:
             state_dict[full_state] = [row]
         else:
@@ -72,14 +68,15 @@ def translate_code_to_state(state_abr):
     Inputs:
         state_abr (str): two letter state abbreviation
 
-    Returns (str): full state name
+    Returns (str): 
+        full state name
     """
-
-    # read in state abreviation data
+    # TODO: Will refactor with csv in the near future
+    # Read in state abreviation data
     file_name = "./data/state_abbreviations.csv"
     state = pd.read_csv(file_name)
 
-    # convert to full state name
+    # Convert to full state name
     state_name = state["state"][state["code"] == state_abr.upper()].values[0]
 
     return state_name
@@ -107,7 +104,7 @@ def split_by_zip(state_dict):
             else:
                 zip_dict[row["zip code"]].append(row)
 
-        # set state value to be dicitonary of zip codes
+        # Set state value to be dicitonary of zip codes
         # containing list of row dictionaries
         complete_dict[state] = zip_dict
 
@@ -117,6 +114,11 @@ def split_by_zip(state_dict):
 def make_row_dicts(data):
     """
     Creates dictionary from column name and information of each row.
+
+    Inputs:
+        data (df): data containing information on each healthcare clinic
+
+    Returns (list): list of dictionaries of each df row keyed to column names
     """
 
     row_dict = data.to_dict("records")

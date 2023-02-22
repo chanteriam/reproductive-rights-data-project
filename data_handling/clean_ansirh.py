@@ -57,7 +57,7 @@ def clean_ansirh(rows):
 def set_default_types(rows):
     """
     Finds the data type of each column in each row and assigns default values
-        to those policy entries.
+    to those policy entries.
 
     Inputs:
         rows (list): list of dictionaries containing healthcare clinic
