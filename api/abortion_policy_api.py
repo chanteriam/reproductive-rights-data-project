@@ -8,7 +8,7 @@ Author(s): Chanteria Milner, Michael Plunkett
 import requests
 import os
 import json
-from util.state_dictionaries import TYPE_DEFAULTS
+from util.constants import TYPE_DEFAULTS
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -63,7 +63,8 @@ def get_api_data():
     r_insurance = requests.get(
         URL_AP_COVERAGE, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
-    r_minors = requests.get(URL_AP_MINORS, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+    r_minors = requests.get(URL_AP_MINORS, headers=HEADERS,
+                            timeout=REQUEST_TIMEOUT)
     r_waiting = requests.get(
         URL_AP_WAITING_PERIODS, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
@@ -103,7 +104,8 @@ def clean(state_policies):
     add_missing_states(state_policies, policy_defaults, states)
 
     # Sort dataset by state name
-    state_policies = dict(sorted(state_policies.items(), key=lambda ele: ele[0]))
+    state_policies = dict(
+        sorted(state_policies.items(), key=lambda ele: ele[0]))
 
 
 def add_missing_states(state_policies, defaults, states):

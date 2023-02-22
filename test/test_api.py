@@ -24,7 +24,7 @@ from api.abortion_policy_api import (
     URL_AP_MINORS,
     URL_AP_WAITING_PERIODS,
 )
-from util.state_dictionaries import TYPE_DEFAULTS
+from util.constants import TYPE_DEFAULTS
 
 CORRECT_KEY_DEFAULTS = {
     "exception_rape_or_incest": False,
@@ -268,6 +268,5 @@ def test_add_missing_states():
     # Verify key-values of added state
     for key, value in expected["Another state"].items():
         assert policies["Another state"][key] == value
-
 
 ### CHANTERIA MILNER CONTRIBUTION ABOVE ###
