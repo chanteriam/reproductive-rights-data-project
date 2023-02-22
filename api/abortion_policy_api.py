@@ -129,6 +129,7 @@ def to_json(policy_areas, file_names):
     Inputs:
         policy_areas (dict): list of dictionaries containing abortion
             policies by U.S. states.
+        file_names (list): list of file names to export to
     """
 
     print("Writing out to json file")

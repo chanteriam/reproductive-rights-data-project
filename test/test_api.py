@@ -5,10 +5,11 @@ module.
 Authors: Chanteria Milner, Michael Plunkett
 """
 
-""" MICHAEL PLUNKETT CONTRIBUTION BELOW """
+### MICHAEL PLUNKETT CONTRIBUTION BELOW ###
 import json
 from http import HTTPStatus
 import responses
+import requests
 import os
 from api.abortion_policy_api import (
     get_api_data,
@@ -16,6 +17,7 @@ from api.abortion_policy_api import (
     to_json,
     set_default_types,
     fill_in_missing_data,
+    REQUEST_TIMEOUT,
     HEADERS,
     URL_AP_COVERAGE,
     URL_AP_GESTATIONAL_LIMITS,
@@ -150,7 +152,6 @@ def test_main_golden_path():
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
 
 
-# Cover a potential time out for each call
 @responses.activate
 def test_get_api_data_gestational_limits_timeout():
     print("test")
@@ -176,13 +177,11 @@ def test_get_api_data_all_timeout():
     print("test")
 
 
-""" MICHAEL PLUNKETT CONTRIBUTION ABOVE """
+### MICHAEL PLUNKETT CONTRIBUTION ABOVE ###
+
+### CHANTERIA MILNER CONTRIBUTION BELOW ###
 
 
-""" CHANTERIA MILNER CONTRIBUTION BELOW """
-
-
-@responses.activate
 def test_to_json():
     policy_areas = {"gestational": json.loads(gestational_data)}
     file_name = "data/test_file1.json"
@@ -271,4 +270,4 @@ def test_add_missing_states():
         assert policies["Another state"][key] == value
 
 
-""" CHANTERIA MILNER CONTRIBUTION ABOVE """
+### CHANTERIA MILNER CONTRIBUTION ABOVE ###
