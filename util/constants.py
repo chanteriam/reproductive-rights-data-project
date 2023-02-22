@@ -1,5 +1,5 @@
 """
-Utility functions that have to do with handling state policy dictionaries.
+Constants to be used in various parts of the application.
 
 Author(s): Chanteria Milner, Michael Plunkett
 """
