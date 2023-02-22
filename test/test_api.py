@@ -5,17 +5,33 @@ module.
 Authors: Chanteria Milner, Michael Plunkett
 """
 
+""" MICHAEL PLUNKETT CONTRIBUTION BELOW """
 import json
 from http import HTTPStatus
 import responses
+import os
 from api.abortion_policy_api import (
     get_api_data,
+    add_missing_states,
+    to_json,
+    set_default_types,
+    fill_in_missing_data,
     HEADERS,
     URL_AP_COVERAGE,
     URL_AP_GESTATIONAL_LIMITS,
     URL_AP_MINORS,
     URL_AP_WAITING_PERIODS,
 )
+from util.state_dictionaries import TYPE_DEFAULTS
+
+CORRECT_KEY_DEFAULTS = {
+    "exception_rape_or_incest": False,
+    "exception_health": None,
+    "banned_after_weeks_since_LMP": 0,
+    "exception_life": False,
+    "Last Updated": None,
+    "exception_fetal": False,
+}
 
 # API data stubs
 gestational_data = json.dumps(
@@ -160,13 +176,99 @@ def test_get_api_data_all_timeout():
     print("test")
 
 
+""" MICHAEL PLUNKETT CONTRIBUTION ABOVE """
+
+
+""" CHANTERIA MILNER CONTRIBUTION BELOW """
+
+
+@responses.activate
+def test_to_json():
+    policy_areas = {"gestational": json.loads(gestational_data)}
+    file_name = "data/test_file1.json"
+
+    to_json(policy_areas, [file_name])
+
+    # assert existence of file
+    assert os.path.exists(file_name)
+    os.remove(file_name)
+
+
 def test_set_default_types():
-    print("test")
+    policies = {
+        "State1": {
+            "exception_rape_or_incest": True,
+            "exception_health": "Physical",
+            "exception_life": True,
+            "Last Updated": "2022-08-29T21:34:59.000Z",
+        },
+        "State2": {
+            "exception_health": "Major Bodily Function",
+            "banned_after_weeks_since_LMP": 24,
+            "exception_life": True,
+            "exception_fetal": True,
+        },
+    }
+
+    key_defaults = set_default_types(policies)
+
+    # Verify the right amount of objects are coming back
+    assert len(key_defaults.keys()) == len(CORRECT_KEY_DEFAULTS.keys())
+
+    # Assert correct key-value pairs
+    for key, value in CORRECT_KEY_DEFAULTS.items():
+        assert key_defaults[key] == value
 
 
 def test_fill_in_missing_data():
-    print("test")
+    policies = {
+        "A state": {
+            "exception_rape_or_incest": True,
+            "exception_health": "Physical",
+            "exception_life": True,
+            "Last Updated": "2022-12-29T21:34:59.000Z",
+        },
+    }
+
+    expected = json.loads(gestational_data)
+
+    fill_in_missing_data(policies, CORRECT_KEY_DEFAULTS)
+
+    # Verify the right amount of objects are coming back
+    assert len(policies["A state"].keys()) == len(CORRECT_KEY_DEFAULTS.keys())
+
+    # Assert correct keys
+    for key in expected["A state"].keys():
+        assert key in policies["A state"].keys()
 
 
-def test_to_json():
-    print("test")
+def test_add_missing_states():
+    states = ["A state", "Another state"]
+
+    policies = json.loads(gestational_data)
+
+    expected = {
+        "Another state": {
+            "exception_rape_or_incest": False,
+            "exception_health": None,
+            "banned_after_weeks_since_LMP": 0,
+            "exception_life": False,
+            "Last Updated": None,
+            "exception_fetal": False,
+        }
+    }
+
+    add_missing_states(policies, CORRECT_KEY_DEFAULTS, states)
+
+    # Verify correct number of states in dictionary
+    assert len(policies) == len(states)
+
+    # Verify addition of third state
+    assert policies["Another state"]
+
+    # Verify key-values of added state
+    for key, value in expected["Another state"].items():
+        assert policies["Another state"][key] == value
+
+
+""" CHANTERIA MILNER CONTRIBUTION ABOVE """
