@@ -8,7 +8,7 @@ Author(s): Chanteria Milner, Michael Plunkett
 import requests
 import os
 import json
-from util.constants import TYPE_DEFAULTS
+from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -163,14 +163,15 @@ def set_default_types(state_policies):
         name of policy entry and default type associated with entry
     """
 
-    pattern = r'[!.,\'"?:<>]'
     keys_and_defaults = {}
 
     # Set default types for each state policy
     for _, state_info in state_policies.items():
         for k, v in state_info.items():
             if k not in keys_and_defaults.keys():
-                key = re.sub(pattern, "", str(type(v))).split()[-1]
+                key = re.sub(
+                    FILTERED_CHARACTERS_REGEX, "", str(type(v))
+                ).split()[-1]
                 keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults
