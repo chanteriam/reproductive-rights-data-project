@@ -5,11 +5,9 @@ module.
 Authors: Chanteria Milner, Michael Plunkett
 """
 
-### MICHAEL PLUNKETT CONTRIBUTION BELOW ###
 import json
 from http import HTTPStatus
 import responses
-import requests
 import os
 from api.abortion_policy_api import (
     get_api_data,
@@ -17,14 +15,12 @@ from api.abortion_policy_api import (
     to_json,
     set_default_types,
     fill_in_missing_data,
-    REQUEST_TIMEOUT,
     HEADERS,
     URL_AP_COVERAGE,
     URL_AP_GESTATIONAL_LIMITS,
     URL_AP_MINORS,
     URL_AP_WAITING_PERIODS,
 )
-from util.constants import TYPE_DEFAULTS
 
 CORRECT_KEY_DEFAULTS = {
     "exception_rape_or_incest": False,
@@ -103,7 +99,7 @@ waiting_data = json.dumps(
 
 # Golden path for main function
 @responses.activate
-def test_main_golden_path():
+def test_get_api_data():
     responses.add(
         responses.GET,
         URL_AP_GESTATIONAL_LIMITS,
@@ -151,33 +147,6 @@ def test_main_golden_path():
     assert responses.assert_call_count(URL_AP_MINORS, 1) is True
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
 
-
-@responses.activate
-def test_get_api_data_gestational_limits_timeout():
-    print("test")
-
-
-@responses.activate
-def test_get_api_data_insurance_coverage_timeout():
-    print("test")
-
-
-@responses.activate
-def test_get_api_data_minors_timeout():
-    print("test")
-
-
-@responses.activate
-def test_get_api_data_waiting_periods_timeout():
-    print("test")
-
-
-@responses.activate
-def test_get_api_data_all_timeout():
-    print("test")
-
-
-### MICHAEL PLUNKETT CONTRIBUTION ABOVE ###
 
 ### CHANTERIA MILNER CONTRIBUTION BELOW ###
 
