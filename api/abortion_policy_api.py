@@ -16,12 +16,16 @@ HEADERS = {"token": APIKEY}
 REQUEST_TIMEOUT = 10
 
 # URLs have been made constants for testing purposes
-URL_AP_COVERAGE = "https://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
+URL_AP_COVERAGE = (
+    "https://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
+)
 URL_AP_GESTATIONAL_LIMITS = (
     "https://api.abortionpolicyapi.com/v1/gestational_limits/states"
 )
 URL_AP_MINORS = "https://api.abortionpolicyapi.com/v1/minors/states/"
-URL_AP_WAITING_PERIODS = "https://api.abortionpolicyapi.com/v1/waiting_periods/states/"
+URL_AP_WAITING_PERIODS = (
+    "https://api.abortionpolicyapi.com/v1/waiting_periods/states/"
+)
 
 
 def main():
@@ -63,8 +67,9 @@ def get_api_data():
     r_insurance = requests.get(
         URL_AP_COVERAGE, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
-    r_minors = requests.get(URL_AP_MINORS, headers=HEADERS,
-                            timeout=REQUEST_TIMEOUT)
+    r_minors = requests.get(
+        URL_AP_MINORS, headers=HEADERS, timeout=REQUEST_TIMEOUT
+    )
     r_waiting = requests.get(
         URL_AP_WAITING_PERIODS, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
@@ -105,7 +110,8 @@ def clean(state_policies):
 
     # Sort dataset by state name
     state_policies = dict(
-        sorted(state_policies.items(), key=lambda ele: ele[0]))
+        sorted(state_policies.items(), key=lambda ele: ele[0])
+    )
 
 
 def add_missing_states(state_policies, defaults, states):
@@ -153,7 +159,7 @@ def set_default_types(state_policies):
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
 
-    Returns (dictionary):
+    Returns (dict):
         name of policy entry and default type associated with entry
     """
 
