@@ -148,9 +148,6 @@ def test_get_api_data():
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
 
 
-### CHANTERIA MILNER CONTRIBUTION BELOW ###
-
-
 def test_to_json():
     policy_areas = {"gestational": json.loads(gestational_data)}
     file_name = "data/test_file1.json"
@@ -237,6 +234,3 @@ def test_add_missing_states():
     # Verify key-values of added state
     for key, value in expected["Another state"].items():
         assert policies["Another state"][key] == value
-
-
-### CHANTERIA MILNER CONTRIBUTION ABOVE ###
