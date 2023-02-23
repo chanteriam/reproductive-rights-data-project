@@ -5,7 +5,7 @@ Author(s): Kate Habich, Chanteria Milner
 """
 
 import re
-from util.constants import TYPE_DEFAULTS
+from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
 
 
 def clean_ansirh(rows):
@@ -24,11 +24,11 @@ def clean_ansirh(rows):
     clean_row_list = []
 
     for row in rows:
-        clean_row = {}
-
         # setting certain floats to str of standard length
-        clean_row["zip code"] = str(row["zip code"])[:5]
-        clean_row["facility ID"] = str(row["facility ID"])
+        clean_row = {
+            "zip code": str(row["zip code"])[:5],
+            "facility ID": str(row["facility ID"]),
+        }
 
         for col_name, value in row.items():
 
@@ -73,7 +73,9 @@ def set_default_types(rows):
 
     for row in rows:
         for k, v in [r for r in row if r not in keys_and_defaults].items():
-            key = re.sub(pattern, "", str(type(v))).split()[-1]
+            key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[
+                -1
+            ]
             keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults
