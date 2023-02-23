@@ -43,7 +43,7 @@ def split_by_state(rows):
         rows (list): list of row dictionaries
 
     Returns (dict):
-        The state_dict keyed to state containing lists of rows in that state
+        The state_dict keyed to state containing lists of rows in that state.
     """
 
     state_dict = {}
