@@ -31,8 +31,20 @@ def main():
     zip_dict = split_by_zip(state_dict)
 
     # Write to JSON
-    with open("data/clean_ansirh.json", "w", encoding="utf-8") as outfile:
-        json.dump(zip_dict, outfile, indent=1)
+    to_json(zip_dict, "data/clean_ansirh.json")
+
+
+def to_json(data, file_name):
+    """
+    Dumps data to json file(s)
+
+    Inputs:
+        data (dict): list of dictionaries to output to JSON
+        file_name (str): outfile file name
+    """
+
+    with open(file_name, "w", encoding="utf-8") as outfile:
+        json.dump(data, outfile, indent=1)
 
 
 def split_by_state(rows):
@@ -48,7 +60,6 @@ def split_by_state(rows):
 
     state_dict = {}
     for row in rows:
-
         # Translate two letter state code to full name
         full_state = str(translate_code_to_state(row["state"]))
 

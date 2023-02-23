@@ -16,16 +16,12 @@ HEADERS = {"token": APIKEY}
 REQUEST_TIMEOUT = 10
 
 # URLs have been made constants for testing purposes
-URL_AP_COVERAGE = (
-    "https://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
-)
+URL_AP_COVERAGE = "https://api.abortionpolicyapi.com/v1/insurance_coverage/states/"
 URL_AP_GESTATIONAL_LIMITS = (
     "https://api.abortionpolicyapi.com/v1/gestational_limits/states"
 )
 URL_AP_MINORS = "https://api.abortionpolicyapi.com/v1/minors/states/"
-URL_AP_WAITING_PERIODS = (
-    "https://api.abortionpolicyapi.com/v1/waiting_periods/states/"
-)
+URL_AP_WAITING_PERIODS = "https://api.abortionpolicyapi.com/v1/waiting_periods/states/"
 
 
 def main():
@@ -67,9 +63,7 @@ def get_api_data():
     r_insurance = requests.get(
         URL_AP_COVERAGE, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
-    r_minors = requests.get(
-        URL_AP_MINORS, headers=HEADERS, timeout=REQUEST_TIMEOUT
-    )
+    r_minors = requests.get(URL_AP_MINORS, headers=HEADERS, timeout=REQUEST_TIMEOUT)
     r_waiting = requests.get(
         URL_AP_WAITING_PERIODS, headers=HEADERS, timeout=REQUEST_TIMEOUT
     )
@@ -109,9 +103,7 @@ def clean(state_policies):
     add_missing_states(state_policies, policy_defaults, states)
 
     # Sort dataset by state name
-    state_policies = dict(
-        sorted(state_policies.items(), key=lambda ele: ele[0])
-    )
+    state_policies = dict(sorted(state_policies.items(), key=lambda ele: ele[0]))
 
 
 def add_missing_states(state_policies, defaults, states):
@@ -128,26 +120,6 @@ def add_missing_states(state_policies, defaults, states):
     non_present_states = list(set(states) - set(state_policies.keys()))
     for state in non_present_states:
         state_policies[state] = defaults
-
-
-def to_json(policy_areas, file_names):
-    """
-    Dumps state policy data to json file(s)
-
-    Inputs:
-        policy_areas (dict): list of dictionaries containing abortion
-            policies by U.S. states.
-        file_names (list): list of file names to export to
-    """
-
-    print("Writing out to json file")
-    assert len(policy_areas) == len(
-        file_names
-    ), "Incorrect number of policy areas passed"
-
-    for i, file_name in enumerate(file_names):
-        with open(file_name, "w", encoding="utf-8") as f:
-            json.dump(policy_areas[list(policy_areas.keys())[i]], f, indent=1)
 
 
 def set_default_types(state_policies):
@@ -169,9 +141,7 @@ def set_default_types(state_policies):
     for _, state_info in state_policies.items():
         for k, v in state_info.items():
             if k not in keys_and_defaults:
-                key = re.sub(
-                    FILTERED_CHARACTERS_REGEX, "", str(type(v))
-                ).split()[-1]
+                key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[-1]
                 keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults
@@ -192,3 +162,20 @@ def fill_in_missing_data(state_policies, defaults):
         for k, v in defaults.items():
             if k not in state_info.keys():
                 state_info[k] = v
+
+
+def to_json(data, file_names):
+    """
+    Dumps data to json file(s)
+
+    Inputs:
+        data (dict): list of dictionaries to output to JSON
+        file_names (list): list of file names to export to
+    """
+
+    print("Writing out to json file")
+    assert len(data) == len(file_names), "Incorrect number of data dictionaries passed"
+
+    for i, file_name in enumerate(file_names):
+        with open(file_name, "w", encoding="utf-8") as f:
+            json.dump(data[list(data.keys())[i]], f, indent=1)

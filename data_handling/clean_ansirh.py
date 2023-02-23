@@ -5,6 +5,7 @@ Author(s): Kate Habich, Chanteria Milner
 """
 
 import re
+from math import isnan
 from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
 
 
@@ -31,20 +32,19 @@ def clean_ansirh(rows):
         }
 
         for col_name, value in row.items():
-
             # if nan, set to correct default type
-            if not value:
+            if not value or (not isinstance(value, str) and isnan(value)):
                 clean_row[col_name] = default_col_types[col_name]
 
             # if string type, clean it up
             elif isinstance(value, str):
-                value.strip('"').lower()
-                if value.lower() == "yes":
+                value = value.strip('"').strip().lower()
+                if value == "yes":
                     clean_row[col_name] = True
-                elif value.lower() == "no":
+                elif value == "no":
                     clean_row[col_name] = False
                 else:
-                    clean_row[col_name] = value.lower()
+                    clean_row[col_name] = value
 
             # if no cleaning happens, transfer data over as is
             elif col_name not in clean_row:
@@ -71,10 +71,8 @@ def set_default_types(rows):
     keys_and_defaults = {}
 
     for row in rows:
-        for k, v in [r for r in row if r not in keys_and_defaults].items():
-            key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[
-                -1
-            ]
+        for k, v in [r for r in row.items() if r not in keys_and_defaults]:
+            key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[-1]
             keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults
