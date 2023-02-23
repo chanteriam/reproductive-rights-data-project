@@ -5,7 +5,7 @@ Author(s): Kate Habich, Chanteria Milner
 """
 
 import re
-from util.state_dictionaries import TYPE_DEFAULTS
+from util.constants import TYPE_DEFAULTS
 
 
 def clean_ansirh(rows):
