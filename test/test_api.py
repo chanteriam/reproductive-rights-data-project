@@ -200,11 +200,11 @@ def test_fill_in_missing_data():
     fill_in_missing_data(policies, CORRECT_KEY_DEFAULTS)
 
     # Verify the right amount of objects are coming back
-    assert len(policies["A state"].keys()) == len(CORRECT_KEY_DEFAULTS.keys())
+    assert len(policies["A state"]) == len(CORRECT_KEY_DEFAULTS)
 
     # Assert correct keys
-    for key in expected["A state"].keys():
-        assert key in policies["A state"].keys()
+    for key in expected["A state"]:
+        assert key in policies["A state"]
 
 
 def test_add_missing_states():
