@@ -57,7 +57,7 @@ def get_api_data():
     minors, and waiting periods
 
     Returns (tuple):
-        tuple of dictionaries for each state and policy type
+        Tuple of dictionaries for each state and policy type.
     """
 
     # Get API response objects
