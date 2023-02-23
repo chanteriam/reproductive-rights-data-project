@@ -15,7 +15,7 @@ def clean_ansirh(rows):
     Inputs:
         rows (list): list of row dictionaries to clean
 
-    Returns (list): 
+    Returns (list):
         List of cleaned ANSIRH row dictionaries.
     """
 

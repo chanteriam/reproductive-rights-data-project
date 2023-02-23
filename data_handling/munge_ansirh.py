@@ -68,7 +68,7 @@ def translate_code_to_state(state_abr):
     Inputs:
         state_abr (str): two letter state abbreviation
 
-    Returns (str): 
+    Returns (str):
         Full state name.
     """
     # TODO: Will refactor with csv in the near future
@@ -118,7 +118,7 @@ def make_row_dicts(data):
     Inputs:
         data (df): data containing information on each healthcare clinic
 
-    Returns (list): 
+    Returns (list):
         List of dictionaries of each df row keyed to column names.
     """
 
