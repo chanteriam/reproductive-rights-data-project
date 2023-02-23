@@ -118,7 +118,8 @@ def make_row_dicts(data):
     Inputs:
         data (df): data containing information on each healthcare clinic
 
-    Returns (list): list of dictionaries of each df row keyed to column names
+    Returns (list): 
+        list of dictionaries of each df row keyed to column names
     """
 
     row_dict = data.to_dict("records")

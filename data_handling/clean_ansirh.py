@@ -15,7 +15,8 @@ def clean_ansirh(rows):
     Inputs:
         rows (list): list of row dictionaries to clean
 
-    Returns (list): list of cleaned ANSIRH row dictionaries
+    Returns (list): 
+        list of cleaned ANSIRH row dictionaries
     """
 
     # instantiating
@@ -64,7 +65,7 @@ def set_default_types(rows):
             information
 
     Returns:
-        (dict) name of column and default type associated with column
+        (dict) default type associated with column keyed to name of column 
     """
 
     pattern = r'[!.,\'"?:<>]'
@@ -72,8 +73,6 @@ def set_default_types(rows):
 
     for row in rows:
         for k, v in [r for r in row if r not in keys_and_defaults].items():
-            # for k, v in row.items():
-            #     if k not in keys_and_defaults.keys():
             key = re.sub(pattern, "", str(type(v))).split()[-1]
             keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
