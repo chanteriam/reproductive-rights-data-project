@@ -69,7 +69,7 @@ def translate_code_to_state(state_abr):
         state_abr (str): two letter state abbreviation
 
     Returns (str): 
-        full state name
+        Full state name.
     """
     # TODO: Will refactor with csv in the near future
     # Read in state abreviation data
@@ -92,7 +92,7 @@ def split_by_zip(state_dict):
 
     Returns (dict):
         The state_dict keyed by zip codes containing lists of rows in that
-        zip code
+        zip code.
     """
 
     complete_dict = {}
@@ -119,7 +119,7 @@ def make_row_dicts(data):
         data (df): data containing information on each healthcare clinic
 
     Returns (list): 
-        list of dictionaries of each df row keyed to column names
+        List of dictionaries of each df row keyed to column names.
     """
 
     row_dict = data.to_dict("records")

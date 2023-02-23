@@ -16,7 +16,7 @@ def clean_ansirh(rows):
         rows (list): list of row dictionaries to clean
 
     Returns (list): 
-        list of cleaned ANSIRH row dictionaries
+        List of cleaned ANSIRH row dictionaries.
     """
 
     # instantiating
@@ -64,8 +64,8 @@ def set_default_types(rows):
         rows (list): list of dictionaries containing healthcare clinic
             information
 
-    Returns:
-        (dict) default type associated with column keyed to name of column 
+    Returns(dict):
+        Default type associated with column keyed to name of column.
     """
 
     pattern = r'[!.,\'"?:<>]'
