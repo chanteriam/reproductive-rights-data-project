@@ -97,7 +97,6 @@ waiting_data = json.dumps(
 )
 
 
-# Golden path for main function
 @responses.activate
 def test_get_api_data():
     responses.add(
