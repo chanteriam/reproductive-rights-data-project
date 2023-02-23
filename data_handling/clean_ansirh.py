@@ -68,7 +68,6 @@ def set_default_types(rows):
         Default type associated with column keyed to name of column.
     """
 
-    pattern = r'[!.,\'"?:<>]'
     keys_and_defaults = {}
 
     for row in rows:
