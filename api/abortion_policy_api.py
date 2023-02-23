@@ -168,7 +168,7 @@ def set_default_types(state_policies):
     # Set default types for each state policy
     for _, state_info in state_policies.items():
         for k, v in state_info.items():
-            if k not in keys_and_defaults.keys():
+            if k not in keys_and_defaults:
                 key = re.sub(
                     FILTERED_CHARACTERS_REGEX, "", str(type(v))
                 ).split()[-1]
