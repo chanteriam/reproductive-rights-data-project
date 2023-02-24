@@ -8,13 +8,24 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 #test fuction for vizualization
 def read_state():
-    with open("/Users/necabotheking/Documents/Github/reproductive-rights-data-project/data/states.txt") as state:
+    """
+    Test functon that reads in the states.txt data for the state dropdown
+        nav bar
+
+    Returns:
+        (lst) list of states in alphabetical order
+    """
+    with open("./data/states.txt") as state:
         state_lst = [line.strip() for line in state.readlines()]
     return state_lst
 
 
 # Create Test Figure
 def create_figure():
+    """
+    Creates the map of the United States
+    
+    """
     fig = go.Figure(go.Scattergeo())
     fig.update_geos(
         visible=False, resolution=110, scope="usa",
@@ -60,6 +71,11 @@ app.layout = html.Div(
     Input('example-dropdown', 'value')
 )
 def update_output(value):
+    """
+    Function for the app.callback above; update_output() is a test
+        function that updates the ouput of the navigation when another state
+        is selected.
+    """
     return f"{value} was selected"
 
 if __name__ == '__main__':
