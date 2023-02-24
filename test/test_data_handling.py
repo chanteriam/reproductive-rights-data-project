@@ -67,7 +67,7 @@ DF = pd.DataFrame(DATA)
 STATES = []
 STATE_ABRS = []
 states_fname = "data/state_abbreviations.csv"
-with open(states_fname, "r") as f:
+with open(states_fname, "r", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         state, abbrev, code = line.split(",")
@@ -122,7 +122,6 @@ def test_translate_code_to_state():
         assert translate_code_to_state(abr) == STATES[i]
 
 
-# TODO - Write this test
 def test_split_by_state():
     clean_rows = [
         {

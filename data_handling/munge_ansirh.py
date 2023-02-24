@@ -6,7 +6,7 @@ Author(s): Kate Habich
 
 import pandas as pd
 import json
-from .clean_ansirh import clean_ansirh
+from data_handling.clean_ansirh import clean_ansirh
 
 
 def main():
