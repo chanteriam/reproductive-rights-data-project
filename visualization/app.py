@@ -1,3 +1,9 @@
+"""
+Create Plotly Dash Visualization to mapp the cleaned data
+
+Author(s): Aïcha Camara
+"""
+
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
