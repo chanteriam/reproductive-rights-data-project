@@ -1,5 +1,5 @@
 """
-Create Plotly Dash Visualization to mapp the cleaned data
+Create Plotly Dash Visualization to map the cleaned data
 
 Author(s): Aïcha Camara
 """
