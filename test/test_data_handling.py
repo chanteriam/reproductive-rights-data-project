@@ -6,7 +6,7 @@ Author(s): Chanteria Milner
 """
 
 import pandas as pd
-import json
+import os
 from math import isnan
 from data_handling.clean_ansirh import (
     clean_ansirh,
@@ -17,9 +17,10 @@ from data_handling.munge_ansirh import (
     translate_code_to_state,
     split_by_zip,
     make_row_dicts,
+    to_json,
 )
 
-
+# Data for testing
 DATA = {
     "facility ID": [1, 2],
     "name": ["Clinic 1", "Clinic 2"],
@@ -63,113 +64,18 @@ CORRECT_DEFAULT_TYPES = {
 
 DF = pd.DataFrame(DATA)
 
-STATES = [
-    "Alabama",
-    "Alaska",
-    "Arizona",
-    "Arkansas",
-    "California",
-    "Colorado",
-    "Connecticut",
-    "Delaware",
-    "District of Columbia",
-    "Florida",
-    "Georgia",
-    "Hawaii",
-    "Idaho",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Kansas",
-    "Kentucky",
-    "Louisiana",
-    "Maine",
-    "Maryland",
-    "Massachusetts",
-    "Michigan",
-    "Minnesota",
-    "Mississippi",
-    "Missouri",
-    "Montana",
-    "Nebraska",
-    "Nevada",
-    "New Hampshire",
-    "New Jersey",
-    "New Mexico",
-    "New York",
-    "North Carolina",
-    "North Dakota",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Pennsylvania",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming",
-]
+STATES = []
+STATE_ABRS = []
+states_fname = "data/state_abbreviations.csv"
+with open(states_fname, "r") as f:
+    for line in f:
+        line = line.strip()
+        state, abbrev, code = line.split(",")
+        STATES.append(state.strip('"'))
+        STATE_ABRS.append(code.strip('"'))
 
-STATE_ABRS = [
-    "AL",
-    "AK",
-    "AZ",
-    "AR",
-    "CA",
-    "CO",
-    "CT",
-    "DE",
-    "DC",
-    "FL",
-    "GA",
-    "HI",
-    "ID",
-    "IL",
-    "IN",
-    "IA",
-    "KS",
-    "KY",
-    "LA",
-    "ME",
-    "MD",
-    "MA",
-    "MI",
-    "MN",
-    "MS",
-    "MO",
-    "MT",
-    "NE",
-    "NV",
-    "NH",
-    "NJ",
-    "NM",
-    "NY",
-    "NC",
-    "ND",
-    "OH",
-    "OK",
-    "OR",
-    "PA",
-    "RI",
-    "SC",
-    "SD",
-    "TN",
-    "TX",
-    "UT",
-    "VT",
-    "VA",
-    "WA",
-    "WV",
-    "WI",
-    "WY",
-]
+STATES.pop(0)
+STATE_ABRS.pop(0)
 
 
 def test_make_row_dicts():
@@ -218,14 +124,158 @@ def test_translate_code_to_state():
 
 # TODO - Write this test
 def test_split_by_state():
-    print("test")
+    clean_rows = [
+        {
+            "facility ID": "1",
+            "name": "clinic 1",
+            "city": "chicago",
+            "state": "il",
+            "zip code": "60637",
+            "open in 2021": None,
+            "provided abortions in 2021": True,
+        },
+        {
+            "facility ID": "2",
+            "name": "clinic 2",
+            "city": "dallas",
+            "state": "tx",
+            "zip code": "72001",
+            "open in 2021": False,
+            "provided abortions in 2021": False,
+        },
+        {
+            "facility ID": "3",
+            "name": "clinic 3",
+            "city": "houston",
+            "state": "tx",
+            "zip code": "77001",
+            "open in 2021": True,
+            "provided abortions in 2021": False,
+        },
+    ]
+
+    split_rows = {
+        "Illinois": [
+            {
+                "facility ID": "1",
+                "name": "clinic 1",
+                "city": "chicago",
+                "state": "il",
+                "zip code": "60637",
+                "open in 2021": None,
+                "provided abortions in 2021": True,
+            }
+        ],
+        "Texas": [
+            {
+                "facility ID": "2",
+                "name": "clinic 2",
+                "city": "dallas",
+                "state": "tx",
+                "zip code": "72001",
+                "open in 2021": False,
+                "provided abortions in 2021": False,
+            },
+            {
+                "facility ID": "3",
+                "name": "clinic 3",
+                "city": "houston",
+                "state": "tx",
+                "zip code": "77001",
+                "open in 2021": True,
+                "provided abortions in 2021": False,
+            },
+        ],
+    }
+
+    rows = split_by_state(clean_rows)
+    assert len(rows["Texas"]) == 2
+    assert rows == split_rows
 
 
-# TODO - Write this test
 def test_split_by_zip():
-    print("test")
+    split_rows_state = {
+        "Illinois": [
+            {
+                "facility ID": "1",
+                "name": "clinic 1",
+                "city": "chicago",
+                "state": "il",
+                "zip code": "60637",
+                "open in 2021": None,
+                "provided abortions in 2021": True,
+            }
+        ],
+        "Texas": [
+            {
+                "facility ID": "2",
+                "name": "clinic 2",
+                "city": "dallas",
+                "state": "tx",
+                "zip code": "72001",
+                "open in 2021": False,
+                "provided abortions in 2021": False,
+            },
+            {
+                "facility ID": "3",
+                "name": "clinic 3",
+                "city": "dallas",
+                "state": "tx",
+                "zip code": "72001",
+                "open in 2021": True,
+                "provided abortions in 2021": False,
+            },
+        ],
+    }
+
+    split_rows_zip = {
+        "Illinois": {
+            "60637": [
+                {
+                    "facility ID": "1",
+                    "name": "clinic 1",
+                    "city": "chicago",
+                    "state": "il",
+                    "zip code": "60637",
+                    "open in 2021": None,
+                    "provided abortions in 2021": True,
+                }
+            ]
+        },
+        "Texas": {
+            "72001": [
+                {
+                    "facility ID": "2",
+                    "name": "clinic 2",
+                    "city": "dallas",
+                    "state": "tx",
+                    "zip code": "72001",
+                    "open in 2021": False,
+                    "provided abortions in 2021": False,
+                },
+                {
+                    "facility ID": "3",
+                    "name": "clinic 3",
+                    "city": "dallas",
+                    "state": "tx",
+                    "zip code": "72001",
+                    "open in 2021": True,
+                    "provided abortions in 2021": False,
+                },
+            ],
+        },
+    }
+
+    rows = split_by_zip(split_rows_state)
+    assert len(rows["Texas"]["72001"]) == 2
+    assert split_rows_zip == rows
 
 
-# TODO - Write this test
 def test_to_json():
-    print("test")
+    file_name = "data/test_file1.json"
+
+    to_json(ROWS, file_name)
+
+    # assert existence of file
+    assert os.path.exists(file_name)
+    os.remove(file_name)
