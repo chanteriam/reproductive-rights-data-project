@@ -8,11 +8,11 @@ import pandas as pd
 import os
 from math import isnan
 from util.constants import STANDARD_ENCODING
-from data_handling.clean_ansirh import (
+from data_handling.ansirh.clean import (
     clean_ansirh,
     set_default_types,
 )
-from data_handling.munge_ansirh import (
+from data_handling.ansirh.process import (
     split_by_state,
     translate_code_to_state,
     split_by_zip,

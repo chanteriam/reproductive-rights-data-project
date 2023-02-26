@@ -10,7 +10,7 @@ from http import HTTPStatus
 import responses
 import os
 from api.abortion_policy_api import (
-    get_api_data,
+    get_data,
     add_missing_states,
     to_json,
     set_default_types,
@@ -131,7 +131,7 @@ def test_get_api_data():
         status=HTTPStatus.OK,
     )
 
-    test_result = get_api_data()
+    test_result = get_data()
 
     # Verify the right amount of objects are coming back
     assert len(test_result) == 4

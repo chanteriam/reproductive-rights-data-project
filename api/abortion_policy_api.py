@@ -32,14 +32,14 @@ URL_AP_WAITING_PERIODS = (
 )
 
 
-def main():
+def get_and_save_abortion_policy_api_data():
     """
     Retrieves API data from abortionpolicyapi.org, cleans dataset, and exports
     cleaned data into JSON files.
     """
 
     # Get API data
-    policy_areas = get_api_data()
+    policy_areas = get_data()
 
     # Fill in missing data
     for state_policies in policy_areas:
@@ -55,7 +55,7 @@ def main():
     to_json(policy_areas, file_names)
 
 
-def get_api_data():
+def get_data():
     """
     Returns state policy data for: gestational limits, insurance coverage,
     minors, and waiting periods
