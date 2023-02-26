@@ -2,7 +2,7 @@
 This file works as the central point for running the api package.
 """
 
-from abortion_policy_api import get_and_save_abortion_policy_api_data
+from api.abortion_policy_api import get_and_save_abortion_policy_api_data
 
 
 def main():
