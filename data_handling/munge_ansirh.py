@@ -37,7 +37,7 @@ def main():
 
 def to_json(data, file_name):
     """
-    Dumps data to json file(s)
+    Dumps data to json file(s).
 
     Inputs:
         data (dict): list of dictionaries to output to JSON
@@ -50,7 +50,7 @@ def to_json(data, file_name):
 
 def split_by_state(rows):
     """
-    Creates dictionary of states containing list of row dictionaries
+    Creates dictionary of states containing list of row dictionaries.
 
     Inputs:
         rows (list): list of row dictionaries
