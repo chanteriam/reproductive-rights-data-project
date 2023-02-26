@@ -9,7 +9,7 @@ from math import isnan
 from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
 
 
-def clean_ansirh(rows):
+def clean(rows):
     """
     Cleans rows of data for universality and useability.
 

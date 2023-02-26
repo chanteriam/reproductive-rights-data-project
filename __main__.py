@@ -7,7 +7,8 @@ Author(s): Michael Plunkett, Kate Habich
 
 import argparse
 import visualization.service
-import api.abortion_policy_api
+import api.service
+import data_handling.service
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -37,10 +38,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.api:
-        api.abortion_policy_api.main()
+        api.service.main()
 
     if args.parse_data:
-        print("We are gonna do some data parsing work")
+        data_handling.service.main()
 
     if args.visualize:
         visualization.service.main()
