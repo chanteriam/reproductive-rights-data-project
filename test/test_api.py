@@ -1,8 +1,5 @@
 """
-This file contains all testing functions for the repository's api
-module.
-
-Authors: Chanteria Milner, Michael Plunkett
+This file contains all testing functions for the api package.
 """
 
 import json
@@ -99,6 +96,9 @@ waiting_data = json.dumps(
 
 @responses.activate
 def test_get_api_data():
+    """
+    Author(s): Michael Plunkett
+    """
     responses.add(
         responses.GET,
         URL_AP_GESTATIONAL_LIMITS,
@@ -148,6 +148,9 @@ def test_get_api_data():
 
 
 def test_to_json():
+    """
+    Author(s): Chanteria Milner, Michael Plunkett
+    """
     policy_areas = [json.loads(gestational_data)]
     file_name = "data/test_file1.json"
 
@@ -159,6 +162,9 @@ def test_to_json():
 
 
 def test_set_default_types():
+    """
+    Author(s): Chanteria Milner
+    """
     policies = {
         "State1": {
             "exception_rape_or_incest": True,
@@ -185,6 +191,9 @@ def test_set_default_types():
 
 
 def test_fill_in_missing_data():
+    """
+    Author(s): Chanteria Milner
+    """
     policies = {
         "A state": {
             "exception_rape_or_incest": True,
@@ -207,6 +216,9 @@ def test_fill_in_missing_data():
 
 
 def test_add_missing_states():
+    """
+    Author(s): Chanteria Milner
+    """
     states = ["A state", "Another state"]
 
     policies = json.loads(gestational_data)

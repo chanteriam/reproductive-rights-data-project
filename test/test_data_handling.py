@@ -1,7 +1,5 @@
 """
-This file contains all testing functions for the data_handling module.
-
-Author(s): Chanteria Milner
+This file contains all testing functions for the data_handling package.
 """
 
 import pandas as pd
@@ -80,6 +78,9 @@ STATE_ABRVS.pop(0)
 
 
 def test_make_row_dicts():
+    """
+    Author(s): Chanteria Milner
+    """
     rows = make_row_dicts(DF)
     for i, row in enumerate(ROWS):
         for k, v in row.items():
@@ -90,10 +91,16 @@ def test_make_row_dicts():
 
 
 def test_set_default_types():
+    """
+    Author(s): Chanteria Milner
+    """
     assert set_default_types(ROWS) == CORRECT_DEFAULT_TYPES
 
 
 def test_clean_ansirh():
+    """
+    Author(s): Chanteria Milner
+    """
     clean_rows = [
         {
             "facility ID": "1",
@@ -119,11 +126,17 @@ def test_clean_ansirh():
 
 
 def test_translate_code_to_state():
+    """
+    Author(s): Chanteria Milner
+    """
     for i, abr in enumerate(STATE_ABRVS):
         assert translate_code_to_state(abr) == STATES[i]
 
 
 def test_split_by_state():
+    """
+    Author(s): Chanteria Milner
+    """
     clean_rows = [
         {
             "facility ID": "1",
@@ -194,6 +207,9 @@ def test_split_by_state():
 
 
 def test_split_by_zip():
+    """
+    Author(s): Chanteria Milner
+    """
     split_rows_state = {
         "Illinois": [
             {
@@ -272,6 +288,9 @@ def test_split_by_zip():
 
 
 def test_to_json():
+    """
+    Author(s): Chanteria Milner
+    """
     file_name = "data/test_file1.json"
 
     to_json(ROWS, file_name)
