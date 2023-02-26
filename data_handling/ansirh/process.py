@@ -1,19 +1,20 @@
 """
-Munge ANSIRH data into JSON files binned by state.
+Process ANSIRH data into JSON files binned by state.
 
 Author(s): Kate Habich
 """
 
 import pandas as pd
 import json
+from data_handling.ansirh.clean import clean
 from util.constants import STANDARD_ENCODING
-from data_handling.clean_ansirh import clean_ansirh
 from util.functions import translate_code_to_state
 
 
-def main():
+def clean_and_save():
     """
-    Creates state dictionary of data from ANSIRH.
+    Creates state dictionary of data from ANSIRH and saves its output to a
+    JSON file.
 
     Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
@@ -28,7 +29,7 @@ def main():
     row_dicts = make_row_dicts(ansirh_data)
 
     # Clean and sort data
-    clean_row_dicts = clean_ansirh(row_dicts)
+    clean_row_dicts = clean(row_dicts)
     state_dict = split_by_state(clean_row_dicts)
     zip_dict = split_by_zip(state_dict)
 
