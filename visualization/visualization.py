@@ -1,8 +1,6 @@
 """
 This file contains the abstract class that will be used to build all the
 visualizations for this repository.
-
-Author(s): Kate Habich, Michael Plunkett
 """
 
 from collections.abc import MutableMapping
@@ -12,6 +10,8 @@ from abc import abstractmethod
 class Visualization(MutableMapping):
     """
     This abstract class is the one that all visualizations will be built on.
+
+    Author(s): Kate Habich, Michael Plunkett
     """
 
     @abstractmethod
