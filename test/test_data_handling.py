@@ -65,17 +65,18 @@ CORRECT_DEFAULT_TYPES = {
 DF = pd.DataFrame(DATA)
 
 STATES = []
-STATE_ABRS = []
-states_fname = "data/state_abbreviations.csv"
-with open(states_fname, "r", encoding="utf-8") as f:
+STATE_ABRVS = []
+states_file_name = "data/state_abbreviations.csv"
+with open(states_file_name, "r", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         state, abbrev, code = line.split(",")
         STATES.append(state.strip('"'))
-        STATE_ABRS.append(code.strip('"'))
+        STATE_ABRVS.append(code.strip('"'))
 
+# Getting rid of headers
 STATES.pop(0)
-STATE_ABRS.pop(0)
+STATE_ABRVS.pop(0)
 
 
 def test_make_row_dicts():
@@ -118,7 +119,7 @@ def test_clean_ansirh():
 
 
 def test_translate_code_to_state():
-    for i, abr in enumerate(STATE_ABRS):
+    for i, abr in enumerate(STATE_ABRVS):
         assert translate_code_to_state(abr) == STATES[i]
 
 
