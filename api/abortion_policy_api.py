@@ -194,4 +194,4 @@ def to_json(data, file_names):
 
     for i, file_name in enumerate(file_names):
         with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
-            json.dump(data[list(data.keys())[i]], f, indent=1)
+            json.dump(data[i], f, indent=1)

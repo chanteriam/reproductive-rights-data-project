@@ -148,7 +148,7 @@ def test_get_api_data():
 
 
 def test_to_json():
-    policy_areas = {"gestational": json.loads(gestational_data)}
+    policy_areas = [json.loads(gestational_data)]
     file_name = "data/test_file1.json"
 
     to_json(policy_areas, [file_name])
