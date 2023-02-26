@@ -35,7 +35,7 @@ URL_AP_WAITING_PERIODS = (
 def main():
     """
     Retrieves API data from abortionpolicyapi.org, cleans dataset, and exports
-    cleaned data into .json files.
+    cleaned data into JSON files.
     """
 
     # Get API data
