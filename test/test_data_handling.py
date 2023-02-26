@@ -1,6 +1,5 @@
 """
-This file contains all testing functions for the repository's data_handling
-module.
+This file contains all testing functions for the data_handling module.
 
 Author(s): Chanteria Milner
 """
@@ -8,6 +7,7 @@ Author(s): Chanteria Milner
 import pandas as pd
 import os
 from math import isnan
+from util.constants import STANDARD_ENCODING
 from data_handling.clean_ansirh import (
     clean_ansirh,
     set_default_types,
@@ -67,7 +67,7 @@ DF = pd.DataFrame(DATA)
 STATES = []
 STATE_ABRVS = []
 states_file_name = "data/state_abbreviations.csv"
-with open(states_file_name, "r", encoding="utf-8") as f:
+with open(states_file_name, "r", encoding=STANDARD_ENCODING) as f:
     for line in f:
         line = line.strip()
         state, abbrev, code = line.split(",")

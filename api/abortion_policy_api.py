@@ -8,7 +8,11 @@ Author(s): Chanteria Milner, Michael Plunkett
 import requests
 import os
 import json
-from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
+from util.constants import (
+    FILTERED_CHARACTERS_REGEX,
+    TYPE_DEFAULTS,
+    STANDARD_ENCODING,
+)
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -95,7 +99,7 @@ def clean(state_policies):
     # Get list of states for data cleaning
     states = []
 
-    with open("data/states.txt", "r", encoding="utf-8") as f:
+    with open("data/states.txt", "r", encoding=STANDARD_ENCODING) as f:
         for state in f:
             states.append(state.strip())
 
@@ -176,7 +180,7 @@ def fill_in_missing_data(state_policies, defaults):
 
 def to_json(data, file_names):
     """
-    Dumps data to json file(s)
+    Dumps data to json file(s).
 
     Inputs:
         data (dict): list of dictionaries to output to JSON
@@ -189,5 +193,5 @@ def to_json(data, file_names):
     ), "Incorrect number of data dictionaries passed"
 
     for i, file_name in enumerate(file_names):
-        with open(file_name, "w", encoding="utf-8") as f:
+        with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
             json.dump(data[list(data.keys())[i]], f, indent=1)

@@ -6,6 +6,7 @@ Author(s): Kate Habich
 
 import pandas as pd
 import json
+from util.constants import STANDARD_ENCODING
 from data_handling.clean_ansirh import clean_ansirh
 
 
@@ -43,7 +44,7 @@ def to_json(data, file_name):
         file_name (str): outfile file name
     """
 
-    with open(file_name, "w", encoding="utf-8") as outfile:
+    with open(file_name, "w", encoding=STANDARD_ENCODING) as outfile:
         json.dump(data, outfile, indent=1)
 
 
