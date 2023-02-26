@@ -8,7 +8,11 @@ Author(s): Chanteria Milner, Michael Plunkett
 import requests
 import os
 import json
-from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
+from util.constants import (
+    FILTERED_CHARACTERS_REGEX,
+    TYPE_DEFAULTS,
+    STANDARD_ENCODING,
+)
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -95,7 +99,7 @@ def clean(state_policies):
     # Get list of states for data cleaning
     states = []
 
-    with open("data/states.txt", "r", encoding="utf-8") as f:
+    with open("data/states.txt", "r", encoding=STANDARD_ENCODING) as f:
         for state in f:
             states.append(state.strip())
 
@@ -128,26 +132,6 @@ def add_missing_states(state_policies, defaults, states):
     non_present_states = list(set(states) - set(state_policies.keys()))
     for state in non_present_states:
         state_policies[state] = defaults
-
-
-def to_json(policy_areas, file_names):
-    """
-    Dumps state policy data to json file(s)
-
-    Inputs:
-        policy_areas (dict): list of dictionaries containing abortion
-            policies by U.S. states.
-        file_names (list): list of file names to export to
-    """
-
-    print("Writing out to json file")
-    assert len(policy_areas) == len(
-        file_names
-    ), "Incorrect number of policy areas passed"
-
-    for i, file_name in enumerate(file_names):
-        with open(file_name, "w", encoding="utf-8") as f:
-            json.dump(policy_areas[list(policy_areas.keys())[i]], f, indent=1)
 
 
 def set_default_types(state_policies):
@@ -192,3 +176,22 @@ def fill_in_missing_data(state_policies, defaults):
         for k, v in defaults.items():
             if k not in state_info.keys():
                 state_info[k] = v
+
+
+def to_json(data, file_names):
+    """
+    Dumps data to json file(s).
+
+    Inputs:
+        data (dict): list of dictionaries to output to JSON
+        file_names (list): list of file names to export to
+    """
+
+    print("Writing out to json file")
+    assert len(data) == len(
+        file_names
+    ), "Incorrect number of data dictionaries passed"
+
+    for i, file_name in enumerate(file_names):
+        with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
+            json.dump(data[list(data.keys())[i]], f, indent=1)
