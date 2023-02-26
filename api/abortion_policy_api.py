@@ -192,6 +192,8 @@ def to_json(data, file_names):
         file_names
     ), "Incorrect number of data dictionaries passed"
 
+    # The problem is how the data is coming here, versus the tests
+    # There is not a 'policy area' key for the actual API calls.
     for i, file_name in enumerate(file_names):
         with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
             json.dump(data[list(data.keys())[i]], f, indent=1)
