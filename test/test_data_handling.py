@@ -9,7 +9,7 @@ import os
 from math import isnan
 from util.constants import STANDARD_ENCODING
 from data_handling.ansirh.clean import (
-    clean_ansirh,
+    clean,
     set_default_types,
 )
 from data_handling.ansirh.process import (
@@ -115,7 +115,7 @@ def test_clean_ansirh():
         },
     ]
 
-    assert clean_ansirh(ROWS) == clean_rows
+    assert clean(ROWS) == clean_rows
 
 
 def test_translate_code_to_state():
