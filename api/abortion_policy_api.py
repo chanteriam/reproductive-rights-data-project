@@ -186,6 +186,8 @@ def to_json(data, file_names):
         data (dict): list of dictionaries to output to JSON
         file_names (list): list of file names to export to
     """
+    # TODO: Merge with `to_json` function in the data_handling function
+    # TODO: and put it in the utils package.
 
     print("Writing out to json file")
     assert len(data) == len(

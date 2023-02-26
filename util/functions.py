@@ -1,7 +1,5 @@
 """
 Creates functions for multiple use across files.
-
-Author(s): Kate Habich
 """
 import pandas as pd
 
@@ -10,6 +8,8 @@ def translate_code_to_state(state_abr):
     """
     Turns two-letter state code into the full state name.
 
+    Author(s): Kate Habich
+
     Inputs:
         state_abr (str): two letter state abbreviation
 
@@ -17,7 +17,7 @@ def translate_code_to_state(state_abr):
         Full state name.
     """
     # TODO: Will refactor with csv in the near future
-    # Read in state abreviation data
+    # Read in state abbreviation data
     file_name = "./data/state_abbreviations.csv"
     state = pd.read_csv(file_name)
 
