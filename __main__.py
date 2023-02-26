@@ -42,7 +42,6 @@ if __name__ == "__main__":
 
     if args.parse_data:
         data_handling.munge_ansirh.main()
-        
 
     if args.visualize:
         visualization.service.main()
