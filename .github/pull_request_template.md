@@ -7,5 +7,9 @@
 ## How was it tested?
 - [ ] Wrote test cases.
 - [ ] Previously working test cases are still passing.
+
+```
+PUT THE `make test` OUTPUT HERE
+```
 - [ ] I ran `pylint` and have made the bulk of changes that it has requested.
 - [ ] I ran the `black` formatter and pushed the changes.
