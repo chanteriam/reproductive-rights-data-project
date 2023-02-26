@@ -1,9 +1,10 @@
-'''
+"""
 Creates functions for multiple use across files.
 
 Author(s): Kate Habich
-'''
-import pandas as pd 
+"""
+import pandas as pd
+
 
 def translate_code_to_state(state_abr):
     """
