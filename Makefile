@@ -1,7 +1,7 @@
 # Author(s): Michael Plunkett
 .PHONY: format
 format:
-	black ./__main__.py ./api/ ./test/ ./visualization/ ./data_handling/ --line-length=80
+	black ./__main__.py ./api/ ./test/ ./visualization/ ./data_handling/ ./util --line-length=80
 
 .PHONY: test
 test:
@@ -13,7 +13,7 @@ test-and-fail:
 
 .PHONY: lint
 lint:
-	pylint ./api/ ./test/ ./visualization/ ./data_handling/
+	pylint ./api/ ./test/ ./visualization/ ./data_handling/ ./util
 
 .PHONY: api
 api:
