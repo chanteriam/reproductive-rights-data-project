@@ -3,7 +3,7 @@
 .vscode
 
 # Stored data
-data/
+data/*
 !data/states.txt
 !data/state_abbreviations.csv
 !data/zip_code_database.csv
