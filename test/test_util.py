@@ -1,13 +1,15 @@
 """
 This file contains all testing functions for the util package.
 """
+from util.constants import STANDARD_ENCODING
 from util.functions import to_json
+import json
 import os
 
 
 def test_to_json():
     """
-    Author(s): Chanteria Milner
+    Author(s): Chanteria Milner, Michael Plunkett
     """
     rows = [
         {
@@ -36,4 +38,11 @@ def test_to_json():
 
     # assert existence of file
     assert os.path.exists(file_name)
+
+    with open(file_name, "r", encoding=STANDARD_ENCODING) as f:
+        data = json.load(f)
+        assert len(data) == len(rows)
+        for i, d in enumerate(data):
+            assert d["facility ID"] == rows[i]["facility ID"]
+
     os.remove(file_name)
