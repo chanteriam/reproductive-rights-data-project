@@ -6,6 +6,7 @@ Author(s): Aïcha Camara
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
+from maps.usa_country import 
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
@@ -25,39 +26,39 @@ def read_state():
 
 
 # Create USA Figure
-def create_figure():
-    """
-    Creates the map of the United States
+# def create_figure():
+#     """
+#     Creates the map of the United States
 
-    """
-    # fig = px.choropleth(data_frame, locations="state", color=, hover_name="", 
-    # locationmode='USA-states')
-    # above is to be filled in the data for the choropleth map
+#     """
+#     # fig = px.choropleth(data_frame, locations="state", color=, hover_name="", 
+#     # locationmode='USA-states')
+#     # above is to be filled in the data for the choropleth map
 
 
-    fig = go.Figure(
-        data=go.Scattergeo(
-            locations=read_state(),
-            lat=[42.3314],
-            lon=[83.0458],
-            locationmode="USA-states",
-            text="This is a marker",
-            mode="markers",
-            marker_color="black",
-        )
-    )
-    fig.update_geos(
-        visible=False,
-        resolution=110,
-        scope="usa",
-        showcountries=True,
-        countrycolor="Black",
-        showsubunits=True,
-        subunitcolor="Black",
-    )
-    fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
-    config = {"staticPlot": True}
-    return fig
+#     fig = go.Figure(
+#         data=go.Scattergeo(
+#             locations=read_state(),
+#             lat=[42.3314],
+#             lon=[83.0458],
+#             locationmode="USA-states",
+#             text="This is a marker",
+#             mode="markers",
+#             marker_color="black",
+#         )
+#     )
+#     fig.update_geos(
+#         visible=False,
+#         resolution=110,
+#         scope="usa",
+#         showcountries=True,
+#         countrycolor="Black",
+#         showsubunits=True,
+#         subunitcolor="Black",
+#     )
+#     fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+#     config = {"staticPlot": True}
+#     return fig
 
 
 # Creates the layout for the Plotly Dashboard

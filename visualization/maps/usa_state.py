@@ -7,3 +7,5 @@ from abc import ABC
 from visualization.abstract_visualization import Visualization
 
 class USAState(Visualization, ABC):
+    def __init__(self, files):
+        pass
