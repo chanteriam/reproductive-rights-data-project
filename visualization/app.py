@@ -87,7 +87,7 @@ DASH_INSTANCE.layout = html.Div(
         html.Div(
             children=[
                 html.B("This box will hold the map of the United States"),
-                dcc.Graph(id="usa-graph", figure=USAMap.create_figure()),
+                dcc.Graph(id="usa-graph", figure=USAMap.create()),
             ],
             style={
                 "float": "left",

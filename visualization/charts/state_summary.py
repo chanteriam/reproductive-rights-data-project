@@ -3,6 +3,8 @@ This file contains the functions and functionality needed to display a State
 summary of abortion-related data.
 """
 from abc import ABC
+import plotly.graph_objects as go
+import pandas as pd
 
 from visualization.abstract_visualization import Visualization
 
@@ -18,10 +20,15 @@ class StateSummary(Visualization, ABC):
         pass
 
     def _sort_files(self):
+        """
+        This method utilizes the JSON file(s) to create a pandas dataframe for
+        the visualization
+        """
         pass
         
     def create(self):
         """
-        Creates the map of the United States
+        Creates the state summary chart
         """
         pass
+        # figure = go.Figure()

@@ -4,6 +4,7 @@ hoverable map of the United States of America.
 """
 from abc import ABC
 import plotly.graph_objects as go
+import pandas as pd
 
 from visualization.abstract_visualization import Visualization
 
