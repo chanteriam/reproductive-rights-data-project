@@ -10,7 +10,22 @@ from visualization.abstract_visualization import Visualization
 class USAMap(Visualization, ABC):
     def __init__(self, files):
         pass
-    def create_figure():
+
+    def _import_files(self):
+        """
+        This method accesses a JSON file(s) and returns a dictionary of data for
+        the visualization.
+        """
+        pass
+
+    def _sort_files(self):
+        """
+        This method utilizes the JSON file(s) to create a pandas dataframe for
+        the visualization
+        """
+        pass
+
+    def create(self):
         """
         Creates the map of the United States
         """
