@@ -17,6 +17,8 @@ from api.abortion_policy_api import (
     URL_AP_WAITING_PERIODS,
 )
 
+# API data stubs
+# Author(s): Michael Plunkett, Chanteria Milner
 CORRECT_KEY_DEFAULTS = {
     "exception_rape_or_incest": False,
     "exception_health": None,
@@ -26,7 +28,7 @@ CORRECT_KEY_DEFAULTS = {
     "exception_fetal": False,
 }
 
-# API data stubs
+# Author(s): Michael Plunkett
 gestational_data = json.dumps(
     {
         "A state": {
@@ -40,6 +42,7 @@ gestational_data = json.dumps(
     }
 )
 
+# Author(s): Michael Plunkett
 insurance_data = json.dumps(
     {
         "A state": {
@@ -65,6 +68,7 @@ insurance_data = json.dumps(
     }
 )
 
+# Author(s): Michael Plunkett
 minors_data = json.dumps(
     {
         "A state": {
@@ -79,6 +83,7 @@ minors_data = json.dumps(
     }
 )
 
+# Author(s): Michael Plunkett
 waiting_data = json.dumps(
     {
         "A state": {
