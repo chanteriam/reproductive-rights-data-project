@@ -18,6 +18,7 @@ responses = "^0.22.0"
 scikit-learn = "^1.2.1"
 plotly = "^5.13.0"
 pandas = "^1.5.3"
+dash = "^2.8.1"
 
 
 [build-system]
