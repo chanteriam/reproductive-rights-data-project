@@ -30,6 +30,11 @@ def create_figure():
     Creates the map of the United States
 
     """
+    # fig = px.choropleth(data_frame, locations="state", color=, hover_name="", 
+    # locationmode='USA-states')
+    # above is to be filled in the data for the choropleth map
+
+
     fig = go.Figure(
         data=go.Scattergeo(
             locations=read_state(),
