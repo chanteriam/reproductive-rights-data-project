@@ -28,7 +28,7 @@ CORRECT_KEY_DEFAULTS = {
     "exception_fetal": False,
 }
 
-# Author(s): Michael Plunkett, Chanteria Milner
+# Author(s): Michael Plunkett
 gestational_data = json.dumps(
     {
         "A state": {
@@ -42,7 +42,7 @@ gestational_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett, Chanteria Milner
+# Author(s): Michael Plunkett
 insurance_data = json.dumps(
     {
         "A state": {
@@ -68,7 +68,7 @@ insurance_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett, Chanteria Milner
+# Author(s): Michael Plunkett
 minors_data = json.dumps(
     {
         "A state": {
@@ -83,7 +83,7 @@ minors_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett, Chanteria Milner
+# Author(s): Michael Plunkett
 waiting_data = json.dumps(
     {
         "A state": {
