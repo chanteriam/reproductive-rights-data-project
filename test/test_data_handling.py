@@ -17,6 +17,7 @@ from data_handling.ansirh.process import (
 )
 
 # Data for testing
+# Author(s): Chanteria Milner
 DATA = {
     "facility ID": [1, 2],
     "name": ["Clinic 1", "Clinic 2"],
@@ -27,6 +28,7 @@ DATA = {
     "provided abortions in 2021": [" YES", "no"],
 }
 
+# Author(s): Chanteria Milner
 ROWS = [
     {
         "facility ID": 1,
@@ -48,6 +50,7 @@ ROWS = [
     },
 ]
 
+# Author(s): Chanteria Milner
 CORRECT_DEFAULT_TYPES = {
     "facility ID": 0,
     "name": None,
@@ -58,8 +61,8 @@ CORRECT_DEFAULT_TYPES = {
     "provided abortions in 2021": None,
 }
 
+# Author(s): Chanteria Milner
 DF = pd.DataFrame(DATA)
-
 STATES = []
 STATE_ABRVS = []
 states_file_name = "data/state_abbreviations.csv"
