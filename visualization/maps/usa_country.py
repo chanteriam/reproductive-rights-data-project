@@ -12,7 +12,7 @@ class USAMap(Visualization, ABC):
         pass
     def create_figure():
         """
-        Creates the state figure
+        Creates the map of the United States
         """
         fig = go.Figure(
         data=go.Scattergeo(
