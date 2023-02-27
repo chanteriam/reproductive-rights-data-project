@@ -12,7 +12,8 @@ import pandas as pd
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-# test fuction for vizualization
+
+# test function for visualization
 def read_state():
     """
     Test functon that reads in the states.txt data for the state dropdown
@@ -53,7 +54,7 @@ app.layout = html.Div(
     children=[
         html.Br(),  # html.Br() adds a line break
         html.H1(
-            children="Test Dashboard for Reprodutive Rights Mapping",
+            children="Test Dashboard for Reproductive Rights Mapping",
             style={"textAlign": "center"},
         ),
         html.Div(
@@ -108,6 +109,8 @@ app.layout = html.Div(
         ),
     ],
 )
+
+
 # Closes the main Div
 
 
