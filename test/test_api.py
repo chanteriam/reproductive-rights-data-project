@@ -1,18 +1,13 @@
 """
-This file contains all testing functions for the repository's api
-module.
-
-Authors: Chanteria Milner, Michael Plunkett
+This file contains all testing functions for the api package.
 """
 
 import json
 from http import HTTPStatus
 import responses
-import os
 from api.abortion_policy_api import (
     get_data,
     add_missing_states,
-    to_json,
     set_default_types,
     fill_in_missing_data,
     HEADERS,
@@ -99,6 +94,9 @@ waiting_data = json.dumps(
 
 @responses.activate
 def test_get_api_data():
+    """
+    Author(s): Michael Plunkett
+    """
     responses.add(
         responses.GET,
         URL_AP_GESTATIONAL_LIMITS,
@@ -147,18 +145,10 @@ def test_get_api_data():
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
 
 
-def test_to_json():
-    policy_areas = {"gestational": json.loads(gestational_data)}
-    file_name = "data/test_file1.json"
-
-    to_json(policy_areas, [file_name])
-
-    # assert existence of file
-    assert os.path.exists(file_name)
-    os.remove(file_name)
-
-
 def test_set_default_types():
+    """
+    Author(s): Chanteria Milner
+    """
     policies = {
         "State1": {
             "exception_rape_or_incest": True,
@@ -185,6 +175,9 @@ def test_set_default_types():
 
 
 def test_fill_in_missing_data():
+    """
+    Author(s): Chanteria Milner
+    """
     policies = {
         "A state": {
             "exception_rape_or_incest": True,
@@ -207,6 +200,9 @@ def test_fill_in_missing_data():
 
 
 def test_add_missing_states():
+    """
+    Author(s): Chanteria Milner
+    """
     states = ["A state", "Another state"]
 
     policies = json.loads(gestational_data)

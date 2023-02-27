@@ -1,11 +1,8 @@
 """
-This file contains all testing functions for the data_handling module.
-
-Author(s): Chanteria Milner
+This file contains all testing functions for the data_handling package.
 """
 
 import pandas as pd
-import os
 from math import isnan
 from util.constants import STANDARD_ENCODING
 from data_handling.ansirh.clean import (
@@ -17,7 +14,6 @@ from data_handling.ansirh.process import (
     translate_code_to_state,
     split_by_zip,
     make_row_dicts,
-    to_json,
 )
 
 # Data for testing
@@ -80,6 +76,9 @@ STATE_ABRVS.pop(0)
 
 
 def test_make_row_dicts():
+    """
+    Author(s): Chanteria Milner
+    """
     rows = make_row_dicts(DF)
     for i, row in enumerate(ROWS):
         for k, v in row.items():
@@ -90,10 +89,16 @@ def test_make_row_dicts():
 
 
 def test_set_default_types():
+    """
+    Author(s): Chanteria Milner
+    """
     assert set_default_types(ROWS) == CORRECT_DEFAULT_TYPES
 
 
 def test_clean_ansirh():
+    """
+    Author(s): Chanteria Milner
+    """
     clean_rows = [
         {
             "facility ID": "1",
@@ -119,11 +124,17 @@ def test_clean_ansirh():
 
 
 def test_translate_code_to_state():
+    """
+    Author(s): Chanteria Milner
+    """
     for i, abr in enumerate(STATE_ABRVS):
         assert translate_code_to_state(abr) == STATES[i]
 
 
 def test_split_by_state():
+    """
+    Author(s): Chanteria Milner
+    """
     clean_rows = [
         {
             "facility ID": "1",
@@ -194,6 +205,9 @@ def test_split_by_state():
 
 
 def test_split_by_zip():
+    """
+    Author(s): Chanteria Milner
+    """
     split_rows_state = {
         "Illinois": [
             {
@@ -269,13 +283,3 @@ def test_split_by_zip():
     rows = split_by_zip(split_rows_state)
     assert len(rows["Texas"]["72001"]) == 2
     assert split_rows_zip == rows
-
-
-def test_to_json():
-    file_name = "data/test_file1.json"
-
-    to_json(ROWS, file_name)
-
-    # assert existence of file
-    assert os.path.exists(file_name)
-    os.remove(file_name)
