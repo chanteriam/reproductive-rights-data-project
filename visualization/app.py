@@ -12,7 +12,7 @@ import pandas as pd
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-#test fuction for vizualization
+# test fuction for vizualization
 def read_state():
     """
     Test functon that reads in the states.txt data for the state dropdown
@@ -30,51 +30,90 @@ def read_state():
 def create_figure():
     """
     Creates the map of the United States
-    
+
     """
     fig = go.Figure(go.Scattergeo())
     fig.update_geos(
-        visible=False, resolution=110, scope="usa",
-        showcountries=True, countrycolor="Black",
-        showsubunits=True, subunitcolor="Black",)
-    fig.update_layout(height=650, margin={"r":0,"t":0,"l":0,"b":0})
-    config = {'staticPlot': True}
+        visible=False,
+        resolution=110,
+        scope="usa",
+        showcountries=True,
+        countrycolor="Black",
+        showsubunits=True,
+        subunitcolor="Black",
+    )
+    fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+    config = {"staticPlot": True}
     return fig
+
 
 # Creates the layout for the Plotly Dashboard
 app.layout = html.Div(
-    
-    className = "webpage",
+    className="webpage",
     children=[
-    html.Br(), #html.Br() adds a line break
-    html.H1(children='Test Dashboard for Reprodutive Rights Mapping', 
-            style={'textAlign': 'center'}),
-
-    html.Div(children=[html.Br(), html.H4('''
+        html.Br(),  # html.Br() adds a line break
+        html.H1(
+            children="Test Dashboard for Reprodutive Rights Mapping",
+            style={"textAlign": "center"},
+        ),
+        html.Div(
+            children=[
+                html.Br(),
+                html.H4(
+                    """
         This is a test to create an interactive dashboard for the Reproductive
         Rights Mapping Project
-    '''), html.Br()], style={'textAlign': 'center'}),
+    """
+                ),
+                html.Br(),
+            ],
+            style={"textAlign": "center"},
+        ),
+        html.Div(
+            children=[
+                html.B("This box will hold the map of the United States"),
+                dcc.Graph(id="usa-graph", figure=create_figure()),
+            ],
+            style={
+                "float": "left",
+                "height": "1020px",
+                "width": "900px",
+                "border": "1px solid black",
+                "margin": "5px",
+            },
+        ),
+        html.Div(
+            children=[
+                html.B("This box will contain the state level analyses"),
+                dcc.Dropdown(options=read_state(), id="example-dropdown"),
+                html.Div(id="dd-output-container"),
+            ],
+            style={
+                "float": "right",
+                "height": "500px",
+                "width": "515px",
+                "border": "1px solid black",
+                "margin": "5px",
+            },
+        ),
+        html.Div(
+            children=html.B("This is where the charts will go"),
+            style={
+                "float": "right",
+                "height": "510px",
+                "width": "515px",
+                "border": "1px solid black",
+                "margin": "5px",
+            },
+        ),
+    ],
+)
+# Closes the main Div
 
-    html.Div(children=[html.B("This box will hold the map of the United States"), 
-                       dcc.Graph(id='usa-graph',figure=create_figure())],
-            style={'float': 'left', 'height': '1020px', 'width': '900px', 
-                   'border': '1px solid black', 'margin': '5px'}),
-
-    html.Div(children=[html.B("This box will contain the state level analyses"),
-                       dcc.Dropdown(options=read_state(), id="example-dropdown"),
-                       html.Div(id='dd-output-container')],
-             style={'float': 'right', 'height': '500px','width': '515px',
-                     'border': '1px solid black', 'margin': '5px'}),
-
-    html.Div(children=html.B("This is where the charts will go"),
-             style={'float': 'right', 'height': '510px','width': '515px',
-                     'border': '1px solid black', 'margin': '5px'}),
-        ])
-    # Closes the main Div
 
 @app.callback(
-    Output('dd-output-container', 'children'),
-    Input('example-dropdown', 'value')
+    Output("dd-output-container", "children"),
+    Input("example-dropdown", "value"),
 )
 def update_output(value):
     """
@@ -84,5 +123,6 @@ def update_output(value):
     """
     return f"{value} was selected"
 
-if __name__ == '__main__':
-    app.run_server(host='localhost',port=8005)
+
+if __name__ == "__main__":
+    app.run_server(host="localhost", port=8005)
