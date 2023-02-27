@@ -1,20 +1,18 @@
 """
 Process ANSIRH data into JSON files binned by state.
-
-Author(s): Kate Habich
 """
 
 import pandas as pd
-import json
 from data_handling.ansirh.clean import clean
-from util.constants import STANDARD_ENCODING
-from util.functions import translate_code_to_state
+from util.functions import translate_code_to_state, to_json
 
 
 def clean_and_save():
     """
     Creates state dictionary of data from ANSIRH and saves its output to a
     JSON file.
+
+    Author(s): Kate Habich
 
     Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
@@ -34,25 +32,14 @@ def clean_and_save():
     zip_dict = split_by_zip(state_dict)
 
     # Write to JSON
-    to_json(zip_dict, "data/clean_ansirh.json")
-
-
-def to_json(data, file_name):
-    """
-    Dumps data to json file(s).
-
-    Inputs:
-        data (dict): list of dictionaries to output to JSON
-        file_name (str): outfile file name
-    """
-
-    with open(file_name, "w", encoding=STANDARD_ENCODING) as outfile:
-        json.dump(data, outfile, indent=1)
+    to_json([zip_dict], ["data/clean_ansirh.json"])
 
 
 def split_by_state(rows):
     """
     Creates dictionary of states containing list of row dictionaries.
+
+    Author(s): Kate Habich
 
     Inputs:
         rows (list): list of row dictionaries
@@ -78,6 +65,8 @@ def split_by_state(rows):
 def split_by_zip(state_dict):
     """
     Splits state dictionary by zip.
+
+    Author(s): Kate Habich
 
     Inputs:
         state_dict (dict): dictionary of states with values set to list of
@@ -107,6 +96,8 @@ def split_by_zip(state_dict):
 def make_row_dicts(data):
     """
     Creates dictionary from column name and information of each row.
+
+    Author(s): Kate Habich
 
     Inputs:
         data (df): data containing information on each healthcare clinic

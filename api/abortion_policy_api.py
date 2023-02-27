@@ -1,18 +1,16 @@
 """
 Contains all functions that have to do with fetching data from abortion policy
 APIs and saving that data to the `../data` folder.
-
-Author(s): Chanteria Milner, Michael Plunkett
 """
 
 import requests
 import os
-import json
 from util.constants import (
     FILTERED_CHARACTERS_REGEX,
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
 )
+from util.functions import to_json
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -36,6 +34,8 @@ def get_and_save_abortion_policy_api_data():
     """
     Retrieves API data from abortionpolicyapi.org, cleans dataset, and exports
     cleaned data into JSON files.
+
+    Author(s): Chanteria Milner, Michael Plunkett
     """
 
     # Get API data
@@ -59,6 +59,8 @@ def get_data():
     """
     Returns state policy data for: gestational limits, insurance coverage,
     minors, and waiting periods
+
+    Author(s): Chanteria Milner, Michael Plunkett
 
     Returns (tuple):
         Tuple of dictionaries for each state and policy type.
@@ -91,6 +93,8 @@ def clean(state_policies):
     """
     Fills in missing characteristics for each state.
 
+    Author(s): Chanteria Milner
+
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
@@ -122,6 +126,8 @@ def add_missing_states(state_policies, defaults, states):
     """
     Adds missing state entries to the dataset.
 
+    Author(s): Chanteria Milner, Michael Plunkett
+
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
@@ -138,6 +144,8 @@ def set_default_types(state_policies):
     """
     Finds the number and type of policy entries in each state dictionary and
     assigns default values to those policy entries.
+
+    Author(s): Chanteria Milner, Michael Plunkett
 
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
@@ -165,6 +173,8 @@ def fill_in_missing_data(state_policies, defaults):
     """
     Fills in missing policy entries for states currently in the dataset.
 
+    Author(s): Chanteria Milner
+
     Inputs:
         state_policies (dict): dictionary of dictionaries containing abortion
             policies by U.S. states.
@@ -176,22 +186,3 @@ def fill_in_missing_data(state_policies, defaults):
         for k, v in defaults.items():
             if k not in state_info.keys():
                 state_info[k] = v
-
-
-def to_json(data, file_names):
-    """
-    Dumps data to json file(s).
-
-    Inputs:
-        data (dict): list of dictionaries to output to JSON
-        file_names (list): list of file names to export to
-    """
-
-    print("Writing out to json file")
-    assert len(data) == len(
-        file_names
-    ), "Incorrect number of data dictionaries passed"
-
-    for i, file_name in enumerate(file_names):
-        with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
-            json.dump(data[list(data.keys())[i]], f, indent=1)

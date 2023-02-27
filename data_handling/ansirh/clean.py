@@ -1,7 +1,5 @@
 """
 Clean ANSIRH data to be munged.
-
-Author(s): Kate Habich, Chanteria Milner
 """
 
 import re
@@ -12,6 +10,8 @@ from util.constants import FILTERED_CHARACTERS_REGEX, TYPE_DEFAULTS
 def clean(rows):
     """
     Cleans rows of data for universality and useability.
+
+    Author(s): Kate Habich, Chanteria Milner
 
     Inputs:
         rows (list): list of row dictionaries to clean
@@ -59,6 +59,8 @@ def set_default_types(rows):
     """
     Finds the data type of each column in each row and assigns default values
     to those policy entries.
+
+    Author(s): Kate Habich, Chanteria Milner
 
     Inputs:
         rows (list): list of dictionaries containing healthcare clinic

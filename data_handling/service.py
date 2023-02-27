@@ -9,6 +9,8 @@ def main():
     """
     Runs all processes related to data handling.
 
+    Author(s): Michael Plunkett
+
     Returns (None):
         Writes JSON file with cleaned and formatted application data.
     """
