@@ -3,7 +3,6 @@ Create Plotly Dash Visualization to map the cleaned data
 
 Author(s): Aïcha Camara
 """
-
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
@@ -12,8 +11,7 @@ import pandas as pd
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-
-# test function for visualization
+# test fuction for vizualization
 def read_state():
     """
     Test functon that reads in the states.txt data for the state dropdown
@@ -26,27 +24,26 @@ def read_state():
         state_lst = [line.strip() for line in state.readlines()]
     return state_lst
 
-
-# Create Test Figure
+# Create USA Figure
 def create_figure():
     """
     Creates the map of the United States
 
     """
-    fig = go.Figure(go.Scattergeo())
+    fig = go.Figure(data=go.Scattergeo(locations=read_state(), 
+                                  lat=[42.3314],
+                                  lon=[83.0458],
+                                  locationmode="USA-states", 
+                                  text="This is a marker",
+                                  mode='markers',
+                                  marker_color='black'))
     fig.update_geos(
-        visible=False,
-        resolution=110,
-        scope="usa",
-        showcountries=True,
-        countrycolor="Black",
-        showsubunits=True,
-        subunitcolor="Black",
-    )
-    fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
-    config = {"staticPlot": True}
+        visible=False, resolution=110, scope="usa",
+        showcountries=True, countrycolor="Black",
+        showsubunits=True, subunitcolor="Black",)
+    fig.update_layout(height=650, margin={"r":0,"t":0,"l":0,"b":0})
+    config = {'staticPlot': True}
     return fig
-
 
 # Creates the layout for the Plotly Dashboard
 app.layout = html.Div(
@@ -54,7 +51,7 @@ app.layout = html.Div(
     children=[
         html.Br(),  # html.Br() adds a line break
         html.H1(
-            children="Test Dashboard for Reproductive Rights Mapping",
+            children="Test Dashboard for Reprodutive Rights Mapping",
             style={"textAlign": "center"},
         ),
         html.Div(
@@ -109,8 +106,6 @@ app.layout = html.Div(
         ),
     ],
 )
-
-
 # Closes the main Div
 
 
