@@ -6,7 +6,7 @@ Author(s): Aïcha Camara
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
-from maps.usa_country import 
+from maps.usa_country import USAMap as USAMap
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
@@ -86,7 +86,7 @@ DASH_INSTANCE.layout = html.Div(
         html.Div(
             children=[
                 html.B("This box will hold the map of the United States"),
-                dcc.Graph(id="usa-graph", figure=create_figure()),
+                dcc.Graph(id="usa-graph", figure=USAMap.create_figure()),
             ],
             style={
                 "float": "left",
