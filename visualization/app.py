@@ -4,12 +4,10 @@ Create Plotly Dash Visualization to map the cleaned data
 Author(s): Aïcha Camara
 """
 import plotly.graph_objects as go
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-import plotly.express as px
-import pandas as pd
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
+DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 
 # test function for visualization
@@ -58,7 +56,7 @@ def create_figure():
 
 
 # Creates the layout for the Plotly Dashboard
-app.layout = html.Div(
+DASH_INSTANCE.layout = html.Div(
     className="webpage",
     children=[
         html.Br(),  # html.Br() adds a line break
@@ -119,19 +117,14 @@ app.layout = html.Div(
     ],
 )
 
-
-@app.callback(
-    Output("dd-output-container", "children"),
-    Input("example-dropdown", "value"),
-)
-def update_output(value):
-    """
-    Function for the app.callback above; update_output() is a test
-        function that updates the ouput of the navigation when another state
-        is selected.
-    """
-    return f"{value} was selected"
-
-
-if __name__ == "__main__":
-    app.run_server(host="localhost", port=8005)
+# @dash.callback(
+#     Output("dd-output-container", "children"),
+#     Input("example-dropdown", "value"),
+# )
+# def update_output(value):
+#     """
+#     Function for the app.callback above; update_output() is a test
+#         function that updates the ouput of the navigation when another state
+#         is selected.
+#     """
+#     return f"{value} was selected"
