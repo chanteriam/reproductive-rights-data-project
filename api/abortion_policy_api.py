@@ -5,12 +5,12 @@ APIs and saving that data to the `../data` folder.
 
 import requests
 import os
-import json
 from util.constants import (
     FILTERED_CHARACTERS_REGEX,
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
 )
+from util.functions import to_json
 import re
 
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
@@ -186,26 +186,3 @@ def fill_in_missing_data(state_policies, defaults):
         for k, v in defaults.items():
             if k not in state_info.keys():
                 state_info[k] = v
-
-
-def to_json(data, file_names):
-    """
-    Dumps data to json file(s).
-
-    Author(s): Chanteria Milner, Michael Plunkett
-
-    Inputs:
-        data (dict): list of dictionaries to output to JSON
-        file_names (list): list of file names to export to
-    """
-    # TODO: Merge with `to_json` function in the data_handling function
-    # TODO: and put it in the utils package.
-
-    print("Writing out to json file")
-    assert len(data) == len(
-        file_names
-    ), "Incorrect number of data dictionaries passed"
-
-    for i, file_name in enumerate(file_names):
-        with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
-            json.dump(data[i], f, indent=1)

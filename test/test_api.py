@@ -5,11 +5,9 @@ This file contains all testing functions for the api package.
 import json
 from http import HTTPStatus
 import responses
-import os
 from api.abortion_policy_api import (
     get_data,
     add_missing_states,
-    to_json,
     set_default_types,
     fill_in_missing_data,
     HEADERS,
@@ -145,20 +143,6 @@ def test_get_api_data():
     assert responses.assert_call_count(URL_AP_COVERAGE, 1) is True
     assert responses.assert_call_count(URL_AP_MINORS, 1) is True
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
-
-
-def test_to_json():
-    """
-    Author(s): Chanteria Milner, Michael Plunkett
-    """
-    policy_areas = [json.loads(gestational_data)]
-    file_name = "data/test_file1.json"
-
-    to_json(policy_areas, [file_name])
-
-    # assert existence of file
-    assert os.path.exists(file_name)
-    os.remove(file_name)
 
 
 def test_set_default_types():

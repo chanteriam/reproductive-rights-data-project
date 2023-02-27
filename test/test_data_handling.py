@@ -3,7 +3,6 @@ This file contains all testing functions for the data_handling package.
 """
 
 import pandas as pd
-import os
 from math import isnan
 from util.constants import STANDARD_ENCODING
 from data_handling.ansirh.clean import (
@@ -15,7 +14,6 @@ from data_handling.ansirh.process import (
     translate_code_to_state,
     split_by_zip,
     make_row_dicts,
-    to_json,
 )
 
 # Data for testing
@@ -285,16 +283,3 @@ def test_split_by_zip():
     rows = split_by_zip(split_rows_state)
     assert len(rows["Texas"]["72001"]) == 2
     assert split_rows_zip == rows
-
-
-def test_to_json():
-    """
-    Author(s): Chanteria Milner
-    """
-    file_name = "data/test_file1.json"
-
-    to_json(ROWS, file_name)
-
-    # assert existence of file
-    assert os.path.exists(file_name)
-    os.remove(file_name)

@@ -3,10 +3,8 @@ Process ANSIRH data into JSON files binned by state.
 """
 
 import pandas as pd
-import json
 from data_handling.ansirh.clean import clean
-from util.constants import STANDARD_ENCODING
-from util.functions import translate_code_to_state
+from util.functions import translate_code_to_state, to_json
 
 
 def clean_and_save():
@@ -34,22 +32,7 @@ def clean_and_save():
     zip_dict = split_by_zip(state_dict)
 
     # Write to JSON
-    to_json(zip_dict, "data/clean_ansirh.json")
-
-
-def to_json(data, file_name):
-    """
-    Dumps data to json file(s).
-
-    Author(s): Kate Habich
-
-    Inputs:
-        data (dict): list of dictionaries to output to JSON
-        file_name (str): outfile file name
-    """
-
-    with open(file_name, "w", encoding=STANDARD_ENCODING) as outfile:
-        json.dump(data, outfile, indent=1)
+    to_json([zip_dict], ["data/clean_ansirh.json"])
 
 
 def split_by_state(rows):

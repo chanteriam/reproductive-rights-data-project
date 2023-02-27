@@ -1,7 +1,9 @@
 """
 Creates functions for multiple use across files.
 """
+import json
 import pandas as pd
+from util.constants import STANDARD_ENCODING
 
 
 def translate_code_to_state(state_abr):
@@ -25,3 +27,24 @@ def translate_code_to_state(state_abr):
     state_name = state["state"][state["code"] == state_abr.upper()].values[0]
 
     return state_name
+
+
+def to_json(data, file_names):
+    """
+    Dumps data to json file(s).
+
+    Author(s): Chanteria Milner, Michael Plunkett
+
+    Inputs:
+        data (dict): list of dictionaries to output to JSON
+        file_names (list): list of file names to export to
+    """
+
+    print("Writing out to json file")
+    assert len(data) == len(
+        file_names
+    ), "Incorrect number of data dictionaries passed"
+
+    for i, file_name in enumerate(file_names):
+        with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
+            json.dump(data[i], f, indent=1)

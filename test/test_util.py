@@ -1,3 +1,39 @@
 """
 This file contains all testing functions for the util package.
 """
+from util.functions import to_json
+import os
+
+
+def test_to_json():
+    """
+    Author(s): Chanteria Milner
+    """
+    rows = [
+        {
+            "facility ID": 3,
+            "name": "Clinic 3",
+            "city": "Chicago",
+            "state": "IL",
+            "zip code": 60637.0,
+            "open in 2021": float("nan"),
+            "provided abortions in 2021": " YES",
+        },
+        {
+            "facility ID": 4,
+            "name": "Clinic 4",
+            "city": "Dallas",
+            "state": "TX",
+            "zip code": 72001.0,
+            "open in 2021": "No",
+            "provided abortions in 2021": "no",
+        },
+    ]
+
+    file_name = "data/test_file1.json"
+
+    to_json([rows], [file_name])
+
+    # assert existence of file
+    assert os.path.exists(file_name)
+    os.remove(file_name)
