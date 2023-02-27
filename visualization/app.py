@@ -7,7 +7,10 @@ import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
+# import the abstract classes for the visualizations 
 from maps.usa_country import USAMap as USAMap
+from maps.usa_state import USAState as USAState
+from charts.state_summary import StateSummary as StateSummary
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
@@ -100,7 +103,12 @@ DASH_INSTANCE.layout = html.Div(
         html.Div(
             children=[
                 html.B("This box will contain the state level analyses"),
-                dcc.Dropdown(options=read_state(), id="example-dropdown"),
+                dcc.Dropdown(options=read_state(), id="example-dropdown", 
+                        style={
+                            "width": "500px"
+                            # adds padding to the dropdown bar
+                        } 
+                    ),
                 html.Div(id="dd-output-container"),
             ],
             style={

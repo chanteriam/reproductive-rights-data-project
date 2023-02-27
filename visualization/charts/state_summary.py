@@ -1,6 +1,8 @@
 """
 This file contains the functions and functionality needed to display a State
 summary of abortion-related data.
+
+Author(s): Aïcha Camara & Michael Plunkett
 """
 from abc import ABC
 import plotly.graph_objects as go
@@ -10,7 +12,7 @@ from visualization.abstract_visualization import Visualization
 
 class StateSummary(Visualization, ABC):
     def __init__(self, files):
-        pass
+        self.files = files
 
     def _import_files(self):
         """

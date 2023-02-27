@@ -1,6 +1,8 @@
 """
 This file contains the functions and functionality needed to render a
 Choropleth map of the individual States of the United States of America.
+
+Author(s): Aïcha Camara & Michael Plunkett
 """
 from abc import ABC
 import pandas as pd
@@ -9,7 +11,7 @@ from visualization.abstract_visualization import Visualization
 
 class USAState(Visualization, ABC):
     def __init__(self, files):
-        pass
+        self.files = files
 
     def _import_files(self):
         """

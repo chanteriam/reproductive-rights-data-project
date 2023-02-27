@@ -1,6 +1,8 @@
 """
 This file contains the functions and functionality needed to render a
 hoverable map of the United States of America.
+
+Author(s): Aïcha Camara & Michael Plunkett
 """
 from abc import ABC
 import plotly.graph_objects as go
@@ -10,7 +12,7 @@ from visualization.abstract_visualization import Visualization
 
 class USAMap(Visualization, ABC):
     def __init__(self, files):
-        pass
+        self.files = files
 
     def _import_files(self):
         """
@@ -30,6 +32,10 @@ class USAMap(Visualization, ABC):
         """
         Creates the map of the United States
         """
+        #import the files, sort the files, then create the figure 
+        #self._import_files()
+        #self._sort_files()
+
         fig = go.Figure(
         data=go.Scattergeo(
         )
