@@ -11,7 +11,8 @@ import pandas as pd
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-# test fuction for vizualization
+
+# test function for visualization
 def read_state():
     """
     Test functon that reads in the states.txt data for the state dropdown
@@ -24,26 +25,37 @@ def read_state():
         state_lst = [line.strip() for line in state.readlines()]
     return state_lst
 
+
 # Create USA Figure
 def create_figure():
     """
     Creates the map of the United States
 
     """
-    fig = go.Figure(data=go.Scattergeo(locations=read_state(), 
-                                  lat=[42.3314],
-                                  lon=[83.0458],
-                                  locationmode="USA-states", 
-                                  text="This is a marker",
-                                  mode='markers',
-                                  marker_color='black'))
+    fig = go.Figure(
+        data=go.Scattergeo(
+            locations=read_state(),
+            lat=[42.3314],
+            lon=[83.0458],
+            locationmode="USA-states",
+            text="This is a marker",
+            mode="markers",
+            marker_color="black",
+        )
+    )
     fig.update_geos(
-        visible=False, resolution=110, scope="usa",
-        showcountries=True, countrycolor="Black",
-        showsubunits=True, subunitcolor="Black",)
-    fig.update_layout(height=650, margin={"r":0,"t":0,"l":0,"b":0})
-    config = {'staticPlot': True}
+        visible=False,
+        resolution=110,
+        scope="usa",
+        showcountries=True,
+        countrycolor="Black",
+        showsubunits=True,
+        subunitcolor="Black",
+    )
+    fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+    config = {"staticPlot": True}
     return fig
+
 
 # Creates the layout for the Plotly Dashboard
 app.layout = html.Div(
@@ -106,7 +118,6 @@ app.layout = html.Div(
         ),
     ],
 )
-# Closes the main Div
 
 
 @app.callback(
