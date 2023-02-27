@@ -22,7 +22,6 @@ def to_json(data, file_names):
     ), "Incorrect number of data dictionaries passed"
 
     for i, file_name in enumerate(file_names):
-        print(f"Writing to json file: {file_name}")
         with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
             json.dump(data[i], f, indent=1)
 
