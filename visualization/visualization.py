@@ -15,7 +15,7 @@ class Visualization(MutableMapping):
     """
 
     @abstractmethod
-    def __init__(self, file_name):
+    def __init__(self, files):
         pass
 
     @abstractmethod
