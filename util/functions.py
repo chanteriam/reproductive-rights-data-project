@@ -17,12 +17,12 @@ def to_json(data, file_names):
         file_names (list): list of file names to export to
     """
 
-    print("Writing out to json file")
     assert len(data) == len(
         file_names
     ), "Incorrect number of data dictionaries passed"
 
     for i, file_name in enumerate(file_names):
+        print(f"Writing out to json file: {file_name}")
         with open(file_name, "w", encoding=STANDARD_ENCODING) as f:
             json.dump(data[i], f, indent=1)
 
