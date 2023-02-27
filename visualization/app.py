@@ -4,7 +4,7 @@ Create Plotly Dash Visualization to map the cleaned data
 Author(s): Aïcha Camara
 """
 import plotly.graph_objects as go
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
@@ -122,14 +122,15 @@ DASH_INSTANCE.layout = html.Div(
     ],
 )
 
-# @dash.callback(
-#     Output("dd-output-container", "children"),
-#     Input("example-dropdown", "value"),
-# )
-# def update_output(value):
-#     """
-#     Function for the app.callback above; update_output() is a test
-#         function that updates the ouput of the navigation when another state
-#         is selected.
-#     """
-#     return f"{value} was selected"
+
+@DASH_INSTANCE.callback(
+    Output("dd-output-container", "children"),
+    Input("example-dropdown", "value"),
+)
+def update_output(value):
+    """
+    Function for the app.callback above; update_output() is a test
+        function that updates the ouput of the navigation when another state
+        is selected.
+    """
+    return f"{value} was selected"

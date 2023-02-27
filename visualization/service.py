@@ -1,7 +1,7 @@
 """
 This file works as the central point for running the visualization package.
 """
-from visualization.app import DASH_INSTANCE
+from abstract_visualization.app import DASH_INSTANCE
 
 
 def main():
