@@ -21,13 +21,20 @@ def clean(rows):
     """
 
     # instantiating
+    zipcode_len = 5
     default_col_types = set_default_types(rows)
     clean_row_list = []
 
     for row in rows:
         # setting certain floats to str of standard length
+        zipcode = str(row["zip code"]).split(".")[0]
+
+        if len(zipcode) < zipcode_len:
+            num_zeros = zipcode_len - len(zipcode)
+            zipcode = "0" * num_zeros + zipcode
+
         clean_row = {
-            "zip code": str(row["zip code"])[:5],
+            "zip code": zipcode,
             "facility ID": str(row["facility ID"]),
         }
 
@@ -74,9 +81,7 @@ def set_default_types(rows):
 
     for row in rows:
         for k, v in [r for r in row.items() if r not in keys_and_defaults]:
-            key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[
-                -1
-            ]
+            key = re.sub(FILTERED_CHARACTERS_REGEX, "", str(type(v))).split()[-1]
             keys_and_defaults[k] = TYPE_DEFAULTS[key]
 
     return keys_and_defaults

@@ -33,6 +33,7 @@ def clean_and_save():
 
     # Write to JSON
     to_json([zip_dict], ["data/clean_ansirh.json"])
+    return zip_dict
 
 
 def split_by_state(rows):
