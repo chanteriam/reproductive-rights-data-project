@@ -9,4 +9,4 @@ STANDARD_ENCODING = "utf-8"
 
 # FILE NAMES
 # Author(s): Michael Plunkett
-CLEAN_ANSIRH_FILE_NAME = "data/clean_ansirh.json"
+FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"

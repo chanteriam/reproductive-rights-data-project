@@ -3,10 +3,10 @@ This file contains helper functions for generating data visualizations.
 """
 
 import json
-from util.constants import CLEAN_ANSIRH_FILE_NAME
+from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
 
 # Maybe not good for testability
-with open(CLEAN_ANSIRH_FILE_NAME) as f:
+with open(FILE_NAME_ANSIRH_CLEAN_DATA) as f:
     NATIONAL_CLINICS = json.load(f)
 
 
