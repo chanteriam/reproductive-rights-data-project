@@ -21,13 +21,20 @@ def clean(rows):
     """
 
     # instantiating
-    default_col_types = set_default_types(rows)
     clean_row_list = []
+    default_col_types = set_default_types(rows)
+    zipcode_len = 5
 
     for row in rows:
         # setting certain floats to str of standard length
+        zipcode = str(row["zip code"]).split(".")[0]
+
+        if len(zipcode) < zipcode_len:
+            num_zeros = zipcode_len - len(zipcode)
+            zipcode = "0" * num_zeros + zipcode
+
         clean_row = {
-            "zip code": str(row["zip code"])[:5],
+            "zip code": zipcode,
             "facility ID": str(row["facility ID"]),
         }
 
