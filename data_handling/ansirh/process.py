@@ -4,6 +4,7 @@ Process ANSIRH data into JSON files binned by state.
 
 import pandas as pd
 from data_handling.ansirh.clean import clean
+from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
 from util.functions import translate_code_to_state, to_json
 
 
@@ -32,7 +33,7 @@ def clean_and_save():
     zip_dict = split_by_zip(state_dict)
 
     # Write to JSON
-    to_json([zip_dict], ["data/clean_ansirh.json"])
+    to_json([zip_dict], [FILE_NAME_ANSIRH_CLEAN_DATA])
 
 
 def split_by_state(rows):
