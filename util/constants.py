@@ -7,6 +7,6 @@ FILTERED_CHARACTERS_REGEX = r'[!.,\'"?:<>]'
 TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 STANDARD_ENCODING = "utf-8"
 
-# FILE NAMES
+# File Names
 # Author(s): Michael Plunkett
 FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"
