@@ -5,6 +5,7 @@ This file contains helper functions for generating data visualizations.
 import json
 from util.constants import CLEAN_ANSIRH_FILE_NAME
 
+# Maybe not good for testability
 with open(CLEAN_ANSIRH_FILE_NAME) as f:
     NATIONAL_CLINICS = json.load(f)
 
