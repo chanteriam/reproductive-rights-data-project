@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
-# import the abstract classes for the visualizations 
+# import the abstract classes for the visualizations
 from maps.usa_country import USAMap as USAMap
 from maps.usa_state import USAState as USAState
 from charts.state_summary import StateSummary as StateSummary
@@ -35,7 +35,7 @@ def read_state():
 #     Creates the map of the United States
 
 #     """
-#     # fig = px.choropleth(data_frame, locations="state", color=, hover_name="", 
+#     # fig = px.choropleth(data_frame, locations="state", color=, hover_name="",
 #     # locationmode='USA-states')
 #     # above is to be filled in the data for the choropleth map
 
@@ -103,12 +103,14 @@ DASH_INSTANCE.layout = html.Div(
         html.Div(
             children=[
                 html.B("This box will contain the state level analyses"),
-                dcc.Dropdown(options=read_state(), id="example-dropdown", 
-                        style={
-                            "width": "500px"
-                            # adds padding to the dropdown bar
-                        } 
-                    ),
+                dcc.Dropdown(
+                    options=read_state(),
+                    id="example-dropdown",
+                    style={
+                        "width": "500px"
+                        # adds padding to the dropdown bar
+                    },
+                ),
                 html.Div(id="dd-output-container"),
             ],
             style={

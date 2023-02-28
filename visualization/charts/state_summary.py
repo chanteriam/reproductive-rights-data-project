@@ -10,6 +10,7 @@ import pandas as pd
 
 from visualization.abstract_visualization import Visualization
 
+
 class StateSummary(Visualization, ABC):
     def __init__(self, files):
         self.files = files
@@ -27,7 +28,7 @@ class StateSummary(Visualization, ABC):
         the visualization
         """
         pass
-        
+
     def create(self):
         """
         Creates the state summary chart

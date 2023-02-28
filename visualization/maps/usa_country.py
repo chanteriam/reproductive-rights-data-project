@@ -10,6 +10,7 @@ import pandas as pd
 
 from visualization.abstract_visualization import Visualization
 
+
 class USAMap(Visualization, ABC):
     def __init__(self, files):
         self.files = files
@@ -32,14 +33,11 @@ class USAMap(Visualization, ABC):
         """
         Creates the map of the United States
         """
-        #import the files, sort the files, then create the figure 
-        #self._import_files()
-        #self._sort_files()
+        # import the files, sort the files, then create the figure
+        # self._import_files()
+        # self._sort_files()
 
-        fig = go.Figure(
-        data=go.Scattergeo(
-        )
-        )
+        fig = go.Figure(data=go.Scattergeo())
         fig.update_geos(
             visible=False,
             resolution=110,
