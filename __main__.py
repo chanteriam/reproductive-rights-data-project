@@ -9,7 +9,7 @@ import api.service
 import data_handling.service
 
 if __name__ == "__main__":
-    """"
+    """
     Author(s): Michael Plunkett, Kate Habich
     """
     parser = argparse.ArgumentParser()
