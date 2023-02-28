@@ -11,6 +11,7 @@ with open("data/clean_ansirh.json") as f:
 def get_state_clinic_counts():
     """
     Gets count of abortion clinics in each state.
+    Author(s): Chanteria Milner
 
     Returns:
         (dict): state: clinic count
@@ -31,6 +32,7 @@ def get_state_clinic_counts():
 def get_zipcode_clinic_counts():
     """
     Gets count of abortion clinics in each zipcode.
+    Author(s): Chanteria Milner
 
     Returns:
         (dict): zipcode: clinic count
