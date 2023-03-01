@@ -4,7 +4,6 @@ summary of abortion-related data.
 
 Author(s): Aïcha Camara & Michael Plunkett
 """
-from abc import ABC
 import plotly.graph_objects as go
 import pandas as pd
 
