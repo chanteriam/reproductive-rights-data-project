@@ -32,6 +32,7 @@ class Visualization(MutableMapping):
         This method pulls and constructs all the information needed for the
         class to render the visualization.
         """
+        pass
 
     @abstractmethod
     def create(self):
