@@ -15,14 +15,13 @@ from .charts.state_summary import StateSummary as StateSummary
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-
 # Creates the layout for the Plotly Dashboard
 DASH_INSTANCE.layout = html.Div(
     className="webpage",
     children=[
         html.Br(),  # html.Br() adds a line break
         html.H1(
-            children="Reprodutive Rights Mapping Dashboard",
+            children="Reproductive Rights Mapping Dashboard",
             style={"textAlign": "center"},
         ),
         html.Div(
@@ -100,7 +99,7 @@ DASH_INSTANCE.layout = html.Div(
 def update_output(value):
     """
     Function for the app.callback above; update_output() is a test
-        function that updates the ouput of the navigation when another state
-        is selected.
+    function that updates the output of the navigation when another state
+    is selected.
     """
     return f"{value} was selected"
