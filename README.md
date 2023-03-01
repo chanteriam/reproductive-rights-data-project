@@ -1,4 +1,5 @@
 # Reproductive Rights Data Project
+Author(s): Michael Plunkett
 A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals and searchable spreadsheets.
 
 ## Project Requirements
@@ -20,7 +21,10 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 ## How do we run this thing?
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command: `poetry shell`
 2. Run the command `poetry install` to install the package dependencies within the project.
-3. ADD MORE THINGS AS WE GET MORE FUNCTIONALITY
+3. Run the `make api` command to get the data from the _Abortion Policy API_.
+4. Run the `make parse-data` command to parse the data so that we can have our data fit the format needed for the next step.
+5. Run the `make visualize` command to start the [Flask](https://flask.palletsprojects.com/en/2.2.x/) server so that we can visualize the data we have pulled and parsed!
+  - The previous two steps must have been run for this step to execute successfully.
 
 ### We would like to thank the following organizations for providing our reference data:
 - _Abortion Policy API_: https://www.abortionpolicyapi.com/

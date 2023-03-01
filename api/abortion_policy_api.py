@@ -6,6 +6,10 @@ APIs and saving that data to the `../data` folder.
 import requests
 import os
 from util.constants import (
+    FILE_NAME_ABORTION_POLICY_API_GESTATION,
+    FILE_NAME_ABORTION_POLICY_API_INSURANCE,
+    FILE_NAME_ABORTION_POLICY_API_MINORS,
+    FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
     FILTERED_CHARACTERS_REGEX,
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
@@ -49,10 +53,10 @@ def get_and_save_abortion_policy_api_data():
 
     # Convert dataset to json
     file_names = [
-        "data/abortion_policy_api_gestational.json",
-        "data/abortion_policy_api_insurance.json",
-        "data/abortion_policy_api_minors.json",
-        "data/abortion_policy_api_waiting.json",
+        FILE_NAME_ABORTION_POLICY_API_GESTATION,
+        FILE_NAME_ABORTION_POLICY_API_INSURANCE,
+        FILE_NAME_ABORTION_POLICY_API_MINORS,
+        FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
     ]
     to_json(policy_areas, file_names)
 
