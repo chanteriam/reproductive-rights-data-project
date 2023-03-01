@@ -12,7 +12,7 @@ from visualization.abstract_visualization import Visualization
 from visualization.functions import get_zipcode_clinic_counts
 
 
-class StateSummary(Visualization, ABC):
+class StateSummary(Visualization):
     def __init__(self):
         pass
 
