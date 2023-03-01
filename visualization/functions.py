@@ -53,3 +53,19 @@ def get_zipcode_clinic_counts():
     )
 
     return count_zipcode_clinics
+
+
+def read_state():
+    """
+    Creates an alphabetical list of states for
+    the state downdown navigation bar
+
+    Author(s): Aïcha Camara
+
+    Returns:
+        (list) list of states in alphabetical order
+    """
+
+    with open("./data/states.txt") as state:
+        state_lst = [line.strip() for line in state.readlines()]
+    return state_lst

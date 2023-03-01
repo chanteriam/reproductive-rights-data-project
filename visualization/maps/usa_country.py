@@ -9,7 +9,7 @@ import plotly.express as px
 import pandas as pd
 
 from visualization.abstract_visualization import Visualization
-from functions import get_state_clinic_counts
+from visualization.functions import get_state_clinic_counts
 
 class USAMap(Visualization, ABC):
     def __init__(self):

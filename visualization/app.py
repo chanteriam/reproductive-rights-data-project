@@ -8,25 +8,12 @@ from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 # import the abstract classes for the visualizations
-from maps.usa_country import USAMap as USAMap
-from maps.usa_state import USAState as USAState
-from charts.state_summary import StateSummary as StateSummary
+from .functions import read_state
+from .maps.usa_country import USAMap as USAMap
+from .maps.usa_state import USAState as USAState
+from .charts.state_summary import StateSummary as StateSummary
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
-
-
-# test function for visualization
-def read_state():
-    """
-    Test functon that reads in the states.txt data for the state dropdown
-        nav bar
-
-    Returns:
-        (lst) list of states in alphabetical order
-    """
-    with open("./data/states.txt") as state:
-        state_lst = [line.strip() for line in state.readlines()]
-    return state_lst
 
 
 # Creates the layout for the Plotly Dashboard
@@ -35,7 +22,7 @@ DASH_INSTANCE.layout = html.Div(
     children=[
         html.Br(),  # html.Br() adds a line break
         html.H1(
-            children="Test Dashboard for Reprodutive Rights Mapping",
+            children="Reprodutive Rights Mapping Dashboard",
             style={"textAlign": "center"},
         ),
         html.Div(
@@ -43,9 +30,13 @@ DASH_INSTANCE.layout = html.Div(
                 html.Br(),
                 html.H4(
                     """
-        This is a test to create an interactive dashboard for the Reproductive
-        Rights Mapping Project
-    """
+                    Author(s): Aïcha Camara, Kate Habich, 
+                    Chanteria Milner, Michael Plunkett
+                    """
+                ),
+                html.H4(
+                "If you or someone you love needs an abortion, \
+                you can find up-to-date help at ineedana.com. ❤️"
                 ),
                 html.Br(),
             ],
@@ -86,7 +77,10 @@ DASH_INSTANCE.layout = html.Div(
             },
         ),
         html.Div(
-            children=html.B("This is where the charts will go"),
+            children=[
+                html.B("This is where the charts will go"),
+                dcc.Graph(StateSummary.create())
+            ],
             style={
                 "float": "right",
                 "height": "510px",
