@@ -7,6 +7,7 @@ import plotly.express as px
 import pandas as pd
 
 from visualization.abstract_visualization import Visualization
+from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
 from visualization.functions import get_state_clinic_counts
 
 
@@ -22,25 +23,27 @@ class USAMap(Visualization, ABC):
         # File names are passed from outside the class and stored in the
         # below variable
         self._files = files
-        pass
 
     def _import_files(self):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
         """
+        FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS = self.files
         # Put this functionality inside here, plz
-        return get_state_clinic_counts()
+
+        return [FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS]
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
         """
-        abbreviations = pd.read_csv("data/state_abbreviations.csv")
+        FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS = self._import_files
+        abbreviations = pd.read_csv(FILE_NAME_STATE_ABBREVIATIONS)
         extract_abbrev = abbreviations["code"]
 
-        state_dict = self._import_files()
+        state_dict = FILE_NAME_ANSIRH_CLEAN_DATA
         state_df = pd.DataFrame(state_dict.items(), columns=["state", "count"])
         state_df = state_df.join(extract_abbrev)
 
@@ -53,6 +56,9 @@ class USAMap(Visualization, ABC):
         """
         # Call all of your _import, _sort, etc. functions here and save the
         # data to internal variables
+
+        
+
 
     def create(self):
         """
