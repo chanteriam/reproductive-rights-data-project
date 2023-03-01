@@ -1,7 +1,7 @@
 # Reproductive Rights Data Project
 **Author(s):** Michael Plunkett
 
-A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals and searchable spreadsheets.
+A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals.
 
 ## Project Requirements
 - [Poetry](https://python-poetry.org/docs/basic-usage/)
