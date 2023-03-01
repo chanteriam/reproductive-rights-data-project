@@ -31,7 +31,7 @@ class USAMap(Visualization):
         FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS = self.files
         # Put this functionality inside here, plz
 
-        return [FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS]
+        return (FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS)
 
     def _sort_files(self):
         """
@@ -58,6 +58,9 @@ class USAMap(Visualization):
         """
         # Call all of your _import, _sort, etc. functions here and save the
         # data to internal variables
+        state_df = self._sort_files()
+
+        return state_df
 
     def create_visual(self):
         """
@@ -66,7 +69,7 @@ class USAMap(Visualization):
         """
         # Take the information from construct_data function and use it to build
         # your map here
-        state_df = self._sort_files()
+        state_df = self.construct_data()
 
         fig = px.choropleth(
             state_df,
@@ -88,4 +91,5 @@ class USAMap(Visualization):
             subunitcolor="Black",
         )
         fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        
         return fig
