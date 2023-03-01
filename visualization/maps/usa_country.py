@@ -11,6 +11,7 @@ import pandas as pd
 from visualization.abstract_visualization import Visualization
 from visualization.functions import get_state_clinic_counts
 
+
 class USAMap(Visualization, ABC):
     def __init__(self):
         pass
@@ -22,17 +23,16 @@ class USAMap(Visualization, ABC):
         """
         return get_state_clinic_counts()
 
-
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
         """
-        abbreviations = pd.read_csv('data/state_abbreviations.csv')
-        extract_abbrev = abbreviations['code']
+        abbreviations = pd.read_csv("data/state_abbreviations.csv")
+        extract_abbrev = abbreviations["code"]
 
         state_dict = self._import_files()
-        state_df = pd.DataFrame(state_dict.items(), columns=['state', 'count']) 
+        state_df = pd.DataFrame(state_dict.items(), columns=["state", "count"])
         state_df = state_df.join(extract_abbrev)
 
         return state_df
@@ -43,10 +43,16 @@ class USAMap(Visualization, ABC):
         """
         state_df = self._sort_files()
 
-        fig = px.choropleth(state_df, locations='code', hover_name='state', \
-        hover_data=['count'], locationmode='USA-states', \
-        labels={'count':'Clinic Count'}, scope='usa')
-        
+        fig = px.choropleth(
+            state_df,
+            locations="code",
+            hover_name="state",
+            hover_data=["count"],
+            locationmode="USA-states",
+            labels={"count": "Clinic Count"},
+            scope="usa",
+        )
+
         fig.update_geos(
             visible=False,
             resolution=110,

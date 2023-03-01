@@ -29,7 +29,7 @@ class StateSummary(Visualization, ABC):
         the visualization
         """
         zip_dict = self._import_files()
-        zip_df = pd.DataFrame(zip_dict.items(), columns=['zip', 'count'])
+        zip_df = pd.DataFrame(zip_dict.items(), columns=["zip", "count"])
 
         return zip_df
 
@@ -40,16 +40,19 @@ class StateSummary(Visualization, ABC):
         zip_df = self._sort_files()
 
         fig = go.Figure(
-                data=[go.Table(
-                    header=dict(values=list(zip_df.columns),
-                        fill_color='silver',
-                            align='center'),
-                    cells=dict(values=zip_df.transpose().values.tolist(),
-                        fill_color='white',
-                            line_color='darkslategray',
-                                align='center'))
-                                ]
-                            )
+            data=[
+                go.Table(
+                    header=dict(
+                        values=list(zip_df.columns), fill_color="silver", align="center"
+                    ),
+                    cells=dict(
+                        values=zip_df.transpose().values.tolist(),
+                        fill_color="white",
+                        line_color="darkslategray",
+                        align="center",
+                    ),
+                )
+            ]
+        )
 
         return fig
-        

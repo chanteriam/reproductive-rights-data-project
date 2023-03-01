@@ -32,10 +32,38 @@ def get_state_clinic_counts():
     return count_state_clinics
 
 
+def get_city_clinic_counts():
+    """
+    Gets count of abortion clinics in each city.
+    Author(s): Chanteria Milner
+
+    Returns:
+        (dict): zipcode: clinic count
+    """
+
+    count_city_clinics = {}
+    for state, zipcodes in NATIONAL_CLINICS.items():
+        for zipcode, clinics in zipcodes.items():
+            if zipcode == "0.0":  # missing value
+                continue
+            for clinic in clinics:
+                if clinic["city"] == 0.0:  # missing value
+                    continue
+                city_state = ", ".join([clinic["city"].title(), state])
+                count_city_clinics[city_state] = (
+                    count_city_clinics.get(city_state, 0) + 1
+                )
+
+    # sort by number of clinics
+    count_city_clinics = sort_by_count(count_city_clinics)
+    return count_city_clinics
+
+
 def get_zipcode_clinic_counts():
     """
     Gets count of abortion clinics in each zipcode.
     Author(s): Chanteria Milner
+
     Returns:
         (dict): zipcode: clinic count
     """
@@ -48,11 +76,26 @@ def get_zipcode_clinic_counts():
             count_zipcode_clinics[zipcode] = len(clinics)
 
     # Sort by count
-    count_zipcode_clinics = dict(
-        sorted(count_zipcode_clinics.items(), reverse=True, key=lambda x: x[1])
-    )
-
+    count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
     return count_zipcode_clinics
+
+
+def sort_by_count(clinic_counts):
+    """
+    Sorts a dictionary of clinic counts in descending order.
+    Author(s): Chanteria Milner
+
+    Inputs:
+        clinic_counts (dict): count of clinics by either state, zipcode, or city
+
+    Returns:
+        (dict): sorted dictionary
+    """
+
+    clinic_counts = dict(
+        sorted(clinic_counts.items(), reverse=True, key=lambda x: x[1])
+    )
+    return clinic_counts
 
 
 def read_state():

@@ -35,7 +35,7 @@ DASH_INSTANCE.layout = html.Div(
                     """
                 ),
                 html.H4(
-                "If you or someone you love needs an abortion, \
+                    "If you or someone you love needs an abortion, \
                 you can find up-to-date help at ineedana.com. ❤️"
                 ),
                 html.Br(),
@@ -79,7 +79,7 @@ DASH_INSTANCE.layout = html.Div(
         html.Div(
             children=[
                 html.B("This is where the charts will go"),
-                dcc.Graph(StateSummary.create())
+                dcc.Graph(StateSummary.create()),
             ],
             style={
                 "float": "right",
