@@ -43,7 +43,9 @@ class StateSummary(Visualization, ABC):
             data=[
                 go.Table(
                     header=dict(
-                        values=list(zip_df.columns), fill_color="silver", align="center"
+                        values=list(zip_df.columns),
+                        fill_color="silver",
+                        align="center",
                     ),
                     cells=dict(
                         values=zip_df.transpose().values.tolist(),

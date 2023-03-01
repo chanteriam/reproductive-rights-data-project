@@ -27,9 +27,16 @@ class Visualization(MutableMapping):
         pass
 
     @abstractmethod
+    def construct_data(self):
+        """
+        This method pulls and constructs all the information needed for the
+        class to render the visualization.
+        """
+
+    @abstractmethod
     def create(self):
         """
-        This method takes the dictionary made in the _import_file() method and
-        creates a visualization with it.
+        This method takes the data from the construct_data function and returns
+        a visual object.
         """
         pass

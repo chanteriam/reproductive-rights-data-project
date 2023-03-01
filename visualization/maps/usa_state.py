@@ -1,41 +1,54 @@
 """
 This file contains the functions and functionality needed to render a
 Choropleth map of the individual States of the United States of America.
-
-Author(s): Aïcha Camara & Michael Plunkett
 """
-from abc import ABC
-import pandas as pd
 
 from visualization.abstract_visualization import Visualization
-from util.constants import FILE_NAME_ABORTION_POLICY_API_GESTATION, \
-FILE_NAME_ABORTION_POLICY_API_MINORS, FILE_NAME_ABORTION_POLICY_API_INSURANCE, \
-FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD
 
-class USAState(Visualization, ABC):
-    def __init__(self):
-        pass
+
+class USAState(Visualization):
+    """ "
+    This class represents all the methods needed to construct the USA state map
+    within plotly.
+
+    Author(s): Aïcha Camara, Michael Plunkett
+    """
+
+    def __init__(self, files):
+        # File names are passed from outside the class and stored in the
+        # below variable
+        self._files = files
 
     def _import_files(self):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
         """
-        final_dict = {}
-        # above is the dicitonary with the information that will be visualized
-        # fromt the API files above
-        pass
+        # All files are imported here
+        # This can be called within the
+        return []
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
-        the visualization
+        the visualization.
+        """
+
+        return []
+
+    def construct_data(self):
+        """
+        This function calls and constructs the information needed to construct
+        the USAState visual.
         """
         self._import_files()
-        pass
+        self._sort_files()
+
+        return []
 
     def create(self):
         """
-        Creates the map of the United States
+        Creates the map of a United States state using the data from the construct
+        function and returns the plotly map of a state.
         """
-        pass
+        return []
