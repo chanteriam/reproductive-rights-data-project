@@ -6,8 +6,6 @@ import plotly.express as px
 import pandas as pd
 
 from visualization.abstract_visualization import Visualization
-from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
-from visualization.functions import get_state_clinic_counts
 
 
 class USAMap(Visualization):
@@ -18,10 +16,14 @@ class USAMap(Visualization):
     Author(s): Aïcha Camara, Michael Plunkett
     """
 
-    def __init__(self, files):
-        # File names are passed from outside the class and stored in the
-        # below variable
-        self._files = files
+    def __init__(self, gestational_info_file_name, locations_file_name,
+                 state_abbrevs_file_name):
+        self._gestational_info_file_name = gestational_info_file_name
+        self._gestational_info = None
+        self._locations_file_name = locations_file_name
+        self._locations = None
+        self._state_abbrevs_file_name = state_abbrevs_file_name
+        self._state_abbrevs = None
 
     def _import_files(self):
         """
@@ -91,5 +93,5 @@ class USAMap(Visualization):
             subunitcolor="Black",
         )
         fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
-        
+
         return fig
