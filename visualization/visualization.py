@@ -15,13 +15,13 @@ class Visualization(MutableMapping):
     """
 
     @abstractmethod
-    def __init__(self, file_name):
+    def __init__(self, files):
         pass
 
     @abstractmethod
-    def _import_file(self):
+    def _import_files(self):
         """
-        This method accesses a JSON file and returns a dictionary of data for
+        This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
         """
         pass
