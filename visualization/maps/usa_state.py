@@ -46,7 +46,7 @@ class USAState(Visualization):
 
         return []
 
-    def create(self):
+    def create_visual(self):
         """
         Creates the map of a United States state using the data from the construct
         function and returns the plotly map of a state.

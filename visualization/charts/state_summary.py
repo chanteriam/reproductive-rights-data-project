@@ -33,7 +33,13 @@ class StateSummary(Visualization, ABC):
 
         return zip_df
 
-    def create(self):
+    def construct_data(self):
+        """
+        Gonna update.
+        """
+        pass
+
+    def create_visual(self):
         """
         Creates the state summary chart
         """

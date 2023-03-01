@@ -2,7 +2,6 @@
 This file contains the functions and functionality needed to render a
 map of the United States of America.
 """
-from abc import ABC
 import plotly.express as px
 import pandas as pd
 
@@ -11,7 +10,7 @@ from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
 from visualization.functions import get_state_clinic_counts
 
 
-class USAMap(Visualization, ABC):
+class USAMap(Visualization):
     """
     This class is an extension of the Visualization abstract class and creates
     a map of the USA in plotly.
@@ -39,7 +38,10 @@ class USAMap(Visualization, ABC):
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
         """
-        FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS = self._import_files
+        (
+            FILE_NAME_ANSIRH_CLEAN_DATA,
+            FILE_NAME_STATE_ABBREVIATIONS,
+        ) = self._import_files
         abbreviations = pd.read_csv(FILE_NAME_STATE_ABBREVIATIONS)
         extract_abbrev = abbreviations["code"]
 
@@ -57,10 +59,7 @@ class USAMap(Visualization, ABC):
         # Call all of your _import, _sort, etc. functions here and save the
         # data to internal variables
 
-        
-
-
-    def create(self):
+    def create_visual(self):
         """
         Creates the map of a United States state using the data from the
         construct function and returns the plotly map of a state.
