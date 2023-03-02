@@ -22,6 +22,9 @@ class USAMap(Visualization):
         locations_file_name,
         state_abbrevs_file_name,
     ):
+        """
+        Author(s): Michael Plunkett
+        """
         self._gestational_info_file_name = gestational_info_file_name
         self._gestational_info = None
         self._locations_file_name = locations_file_name
