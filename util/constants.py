@@ -2,6 +2,7 @@
 Constants to be used in various parts of the application.
 """
 
+# Misc. Variables
 # Author(s): Chanteria Milner, Michael Plunkett
 FILTERED_CHARACTERS_REGEX = r'[!.,\'"?:<>]'
 TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
@@ -21,6 +22,6 @@ FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD = (
 )
 FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"
 
-# API variables
+# API Variables
 # Author(s): Michael Plunkett
 REQUEST_TIMEOUT = 10

@@ -5,6 +5,8 @@ This file contains all testing functions for the api package.
 import json
 from http import HTTPStatus
 import responses
+
+import api.github.open_data_se
 from api.abortion_policy_api import (
     get_data,
     add_missing_states,
@@ -148,6 +150,33 @@ def test_get_api_data():
     assert responses.assert_call_count(URL_AP_COVERAGE, 1) is True
     assert responses.assert_call_count(URL_AP_MINORS, 1) is True
     assert responses.assert_call_count(URL_AP_WAITING_PERIODS, 1) is True
+
+
+@responses.activate
+def test_get_state_zip_code_geo_json():
+    """
+    Author(s): Michael Plunkett
+    """
+    test_data = json.dumps({"data": "here it is"})
+    test_url = (
+        "https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON"
+        "/master/ny_new_york_zip_codes_geo.min.json "
+    )
+
+    responses.add(
+        responses.GET,
+        test_url,
+        headers=HEADERS,
+        json=test_data,
+        status=HTTPStatus.OK,
+    )
+
+    test_result = api.github.open_data_se.get_state_zip_code_geo_json(
+        "NY", "NeW YorK"
+    )
+
+    assert test_result == test_data
+    assert responses.assert_call_count(test_url, 1) is True
 
 
 def test_set_default_types():
