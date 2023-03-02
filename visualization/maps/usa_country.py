@@ -42,31 +42,35 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara
         """
 
-        with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
-        open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
-        open(self._state_abbrevs_file_name, encoding=STANDARD_ENCODING) as abbreviations:
+        with open(
+            self._gestational_info_file_name, encoding=STANDARD_ENCODING
+        ) as gestational, open(
+            self._locations_file_name, encoding=STANDARD_ENCODING
+        ) as locations, open(
+            self._state_abbrevs_file_name, encoding=STANDARD_ENCODING
+        ) as abbreviations:
 
             self._gestational_info = json.load(gestational)
             self._locations = json.load(locations)
             self._state_abbrevs = pd.read_csv(abbreviations)
-
-
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
 
-        Author(s): Aïcha Camara, Chanteria Milner 
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
-        #extract the abbreviations from the abbreviations column
-        extracted_abbrev = self._state_abbrevs['code']
+        # extract the abbreviations from the abbreviations column
+        extracted_abbrev = self._state_abbrevs["code"]
 
         # sort gestational data and extract the necessary columns
-        gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
-        gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
-        #extracted_gest = gest_df[['state','exception_life', 'banned_after_weeks_since_LMP']]
+        gest_df = pd.DataFrame.from_dict(
+            self._gestational_info, orient="index"
+        ).sort_index()
+        gest_df = gest_df.reset_index().rename(columns={"index": "state"})
+        # extracted_gest = gest_df[['state','exception_life', 'banned_after_weeks_since_LMP']]
 
         # sorts locations data to get counts by state
         count_state_clinics = {}
@@ -78,11 +82,18 @@ class USAMap(Visualization):
             count_state_clinics[state] = clinic_count
 
         count_state_clinics = dict(sorted(count_state_clinics.items()))
-        state_df = pd.DataFrame(count_state_clinics.items(), columns=['state', 'count'])
+        state_df = pd.DataFrame(
+            count_state_clinics.items(), columns=["state", "count"]
+        )
         state_df = state_df.join(extracted_abbrev)
 
-        final_df = pd.merge(state_df, gest_df[['state','exception_life', \
-                    'banned_after_weeks_since_LMP']], on='state')
+        final_df = pd.merge(
+            state_df,
+            gest_df[
+                ["state", "exception_life", "banned_after_weeks_since_LMP"]
+            ],
+            on="state",
+        )
 
         return final_df
 
@@ -106,20 +117,24 @@ class USAMap(Visualization):
 
         Author(s): Aïcha Camara
         """
-        
+
         state_df = self.construct_data()
 
         fig = px.choropleth(
             state_df,
             locations="code",
             hover_name="state",
-            hover_data=["count", 
-                        "exception_life", 
-                        "banned_after_weeks_since_LMP"],
+            hover_data=[
+                "count",
+                "exception_life",
+                "banned_after_weeks_since_LMP",
+            ],
             locationmode="USA-states",
-            labels={"count": "Clinic Count: ",
-                    "exception_life" : "Exception for life at risk? ",
-                    "banned_after_weeks_since_LMP" : "Abortion banned after how many weeks? "},
+            labels={
+                "count": "Clinic Count: ",
+                "exception_life": "Exception for life at risk? ",
+                "banned_after_weeks_since_LMP": "Abortion banned after how many weeks? ",
+            },
             scope="usa",
         )
 

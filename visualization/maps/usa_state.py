@@ -50,18 +50,23 @@ class USAState(Visualization):
 
         Author(s): Aïcha Camara
         """
-        with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
-        open(self._insurance_info_file_name, encoding=STANDARD_ENCODING) as insurance, \
-        open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
-        open(self._minors_info_file_name, encoding=STANDARD_ENCODING) as minors_info, \
-        open(self._waiting_period_info_file_name, encoding=STANDARD_ENCODING) as waiting_period:
+        with open(
+            self._gestational_info_file_name, encoding=STANDARD_ENCODING
+        ) as gestational, open(
+            self._insurance_info_file_name, encoding=STANDARD_ENCODING
+        ) as insurance, open(
+            self._locations_file_name, encoding=STANDARD_ENCODING
+        ) as locations, open(
+            self._minors_info_file_name, encoding=STANDARD_ENCODING
+        ) as minors_info, open(
+            self._waiting_period_info_file_name, encoding=STANDARD_ENCODING
+        ) as waiting_period:
 
             self._gestational_info = json.load(gestational)
             self._insurance_info = json.load(insurance)
             self._locations = json.load(locations)
             self._minors_info = json.load(minors_info)
             self._waiting_period_info = json.load(waiting_period)
- 
 
     def _sort_files(self):
         """
@@ -72,17 +77,31 @@ class USAState(Visualization):
         """
 
         # set up the dataframes and standardize the orientation
-        gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
-        gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
+        gest_df = pd.DataFrame.from_dict(
+            self._gestational_info, orient="index"
+        ).sort_index()
+        gest_df = gest_df.reset_index().rename(columns={"index": "state"})
 
-        insurance_df = pd.DataFrame.from_dict(self._insurance_info, orient="index").sort_index()
-        insurance_df = insurance_df.reset_index().rename(columns = {'index':'state'})
+        insurance_df = pd.DataFrame.from_dict(
+            self._insurance_info, orient="index"
+        ).sort_index()
+        insurance_df = insurance_df.reset_index().rename(
+            columns={"index": "state"}
+        )
 
-        minors_info_df = pd.DataFrame.from_dict(self._minors_info, orient="index").sort_index()
-        minors_info_df = minors_info_df.reset_index().rename(columns = {'index':'state'})
-        
-        waiting_period_df = pd.DataFrame.from_dict(self._waiting_period_info, orient="index").sort_index()
-        waiting_period_df = waiting_period_df.reset_index().rename(columns = {'index':'state'})
+        minors_info_df = pd.DataFrame.from_dict(
+            self._minors_info, orient="index"
+        ).sort_index()
+        minors_info_df = minors_info_df.reset_index().rename(
+            columns={"index": "state"}
+        )
+
+        waiting_period_df = pd.DataFrame.from_dict(
+            self._waiting_period_info, orient="index"
+        ).sort_index()
+        waiting_period_df = waiting_period_df.reset_index().rename(
+            columns={"index": "state"}
+        )
 
         # sorts locations data to get counts by zipcode
         count_zipcode_clinics = {}
@@ -94,11 +113,13 @@ class USAState(Visualization):
 
         # Sort by count
         count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
-        
+
         # create the zipcode dataframe
-        zip_df = pd.DataFrame.from_dict(count_zipcode_clinics, \
-                orient= "index").reset_index().rename(columns = {"index": \
-                                                 "zipcode", 0: "clinic count"})
+        zip_df = (
+            pd.DataFrame.from_dict(count_zipcode_clinics, orient="index")
+            .reset_index()
+            .rename(columns={"index": "zipcode", 0: "clinic count"})
+        )
 
         # Goal: join the zipcode count dataframe and check the state that the
         # the zipcode is in

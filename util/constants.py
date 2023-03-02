@@ -22,9 +22,7 @@ FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD = (
 )
 FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"
 
-FILE_NAME_STATE_ABBREVIATIONS = (
-    "data/state_abbreviations.csv"
-    )
+FILE_NAME_STATE_ABBREVIATIONS = "data/state_abbreviations.csv"
 
 # API Variables
 # Author(s): Michael Plunkett
