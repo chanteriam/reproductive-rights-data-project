@@ -8,10 +8,10 @@ from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 # import the abstract classes for the visualizations
-from .functions import read_state
-from .maps.usa_country import USAMap as USAMap
-from .maps.usa_state import USAState as USAState
-from .charts.state_summary import StateSummary as StateSummary
+from visualization.functions import read_state
+from visualization.maps.usa_country import USAMap as USAMap
+from visualization.maps.usa_state import USAState as USAState
+from visualization.charts.state_summary import StateSummary as StateSummary
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
