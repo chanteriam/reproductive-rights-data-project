@@ -28,7 +28,6 @@ For the `make visualize` command, you must have called the two commands that are
 3. Run the `make api` command to get the data from the _Abortion Policy API_.
 4. Run the `make parse-data` command to parse the data so that we can have our data fit the format needed for the next step.
 5. Run the `make visualize` command to start the [Flask](https://flask.palletsprojects.com/en/2.2.x/) server so that we can visualize the data we have pulled and parsed!
-  - The previous two steps must have been run for this step to execute successfully.
 
 ### We would like to thank the following organizations for providing our reference data:
 - _Abortion Policy API_: https://www.abortionpolicyapi.com/
@@ -37,3 +36,4 @@ For the `make visualize` command, you must have called the two commands that are
   - If you or someone you love needs an abortion, you can find up-to-date help at ineedana.com. ❤️
   - The data was given to us by ineedana.com on 2/7/2023.
 - _United States Census Bureau_: https://data.census.gov/
+- _OpenDataSE_: https://github.com/OpenDataDE/State-zip-code-GeoJSON
