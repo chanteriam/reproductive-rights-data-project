@@ -4,6 +4,8 @@ Choropleth map of the individual States of the United States of America.
 """
 import json
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 from visualization.abstract_visualization import Visualization
 from visualization.functions import sort_by_count
 from util.constants import STANDARD_ENCODING
@@ -66,6 +68,8 @@ class USAState(Visualization):
 
         Author(s): Aïcha Camara
         """
+
+        # set up the dataframes and standardize the orientation
         gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
         gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
 
@@ -78,6 +82,7 @@ class USAState(Visualization):
         waiting_period_df = pd.DataFrame.from_dict(self._waiting_period_info, orient="index").sort_index()
         waiting_period_df = waiting_period_df.reset_index().rename(columns = {'index':'state'})
 
+        # sorts locations data to get counts by zipcode
         count_zipcode_clinics = {}
         for _, zipcodes in self._locations.items():
             for zipcode, clinics in zipcodes.items():
@@ -87,8 +92,16 @@ class USAState(Visualization):
 
         # Sort by count
         count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
+        
+        # create the zipcode dataframe
+        zip_df = pd.DataFrame.from_dict(count_zipcode_clinics, \
+                orient= "index").reset_index().rename(columns = {"index": \
+                                                 "zipcode", 0: "clinic count"})
 
-        return []
+        # Goal: join the zipcode count dataframe and check the state that the
+        # the zipcode is in
+
+        return waiting_period_df
 
     def construct_data(self):
         """
@@ -98,9 +111,9 @@ class USAState(Visualization):
         Author(s): Aïcha Camara
         """
         self._import_files()
-        self._sort_files()
+        waiting_df = self._sort_files()
 
-        return []
+        return waiting_df
 
     def create_visual(self):
         """
@@ -109,4 +122,40 @@ class USAState(Visualization):
 
         Author(s): Aïcha Camara
         """
-        return []
+
+        """
+        Note: How should we set up the callback for the state? Should the state
+        name annd abbreviation be used as a parameter to then be utilized
+        within this function to make a request for the geojson and then
+        use that data in the visualization below? Or should another means be 
+        used?
+        """
+
+        #state_df = self.construct_data()
+
+        test_df = self.construct_data()
+
+        # fig = px.choropleth(state_df, #Should be indexed by the state selected!
+        #                     geojson=["INSERT GEOJSON HERE"],
+        #                     locations=None,
+        #                     color=None,
+        # )
+
+        fig = go.Figure(
+            data=[
+                go.Table(
+                    header=dict(
+                        values=list(test_df.columns),
+                        fill_color="silver",
+                        align="center",
+                    ),
+                    cells=dict(
+                        values=test_df.transpose().values.tolist(),
+                        fill_color="white",
+                        line_color="darkslategray",
+                        align="center",
+                    ),
+                )
+            ]
+        )
+        return fig

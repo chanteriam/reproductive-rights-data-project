@@ -66,7 +66,6 @@ class StateSummary(Visualization):
 
         Author(s): Aïcha Camara
         """
-        #final_df = pd.DataFrame()
 
         # set up the dataframes and standardize the orientation
         gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
@@ -93,20 +92,6 @@ class StateSummary(Visualization):
         count_state_clinics = dict(sorted(count_state_clinics.items()))
         state_df = pd.DataFrame(count_state_clinics.items(), columns=['state', 'count'])
 
-        # merges the selected values onto the state_df and returns the dataframe
-        # that will be used in the final chart
-
-        # final_df = pd.merge(state_df, gest_df[['state','exception_life', \
-        #             'banned_after_weeks_since_LMP']], on='state')
-        # final_df = pd.merge(final_df, insurance_df[['state','requires_coverage', \
-        #             'medicaid_exception_life']], on='state')
-        # final_df = pd.merge(state_df, minors_info_df[['state','below_age', \
-        #             'parental_consent_required', 'allows_minor_to_consent_to_abortion']] \
-        #             , on='state')
-        # final_df = pd.merge(state_df, waiting_period_df[['state', \
-        #                     'waiting_period_hours', 'counseling_visits']] \
-        #              , on='state')
-        
         final_df = pd.merge(state_df, gest_df[['state','exception_life', \
                     'banned_after_weeks_since_LMP']], on='state').merge(
                     insurance_df[['state','requires_coverage', \

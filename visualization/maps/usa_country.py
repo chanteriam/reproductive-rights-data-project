@@ -117,9 +117,9 @@ class USAMap(Visualization):
                         "exception_life", 
                         "banned_after_weeks_since_LMP"],
             locationmode="USA-states",
-            labels={"count": "Clinic Count",
-                    "exception_life" : "Exception for life at risk:",
-                    "banned_after_weeks_since_LMP" : "Abortion banned after how many weeks?"},
+            labels={"count": "Clinic Count: ",
+                    "exception_life" : "Exception for life at risk? ",
+                    "banned_after_weeks_since_LMP" : "Abortion banned after how many weeks? "},
             scope="usa",
         )
 
