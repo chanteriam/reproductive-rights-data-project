@@ -1,5 +1,7 @@
 """
 Creates Plotly Dash Visualization to map the cleaned data
+
+Author(s): Aïcha Camara
 """
 
 from dash import Dash, html, dcc, Input, Output
@@ -62,7 +64,7 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.B("This box will contain the state level analyses"),
-                    dcc.Graph(state_map.creat_visual()),
+                    dcc.Graph(state_map.create_visual()),
                     dcc.Dropdown(
                         options=read_state(),
                         id="example-dropdown",

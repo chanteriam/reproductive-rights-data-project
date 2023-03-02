@@ -2,8 +2,10 @@
 This file contains the functions and functionality needed to render a
 Choropleth map of the individual States of the United States of America.
 """
+import json
 
 from visualization.abstract_visualization import Visualization
+from util.constants import STANDARD_ENCODING
 
 
 class USAState(Visualization):
@@ -40,16 +42,28 @@ class USAState(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
+
+        Author(s): Aïcha Camara
         """
-        # All files are imported here
-        # This can be called within the
-        
-        return []
+        with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
+        open(self._insurance_info_file_name, encoding=STANDARD_ENCODING) as insurance, \
+        open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
+        open(self._minors_info_file_name, encoding=STANDARD_ENCODING) as minors_info, \
+        open(self._waiting_period_info_file_name, encoding=STANDARD_ENCODING) as waiting_period:
+
+            self._gestational_info = json.load(gestational)
+            self._insurance_info = json.load(insurance)
+            self._locations = json.load(locations)
+            self._minors_info = json.load(minors_info)
+            self._waiting_period_info = json.load(waiting_period)
+ 
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization.
+
+        Author(s): Aïcha Camara
         """
 
         return []
@@ -58,6 +72,8 @@ class USAState(Visualization):
         """
         This function calls and constructs the information needed to construct
         the USAState visual.
+
+        Author(s): Aïcha Camara
         """
         self._import_files()
         self._sort_files()
@@ -68,5 +84,7 @@ class USAState(Visualization):
         """
         Creates the map of a United States state using the data from the construct
         function and returns the plotly map of a state.
+        
+        Author(s): Aïcha Camara
         """
         return []

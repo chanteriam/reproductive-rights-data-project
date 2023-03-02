@@ -41,7 +41,7 @@ class USAMap(Visualization):
 
         Author(s): Aïcha Camara
         """
-        # Put this functionality inside here, plz
+
         with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
         open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
         open(self._state_abbrevs_file_name, encoding=STANDARD_ENCODING) as abbreviations:
@@ -49,7 +49,7 @@ class USAMap(Visualization):
             self._gestational_info = json.load(gestational)
             self._locations = json.load(locations)
             self._state_abbrevs = pd.read_csv(abbreviations)
-            # modifies the abstract class in place
+
 
 
     def _sort_files(self):
@@ -59,6 +59,7 @@ class USAMap(Visualization):
 
         Author(s): Aïcha Camara, Chanteria Milner 
         """
+
         #extract the abbreviations from the abbreviations column
         extracted_abbrev = self._state_abbrevs['code']
 
@@ -92,8 +93,7 @@ class USAMap(Visualization):
 
         Author(s): Aïcha Camara
         """
-        # Call all of your _import, _sort, etc. functions here and save the
-        # data to internal variables
+
         self._import_files()
         state_df = self._sort_files()
 
@@ -106,15 +106,16 @@ class USAMap(Visualization):
 
         Author(s): Aïcha Camara
         """
-        # Take the information from construct_data function and use it to build
-        # your map here
+        
         state_df = self.construct_data()
 
         fig = px.choropleth(
             state_df,
             locations="code",
             hover_name="state",
-            hover_data=["count", "exception_life", "banned_after_weeks_since_LMP"],
+            hover_data=["count", 
+                        "exception_life", 
+                        "banned_after_weeks_since_LMP"],
             locationmode="USA-states",
             labels={"count": "Clinic Count",
                     "exception_life" : "Exception for life at risk:",
@@ -131,6 +132,7 @@ class USAMap(Visualization):
             showsubunits=True,
             subunitcolor="Black",
         )
+
         fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
         return fig
