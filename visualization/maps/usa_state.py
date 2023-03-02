@@ -3,8 +3,9 @@ This file contains the functions and functionality needed to render a
 Choropleth map of the individual States of the United States of America.
 """
 import json
-
+import pandas as pd
 from visualization.abstract_visualization import Visualization
+from visualization.functions import sort_by_count
 from util.constants import STANDARD_ENCODING
 
 
@@ -65,6 +66,27 @@ class USAState(Visualization):
 
         Author(s): Aïcha Camara
         """
+        gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
+        gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
+
+        insurance_df = pd.DataFrame.from_dict(self._insurance_info, orient="index").sort_index()
+        insurance_df = insurance_df.reset_index().rename(columns = {'index':'state'})
+
+        minors_info_df = pd.DataFrame.from_dict(self._minors_info, orient="index").sort_index()
+        minors_info_df = minors_info_df.reset_index().rename(columns = {'index':'state'})
+        
+        waiting_period_df = pd.DataFrame.from_dict(self._waiting_period_info, orient="index").sort_index()
+        waiting_period_df = waiting_period_df.reset_index().rename(columns = {'index':'state'})
+
+        count_zipcode_clinics = {}
+        for _, zipcodes in self._locations.items():
+            for zipcode, clinics in zipcodes.items():
+                if zipcode == "0.0":
+                    continue
+                count_zipcode_clinics[zipcode] = len(clinics)
+
+        # Sort by count
+        count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
 
         return []
 
@@ -84,7 +106,7 @@ class USAState(Visualization):
         """
         Creates the map of a United States state using the data from the construct
         function and returns the plotly map of a state.
-        
+
         Author(s): Aïcha Camara
         """
         return []
