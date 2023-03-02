@@ -4,10 +4,10 @@ visualizations for this repository.
 """
 
 from collections.abc import MutableMapping
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
-class Visualization(MutableMapping):
+class Visualization(ABC):
     """
     This abstract class is the one that all visualizations will be built on.
 

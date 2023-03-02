@@ -58,6 +58,7 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara, Chanteria Milner 
         """
         #extract the abbreviations from the abbreviations column
+        self._import_files()
         extracted_abbrev = self._state_abbrevs['code']
 
         # sort gestational data and extract the necessary columns
