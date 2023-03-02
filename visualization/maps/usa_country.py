@@ -4,8 +4,10 @@ map of the United States of America.
 """
 import plotly.express as px
 import pandas as pd
+import json
 
 from visualization.abstract_visualization import Visualization
+from util.constants import STANDARD_ENCODING
 
 
 class USAMap(Visualization):
@@ -37,28 +39,50 @@ class USAMap(Visualization):
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
         """
-        FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS = self.files
         # Put this functionality inside here, plz
+        with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
+        open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
+        open(self._state_abbrevs_file_name, encoding=STANDARD_ENCODING) as abbreviations:
 
-        return (FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS)
+            self._gestational_info = json.load(gestational)
+            self._locations = json.load(locations)
+            self._state_abbrevs = pd.read_csv(abbreviations)
+            # modifies the abstract class in place
+
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
+
+        Author(s): Aïcha Camara, Chanteria Milner 
         """
-        (
-            FILE_NAME_ANSIRH_CLEAN_DATA,
-            FILE_NAME_STATE_ABBREVIATIONS,
-        ) = self._import_files
-        abbreviations = pd.read_csv(FILE_NAME_STATE_ABBREVIATIONS)
-        extract_abbrev = abbreviations["code"]
+        #extract the abbreviations from the abbreviations column
+        extracted_abbrev = self._state_abbrevs['code']
 
-        state_dict = FILE_NAME_ANSIRH_CLEAN_DATA
-        state_df = pd.DataFrame(state_dict.items(), columns=["state", "count"])
-        state_df = state_df.join(extract_abbrev)
+        # sort gestational data and extract the necessary columns
+        gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
+        gest_df = gest_df.reset_index()
+        gest_df = gest_df.rename(columns = {'index':'state'})
+        #extracted_gest = gest_df[['state','exception_life', 'banned_after_weeks_since_LMP']]
 
-        return state_df
+        # sorts locations data to get counts by state
+        count_state_clinics = {}
+
+        for state, zipcodes in self._locations.items():
+            clinic_count = 0
+            for _, clinics in zipcodes.items():
+                clinic_count += len(clinics)
+            count_state_clinics[state] = clinic_count
+
+        count_state_clinics = dict(sorted(count_state_clinics.items()))
+        state_df = pd.DataFrame(count_state_clinics.items(), columns=['state', 'count'])
+        state_df = state_df.join(extracted_abbrev)
+
+        final_df = pd.merge(state_df, gest_df[['state','exception_life', \
+                    'banned_after_weeks_since_LMP']], on='state')
+
+        return final_df
 
     def construct_data(self):
         """
