@@ -6,7 +6,9 @@ import json
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+
 from visualization.abstract_visualization import Visualization
+from api.github.open_data_se import get_state_zip_code_geo_json
 from visualization.functions import sort_by_count
 from util.constants import STANDARD_ENCODING
 
@@ -115,7 +117,7 @@ class USAState(Visualization):
 
         return waiting_df
 
-    def create_visual(self):
+    def create_visual(self, state_abbrev, state_name):
         """
         Creates the map of a United States state using the data from the construct
         function and returns the plotly map of a state.
@@ -131,12 +133,12 @@ class USAState(Visualization):
         used?
         """
 
-        #state_df = self.construct_data()
+        geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
 
         test_df = self.construct_data()
 
         # fig = px.choropleth(state_df, #Should be indexed by the state selected!
-        #                     geojson=["INSERT GEOJSON HERE"],
+        #                     geojson=geojson,
         #                     locations=None,
         #                     color=None,
         # )
