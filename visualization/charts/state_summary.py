@@ -4,8 +4,10 @@ summary of abortion-related data.
 """
 import plotly.graph_objects as go
 import pandas as pd
+import json
 
 from visualization.abstract_visualization import Visualization
+from util.constants import STANDARD_ENCODING
 from visualization.functions import get_zipcode_clinic_counts
 
 
@@ -42,28 +44,101 @@ class StateSummary(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
+
+        Author(s): Aïcha Camara
         """
-        return get_zipcode_clinic_counts
+        with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
+        open(self._insurance_info_file_name, encoding=STANDARD_ENCODING) as insurance, \
+        open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations, \
+        open(self._minors_info_file_name, encoding=STANDARD_ENCODING) as minors_info, \
+        open(self._waiting_period_info_file_name, encoding=STANDARD_ENCODING) as waiting_period:
+
+            self._gestational_info = json.load(gestational)
+            self._insurance_info = json.load(insurance)
+            self._locations = json.load(locations)
+            self._minors_info = json.load(minors_info)
+            self._waiting_period_info = json.load(waiting_period)
+
 
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
-        """
-        zip_dict = self._import_files()
-        zip_df = pd.DataFrame(zip_dict.items(), columns=["zip", "count"])
 
-        return zip_df
+        Author(s): Aïcha Camara
+        """
+        #final_df = pd.DataFrame()
+
+        # set up the dataframes and standardize the orientation
+        gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
+        gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
+
+        insurance_df = pd.DataFrame.from_dict(self._insurance_info, orient="index").sort_index()
+        insurance_df = insurance_df.reset_index().rename(columns = {'index':'state'})
+
+        minors_info_df = pd.DataFrame.from_dict(self._minors_info, orient="index").sort_index()
+        minors_info_df = minors_info_df.reset_index().rename(columns = {'index':'state'})
+        
+        waiting_period_df = pd.DataFrame.from_dict(self._waiting_period_info, orient="index").sort_index()
+        waiting_period_df = waiting_period_df.reset_index().rename(columns = {'index':'state'})
+
+        # sorts locations data to get counts by state
+        count_state_clinics = {}
+
+        for state, zipcodes in self._locations.items():
+            clinic_count = 0
+            for _, clinics in zipcodes.items():
+                clinic_count += len(clinics)
+            count_state_clinics[state] = clinic_count
+
+        count_state_clinics = dict(sorted(count_state_clinics.items()))
+        state_df = pd.DataFrame(count_state_clinics.items(), columns=['state', 'count'])
+
+        # merges the selected values onto the state_df and returns the dataframe
+        # that will be used in the final chart
+
+        # final_df = pd.merge(state_df, gest_df[['state','exception_life', \
+        #             'banned_after_weeks_since_LMP']], on='state')
+        # final_df = pd.merge(final_df, insurance_df[['state','requires_coverage', \
+        #             'medicaid_exception_life']], on='state')
+        # final_df = pd.merge(state_df, minors_info_df[['state','below_age', \
+        #             'parental_consent_required', 'allows_minor_to_consent_to_abortion']] \
+        #             , on='state')
+        # final_df = pd.merge(state_df, waiting_period_df[['state', \
+        #                     'waiting_period_hours', 'counseling_visits']] \
+        #              , on='state')
+        
+        test_df = pd.merge(state_df, gest_df[['state','exception_life', \
+                    'banned_after_weeks_since_LMP']], on='state').merge(
+                    insurance_df[['state','requires_coverage', \
+                    'medicaid_exception_life']], on='state').merge(
+                    insurance_df[['state','requires_coverage', \
+                    'medicaid_exception_life']], on='state').merge(
+                    minors_info_df[['state','below_age', \
+                    'parental_consent_required', 'allows_minor_to_consent_to_abortion']] \
+                    , on='state').merge(
+                    waiting_period_df[['state', \
+                    'waiting_period_hours', 'counseling_visits']] \
+                     , on='state')
+        
+
+        return test_df
 
     def construct_data(self):
         """
-        Gonna update.
+        This function calls and constructs the information needed to construct
+        the USA country state-by-state chart.
+
+        Author(s): Aïcha Camara
         """
-        pass
+        self._import_files()
+        state_summary_df = self._sort_files()
 
     def create_visual(self):
         """
         Creates the state summary chart
+
+        Author(s): Aïcha Camara
         """
         zip_df = self._sort_files()
 

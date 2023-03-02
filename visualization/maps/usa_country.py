@@ -38,6 +38,8 @@ class USAMap(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
+
+        Author(s): Aïcha Camara
         """
         # Put this functionality inside here, plz
         with open(self._gestational_info_file_name, encoding=STANDARD_ENCODING) as gestational, \
@@ -58,13 +60,11 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara, Chanteria Milner 
         """
         #extract the abbreviations from the abbreviations column
-        self._import_files()
         extracted_abbrev = self._state_abbrevs['code']
 
         # sort gestational data and extract the necessary columns
         gest_df = pd.DataFrame.from_dict(self._gestational_info, orient="index").sort_index()
-        gest_df = gest_df.reset_index()
-        gest_df = gest_df.rename(columns = {'index':'state'})
+        gest_df = gest_df.reset_index().rename(columns = {'index':'state'})
         #extracted_gest = gest_df[['state','exception_life', 'banned_after_weeks_since_LMP']]
 
         # sorts locations data to get counts by state
@@ -89,9 +89,12 @@ class USAMap(Visualization):
         """
         This function calls and constructs the information needed to construct
         the USA country visual.
+
+        Author(s): Aïcha Camara
         """
         # Call all of your _import, _sort, etc. functions here and save the
         # data to internal variables
+        self._import_files()
         state_df = self._sort_files()
 
         return state_df
@@ -100,6 +103,8 @@ class USAMap(Visualization):
         """
         Creates the map of a United States state using the data from the
         construct function and returns the plotly map of a state.
+
+        Author(s): Aïcha Camara
         """
         # Take the information from construct_data function and use it to build
         # your map here
