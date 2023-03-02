@@ -6,7 +6,7 @@ import json
 from http import HTTPStatus
 import responses
 
-import api.github.open_data_se
+from api.github.open_data_se import get_state_zip_code_geo_json
 from api.abortion_policy_api import (
     get_data,
     add_missing_states,
@@ -160,7 +160,7 @@ def test_get_state_zip_code_geo_json():
     test_data = json.dumps({"data": "here it is"})
     test_url = (
         "https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON"
-        "/master/ny_new_york_zip_codes_geo.min.json "
+        "/master/ny_new_york_zip_codes_geo.min.json"
     )
 
     responses.add(
@@ -171,9 +171,7 @@ def test_get_state_zip_code_geo_json():
         status=HTTPStatus.OK,
     )
 
-    test_result = api.github.open_data_se.get_state_zip_code_geo_json(
-        "NY", "NeW YorK"
-    )
+    test_result = get_state_zip_code_geo_json("NY", "NeW YorK")
 
     assert test_result == test_data
     assert responses.assert_call_count(test_url, 1) is True
