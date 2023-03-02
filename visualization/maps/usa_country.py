@@ -108,9 +108,11 @@ class USAMap(Visualization):
             state_df,
             locations="code",
             hover_name="state",
-            hover_data=["count"],
+            hover_data=["count", "exception_life", "banned_after_weeks_since_LMP"],
             locationmode="USA-states",
-            labels={"count": "Clinic Count"},
+            labels={"count": "Clinic Count",
+                    "exception_life" : "Exception for life at risk:",
+                    "banned_after_weeks_since_LMP" : "Abortion banned after how many weeks?"},
             scope="usa",
         )
 

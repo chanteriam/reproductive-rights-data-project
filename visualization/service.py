@@ -2,12 +2,14 @@
 This file works as the central point for running the visualization package.
 """
 from visualization.app import DASH_INSTANCE, build_dash
+from visualization.maps.usa_country import USAMap as USAMap
 from util.constants import (
     FILE_NAME_ABORTION_POLICY_API_GESTATION,
     FILE_NAME_ABORTION_POLICY_API_INSURANCE,
     FILE_NAME_ABORTION_POLICY_API_MINORS,
     FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
     FILE_NAME_ANSIRH_CLEAN_DATA,
+    FILE_NAME_STATE_ABBREVIATIONS
 )
 
 
@@ -21,7 +23,8 @@ def main():
     # in utils
 
     country_chart = None
-    country_map = None
+    country_map = USAMap(FILE_NAME_ABORTION_POLICY_API_GESTATION, \
+                    FILE_NAME_ANSIRH_CLEAN_DATA, FILE_NAME_STATE_ABBREVIATIONS)
     state_map = None
 
     build_dash(country_chart, country_map, state_map)
