@@ -32,3 +32,8 @@ parse-data:
 .PHONY: visualize
 visualize:
 	python ./ --visualize
+
+# Author(s): Kate Habich
+.PHONY: run
+run:
+	make api parse-data visualize
