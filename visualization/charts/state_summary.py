@@ -17,12 +17,12 @@ class StateSummary(Visualization):
     """
 
     def __init__(
-            self,
-            gestational_info_file_name,
-            insurance_info_file_name,
-            locations_file_name,
-            minors_info_file_name,
-            waiting_period_info_file_name,
+        self,
+        gestational_info_file_name,
+        insurance_info_file_name,
+        locations_file_name,
+        minors_info_file_name,
+        waiting_period_info_file_name,
     ):
         """
         Author(s): Michael Plunkett

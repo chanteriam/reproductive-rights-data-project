@@ -1,7 +1,5 @@
 """
-Create Plotly Dash Visualization to map the cleaned data
-
-Author(s): Aïcha Camara
+Creates Plotly Dash Visualization to map the cleaned data
 """
 
 from dash import Dash, html, dcc, Input, Output
@@ -16,7 +14,10 @@ from visualization.charts.state_summary import StateSummary as StateSummary
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 
-def build_dash(stuff):
+def build_dash(country_chart, country_map, state_map):
+    """
+    Author(s): Aïcha Camara, Michael Plunkett
+    """
     # Creates the layout for the Plotly Dashboard
     DASH_INSTANCE.layout = html.Div(
         className="webpage",
@@ -46,7 +47,9 @@ def build_dash(stuff):
             html.Div(
                 children=[
                     html.B("This box will hold the map of the United States"),
-                    dcc.Graph(id="usa-graph", figure=USAMap.create_visual()),
+                    dcc.Graph(
+                        id="usa-graph", figure=country_map.create_visual()
+                    ),
                 ],
                 style={
                     "float": "left",
@@ -59,6 +62,7 @@ def build_dash(stuff):
             html.Div(
                 children=[
                     html.B("This box will contain the state level analyses"),
+                    dcc.Graph(state_map.creat_visual()),
                     dcc.Dropdown(
                         options=read_state(),
                         id="example-dropdown",
@@ -80,7 +84,7 @@ def build_dash(stuff):
             html.Div(
                 children=[
                     html.B("This is where the charts will go"),
-                    dcc.Graph(StateSummary.create_visual()),
+                    dcc.Graph(country_chart.create_visual()),
                 ],
                 style={
                     "float": "right",
