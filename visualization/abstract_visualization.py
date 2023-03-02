@@ -4,10 +4,10 @@ visualizations for this repository.
 """
 
 from collections.abc import MutableMapping
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
-class Visualization(MutableMapping):
+class Visualization(ABC):
     """
     This abstract class is the one that all visualizations will be built on.
 
@@ -15,21 +15,17 @@ class Visualization(MutableMapping):
     """
 
     @abstractmethod
-    def __init__(self, files):
-        pass
-
-    @abstractmethod
-    def _import_files(self):
+    def construct_data(self):
         """
-        This method accesses a JSON file(s) and returns a dictionary of data for
-        the visualization.
+        This method pulls and constructs all the information needed for the
+        class to render the visualization.
         """
         pass
 
     @abstractmethod
-    def create(self):
+    def create_visual(self):
         """
-        This method takes the dictionary made in the _import_file() method and
-        creates a visualization with it.
+        This method takes the data from the construct_data function and returns
+        a visual object.
         """
         pass
