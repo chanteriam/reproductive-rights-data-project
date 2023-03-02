@@ -12,8 +12,24 @@ from visualization.functions import get_zipcode_clinic_counts
 
 
 class StateSummary(Visualization):
-    def __init__(self):
-        pass
+    def __init__(
+            self,
+            gestational_info_file_name,
+            insurance_info_file_name,
+            locations_file_name,
+            minors_info_file_name,
+            waiting_period_info_file_name,
+    ):
+        self._gestational_info_file_name = gestational_info_file_name
+        self._gestational_info = None
+        self._insurance_info_file_name = insurance_info_file_name
+        self._insurance_info = None
+        self._locations_file_name = locations_file_name
+        self._locations = None
+        self._minors_info_file_name = minors_info_file_name
+        self._minors_info = None
+        self._waiting_period_info_file_name = waiting_period_info_file_name
+        self._waiting_period_info = None
 
     def _import_files(self):
         """
