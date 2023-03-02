@@ -20,3 +20,7 @@ FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD = (
     "data/abortion_policy_api_waiting.json"
 )
 FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"
+
+# API variables
+# Author(s): Michael Plunkett
+REQUEST_TIMEOUT = 10

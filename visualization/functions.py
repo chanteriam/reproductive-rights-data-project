@@ -3,10 +3,10 @@ This file contains helper functions for generating data visualizations.
 """
 
 import json
-from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
+from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA, STANDARD_ENCODING
 
 # Maybe not good for testability
-with open(FILE_NAME_ANSIRH_CLEAN_DATA) as f:
+with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
     NATIONAL_CLINICS = json.load(f)
 
 
@@ -109,6 +109,6 @@ def read_state():
         (list) list of states in alphabetical order
     """
 
-    with open("./data/states.txt") as state:
+    with open("./data/states.txt", encoding=STANDARD_ENCODING) as state:
         state_lst = [line.strip() for line in state.readlines()]
     return state_lst

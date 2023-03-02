@@ -27,7 +27,7 @@ def clean(rows):
 
     for row in rows:
         # setting certain floats to str of standard length
-        zipcode = str(row["zip code"]).split(".")[0]
+        zipcode = str(row["zip code"]).split(".", maxsplit=1)[0]
 
         if len(zipcode) < zipcode_len:
             num_zeros = zipcode_len - len(zipcode)

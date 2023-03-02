@@ -14,13 +14,13 @@ from util.constants import (
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
 )
+from util.constants import REQUEST_TIMEOUT
 from util.functions import to_json
 import re
 
 # Author(s): Chanteria Milner, Michael Plunkett
 APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
 HEADERS = {"token": APIKEY}
-REQUEST_TIMEOUT = 10
 
 # URLs have been made constants for testing purposes
 # Author(s): Chanteria Milner, Michael Plunkett
