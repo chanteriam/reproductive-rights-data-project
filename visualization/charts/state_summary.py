@@ -1,8 +1,6 @@
 """
 This file contains the functions and functionality needed to display a State
 summary of abortion-related data.
-
-Author(s): Aïcha Camara & Michael Plunkett
 """
 import plotly.graph_objects as go
 import pandas as pd
@@ -12,13 +10,19 @@ from visualization.functions import get_zipcode_clinic_counts
 
 
 class StateSummary(Visualization):
+    """
+    This class represents a table with information on each state.
+
+    Author(s): Aïcha Camara, Michael Plunkett
+    """
+
     def __init__(
-        self,
-        gestational_info_file_name,
-        insurance_info_file_name,
-        locations_file_name,
-        minors_info_file_name,
-        waiting_period_info_file_name,
+            self,
+            gestational_info_file_name,
+            insurance_info_file_name,
+            locations_file_name,
+            minors_info_file_name,
+            waiting_period_info_file_name,
     ):
         """
         Author(s): Michael Plunkett
