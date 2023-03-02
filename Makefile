@@ -37,3 +37,4 @@ visualize:
 .PHONY: run
 run:
 	make api parse-data visualize
+	
