@@ -108,10 +108,8 @@ class StateSummary(Visualization):
         #                     'waiting_period_hours', 'counseling_visits']] \
         #              , on='state')
         
-        test_df = pd.merge(state_df, gest_df[['state','exception_life', \
+        final_df = pd.merge(state_df, gest_df[['state','exception_life', \
                     'banned_after_weeks_since_LMP']], on='state').merge(
-                    insurance_df[['state','requires_coverage', \
-                    'medicaid_exception_life']], on='state').merge(
                     insurance_df[['state','requires_coverage', \
                     'medicaid_exception_life']], on='state').merge(
                     minors_info_df[['state','below_age', \
@@ -119,10 +117,21 @@ class StateSummary(Visualization):
                     , on='state').merge(
                     waiting_period_df[['state', \
                     'waiting_period_hours', 'counseling_visits']] \
-                     , on='state')
+                    , on='state')
+        
+        final_df = final_df.rename(columns = {'state': 'State', 'count':'Clinic Count', \
+                        'exception_life': "Exception for Life Risk", \
+                        'banned_after_weeks_since_LMP': 'Weeks until banned', \
+                        'requires_coverage': 'Insurance Coverage?', \
+                        'medicaid_exception_life': 'Medicaid Coverage if Life Risk', \
+                        'below_age': 'Age Requirement', 
+                        'parental_consent_required': 'Parental Consent Needed?', \
+                        'allows_minor_to_consent_to_abortion': "Can Minors Consent", \
+                        'waiting_period_hours': 'Waiting Period (Hrs)', \
+                        'counseling_visits': 'Counseling Visits'})
         
 
-        return test_df
+        return final_df
 
     def construct_data(self):
         """
@@ -134,24 +143,26 @@ class StateSummary(Visualization):
         self._import_files()
         state_summary_df = self._sort_files()
 
+        return state_summary_df
+
     def create_visual(self):
         """
         Creates the state summary chart
 
         Author(s): Aïcha Camara
         """
-        zip_df = self._sort_files()
+        state_summary_df = self._sort_files()
 
         fig = go.Figure(
             data=[
                 go.Table(
                     header=dict(
-                        values=list(zip_df.columns),
+                        values=list(state_summary_df.columns),
                         fill_color="silver",
                         align="center",
                     ),
                     cells=dict(
-                        values=zip_df.transpose().values.tolist(),
+                        values=state_summary_df.transpose().values.tolist(),
                         fill_color="white",
                         line_color="darkslategray",
                         align="center",
