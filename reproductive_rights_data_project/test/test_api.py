@@ -6,8 +6,9 @@ import json
 from http import HTTPStatus
 import responses
 
-from reproductive_rights_data_project.api.github.open_data_se import \
-    get_state_zip_code_geo_json
+from reproductive_rights_data_project.api.github.open_data_se import (
+    get_state_zip_code_geo_json,
+)
 from reproductive_rights_data_project.api.abortion_policy_api import (
     get_data,
     add_missing_states,
