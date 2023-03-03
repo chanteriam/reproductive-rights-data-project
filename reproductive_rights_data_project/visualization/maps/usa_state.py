@@ -6,16 +6,16 @@ import json
 import pandas as pd
 import plotly.graph_objects as go
 
-from src.reproductive_rights_data_project.visualization.abstract_visualization import (
+from reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
 )
-from src.reproductive_rights_data_project.api.github.open_data_se import (
+from reproductive_rights_data_project.api.github.open_data_se import (
     get_state_zip_code_geo_json,
 )
-from src.reproductive_rights_data_project.visualization.functions import (
+from reproductive_rights_data_project.visualization.functions import (
     sort_by_count,
 )
-from src.reproductive_rights_data_project.util.constants import (
+from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
 
@@ -29,12 +29,12 @@ class USAState(Visualization):
     """
 
     def __init__(
-        self,
-        gestational_info_file_name,
-        insurance_info_file_name,
-        locations_file_name,
-        minors_info_file_name,
-        waiting_period_info_file_name,
+            self,
+            gestational_info_file_name,
+            insurance_info_file_name,
+            locations_file_name,
+            minors_info_file_name,
+            waiting_period_info_file_name,
     ):
         """
         Author(s): Michael Plunkett
@@ -58,7 +58,7 @@ class USAState(Visualization):
         Author(s): Aïcha Camara
         """
         with open(
-            self._gestational_info_file_name, encoding=STANDARD_ENCODING
+                self._gestational_info_file_name, encoding=STANDARD_ENCODING
         ) as gestational, open(
             self._insurance_info_file_name, encoding=STANDARD_ENCODING
         ) as insurance, open(

@@ -2,7 +2,7 @@
 This file works as the central point for running the api package.
 """
 
-from src.reproductive_rights_data_project.api.abortion_policy_api import (
+from reproductive_rights_data_project.api.abortion_policy_api import (
     get_and_save_abortion_policy_api_data,
 )
 

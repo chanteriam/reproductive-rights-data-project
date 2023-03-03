@@ -1,10 +1,10 @@
 """
 This file contains all testing functions for the util package.
 """
-from src.reproductive_rights_data_project.util.constants import (
+from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
-from src.reproductive_rights_data_project.util.functions import to_json
+from reproductive_rights_data_project.util.functions import to_json
 import json
 import os
 

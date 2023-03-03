@@ -8,7 +8,7 @@ from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 # import the abstract classes for the visualizations
-from src.reproductive_rights_data_project.visualization.functions import (
+from reproductive_rights_data_project.visualization.functions import (
     read_state,
 )
 

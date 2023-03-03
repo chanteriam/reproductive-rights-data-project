@@ -3,7 +3,7 @@ This file interfaces with the OpenDataSE GitHub repository.
 """
 
 import requests
-from src.reproductive_rights_data_project.util.constants import REQUEST_TIMEOUT
+from reproductive_rights_data_project.util.constants import REQUEST_TIMEOUT
 
 
 def get_state_zip_code_geo_json(state_abbrev, state_name):

@@ -3,7 +3,7 @@ Creates functions for multiple use across files.
 """
 import json
 import pandas as pd
-from src.reproductive_rights_data_project.util.constants import (
+from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
 

@@ -3,13 +3,13 @@ Process ANSIRH data into JSON files binned by state.
 """
 
 import pandas as pd
-from src.reproductive_rights_data_project.data_handling.ansirh.clean import (
+from reproductive_rights_data_project.data_handling.ansirh.clean import (
     clean,
 )
-from src.reproductive_rights_data_project.util.constants import (
+from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ANSIRH_CLEAN_DATA,
 )
-from src.reproductive_rights_data_project.util.functions import (
+from reproductive_rights_data_project.util.functions import (
     translate_code_to_state,
     to_json,
 )

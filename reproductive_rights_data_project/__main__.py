@@ -4,10 +4,11 @@ packages based on the flags that are passed to it.
 """
 
 import argparse
-import src.reproductive_rights_data_project.api.service
-import src.reproductive_rights_data_project.data_handling.service
+import reproductive_rights_data_project.api.service
+import reproductive_rights_data_project.data_handling.service
 
-if __name__ == "__main__":
+
+def main():
     """
     Author(s): Michael Plunkett, Kate Habich
     """
@@ -38,10 +39,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.api:
-        src.reproductive_rights_data_project.api.service.main()
+        reproductive_rights_data_project.api.service.main()
 
     if args.parse_data:
-        src.reproductive_rights_data_project.data_handling.service.main()
+        reproductive_rights_data_project.data_handling.service.main()
 
     if args.visualize:
         src.reproductive_rights_data_project.visualization.service.main()
+
+
+if __name__ == "__main__":
+    main()
