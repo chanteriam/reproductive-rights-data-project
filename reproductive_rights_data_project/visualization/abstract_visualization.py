@@ -3,7 +3,6 @@ This file contains the abstract class that will be used to build all the
 visualizations for this repository.
 """
 
-from collections.abc import MutableMapping
 from abc import ABC, abstractmethod
 
 

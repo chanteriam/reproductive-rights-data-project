@@ -1,18 +1,29 @@
 """
-This file contains the functions and functionality needed to display a State
-summary of abortion-related data.
+This file contains the functions and functionality needed to render a
+Choropleth map of the individual States of the United States of America.
 """
-import plotly.graph_objects as go
-import pandas as pd
 import json
+import pandas as pd
+import plotly.graph_objects as go
 
-from visualization.abstract_visualization import Visualization
-from util.constants import STANDARD_ENCODING
+from reproductive_rights_data_project.visualization.abstract_visualization import (
+    Visualization,
+)
+from reproductive_rights_data_project.api.github.open_data_se import (
+    get_state_zip_code_geo_json,
+)
+from reproductive_rights_data_project.visualization.functions import (
+    sort_by_count,
+)
+from reproductive_rights_data_project.util.constants import (
+    STANDARD_ENCODING,
+)
 
 
-class StateSummary(Visualization):
-    """
-    This class represents a table with information on each state.
+class USAState(Visualization):
+    """ "
+    This class represents all the methods needed to construct the USA state map
+    within plotly.
 
     Author(s): Aïcha Camara, Michael Plunkett
     """
@@ -57,7 +68,6 @@ class StateSummary(Visualization):
         ) as minors_info, open(
             self._waiting_period_info_file_name, encoding=STANDARD_ENCODING
         ) as waiting_period:
-
             self._gestational_info = json.load(gestational)
             self._insurance_info = json.load(insurance)
             self._locations = json.load(locations)
@@ -67,7 +77,7 @@ class StateSummary(Visualization):
     def _sort_files(self):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
-        the visualization
+        the visualization.
 
         Author(s): Aïcha Camara
         """
@@ -99,101 +109,77 @@ class StateSummary(Visualization):
             columns={"index": "state"}
         )
 
-        # sorts locations data to get counts by state
-        count_state_clinics = {}
+        # sorts locations data to get counts by zipcode
+        count_zipcode_clinics = {}
+        for _, zipcodes in self._locations.items():
+            for zipcode, clinics in zipcodes.items():
+                if zipcode == "0.0":
+                    continue
+                count_zipcode_clinics[zipcode] = len(clinics)
 
-        for state, zipcodes in self._locations.items():
-            clinic_count = 0
-            for _, clinics in zipcodes.items():
-                clinic_count += len(clinics)
-            count_state_clinics[state] = clinic_count
+        # Sort by count
+        count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
 
-        count_state_clinics = dict(sorted(count_state_clinics.items()))
-        state_df = pd.DataFrame(
-            count_state_clinics.items(), columns=["state", "count"]
+        # create the zipcode dataframe
+        zip_df = (
+            pd.DataFrame.from_dict(count_zipcode_clinics, orient="index")
+            .reset_index()
+            .rename(columns={"index": "zipcode", 0: "clinic count"})
         )
 
-        final_df = (
-            pd.merge(
-                state_df,
-                gest_df[
-                    ["state", "exception_life", "banned_after_weeks_since_LMP"]
-                ],
-                on="state",
-            )
-            .merge(
-                insurance_df[
-                    ["state", "requires_coverage", "medicaid_exception_life"]
-                ],
-                on="state",
-            )
-            .merge(
-                minors_info_df[
-                    [
-                        "state",
-                        "below_age",
-                        "parental_consent_required",
-                        "allows_minor_to_consent_to_abortion",
-                    ]
-                ],
-                on="state",
-            )
-            .merge(
-                waiting_period_df[
-                    ["state", "waiting_period_hours", "counseling_visits"]
-                ],
-                on="state",
-            )
-        )
+        # Goal: join the zipcode count dataframe and check the state that the
+        # the zipcode is in
 
-        final_df = final_df.rename(
-            columns={
-                "state": "State",
-                "count": "Clinic Count",
-                "exception_life": "Exception for Life Risk",
-                "banned_after_weeks_since_LMP": "Weeks until banned",
-                "requires_coverage": "Insurance Coverage?",
-                "medicaid_exception_life": "Medicaid Coverage if Life Risk",
-                "below_age": "Age Requirement",
-                "parental_consent_required": "Parental Consent Needed?",
-                "allows_minor_to_consent_to_abortion": "Can Minors Consent",
-                "waiting_period_hours": "Waiting Period (Hrs)",
-                "counseling_visits": "Counseling Visits",
-            }
-        )
-
-        return final_df
+        return waiting_period_df
 
     def construct_data(self):
         """
         This function calls and constructs the information needed to construct
-        the USA country state-by-state chart.
+        the USAState visual.
 
         Author(s): Aïcha Camara
         """
         self._import_files()
-        state_summary_df = self._sort_files()
+        waiting_df = self._sort_files()
 
-        return state_summary_df
+        return waiting_df
 
-    def create_visual(self):
+    def create_visual(self, state_abbrev, state_name):
         """
-        Creates the state summary chart
+        Creates the map of a United States state using the data from the construct
+        function and returns the plotly map of a state.
 
         Author(s): Aïcha Camara
         """
-        state_summary_df = self._sort_files()
+
+        """
+        Note: How should we set up the callback for the state? Should the state
+        name annd abbreviation be used as a parameter to then be utilized
+        within this function to make a request for the geojson and then
+        use that data in the visualization below? Or should another means be 
+        used?
+        """
+
+        geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
+
+        test_df = self.construct_data()
+
+        # fig = px.choropleth(state_df, #Should be indexed by the state selected!
+        #                     geojson=geojson,
+        #                     locations=None,
+        #                     color=None,
+        # )
 
         fig = go.Figure(
             data=[
                 go.Table(
                     header=dict(
-                        values=list(state_summary_df.columns),
+                        values=list(test_df.columns),
                         fill_color="silver",
                         align="center",
                     ),
                     cells=dict(
-                        values=state_summary_df.transpose().values.tolist(),
+                        values=test_df.transpose().values.tolist(),
                         fill_color="white",
                         line_color="darkslategray",
                         align="center",
@@ -201,5 +187,4 @@ class StateSummary(Visualization):
                 )
             ]
         )
-
         return fig

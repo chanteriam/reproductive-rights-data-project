@@ -1,8 +1,10 @@
 """
 This file contains all testing functions for the util package.
 """
-from util.constants import STANDARD_ENCODING
-from util.functions import to_json
+from reproductive_rights_data_project.util.constants import (
+    STANDARD_ENCODING,
+)
+from reproductive_rights_data_project.util.functions import to_json
 import json
 import os
 
@@ -32,7 +34,7 @@ def test_to_json():
         },
     ]
 
-    file_name = "data/test_file1.json"
+    file_name = "reproductive_rights_data_project/data/test_file1.json"
 
     to_json([rows], [file_name])
 

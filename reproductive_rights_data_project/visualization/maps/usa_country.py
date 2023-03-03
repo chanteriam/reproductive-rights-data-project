@@ -6,8 +6,12 @@ import plotly.express as px
 import pandas as pd
 import json
 
-from visualization.abstract_visualization import Visualization
-from util.constants import STANDARD_ENCODING
+from reproductive_rights_data_project.visualization.abstract_visualization import (
+    Visualization,
+)
+from reproductive_rights_data_project.util.constants import (
+    STANDARD_ENCODING,
+)
 
 
 class USAMap(Visualization):
@@ -49,7 +53,6 @@ class USAMap(Visualization):
         ) as locations, open(
             self._state_abbrevs_file_name, encoding=STANDARD_ENCODING
         ) as abbreviations:
-
             self._gestational_info = json.load(gestational)
             self._locations = json.load(locations)
             self._state_abbrevs = pd.read_csv(abbreviations)
@@ -133,7 +136,8 @@ class USAMap(Visualization):
             labels={
                 "count": "Clinic Count: ",
                 "exception_life": "Exception for life at risk? ",
-                "banned_after_weeks_since_LMP": "Abortion banned after how many weeks? ",
+                "banned_after_weeks_since_LMP": "Abortion banned after how "
+                "many weeks? ",
             },
             scope="usa",
         )
