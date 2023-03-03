@@ -5,7 +5,7 @@ APIs and saving that data to the `../data` folder.
 
 import requests
 import os
-from util.constants import (
+from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ABORTION_POLICY_API_GESTATION,
     FILE_NAME_ABORTION_POLICY_API_INSURANCE,
     FILE_NAME_ABORTION_POLICY_API_MINORS,
@@ -14,8 +14,8 @@ from util.constants import (
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
 )
-from util.constants import REQUEST_TIMEOUT
-from util.functions import to_json
+from reproductive_rights_data_project.util.constants import REQUEST_TIMEOUT
+from reproductive_rights_data_project.util.functions import to_json
 import re
 
 # Author(s): Chanteria Milner, Michael Plunkett

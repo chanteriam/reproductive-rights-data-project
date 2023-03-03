@@ -3,11 +3,15 @@ This file works as the central point for running the visualization package.
 
 Author(s): Michael Plunkett and Aïcha Camara
 """
-from visualization.app import DASH_INSTANCE, build_dash
-from visualization.maps.usa_country import USAMap as USAMap
-from visualization.maps.usa_state import USAState as USAState
-from visualization.charts.state_summary import StateSummary as StateSummary
-from util.constants import (
+from reproductive_rights_data_project.visualization.app import DASH_INSTANCE, \
+    build_dash
+from reproductive_rights_data_project.visualization.maps.usa_country import \
+    USAMap as USAMap
+from reproductive_rights_data_project.visualization.maps.usa_state import \
+    USAState as USAState
+from reproductive_rights_data_project.visualization.charts.state_summary import \
+    StateSummary as StateSummary
+from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ABORTION_POLICY_API_GESTATION,
     FILE_NAME_ABORTION_POLICY_API_INSURANCE,
     FILE_NAME_ABORTION_POLICY_API_MINORS,

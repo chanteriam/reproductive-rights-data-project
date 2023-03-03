@@ -3,9 +3,11 @@ Process ANSIRH data into JSON files binned by state.
 """
 
 import pandas as pd
-from data_handling.ansirh.clean import clean
-from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA
-from util.functions import translate_code_to_state, to_json
+from reproductive_rights_data_project.data_handling.ansirh.clean import clean
+from reproductive_rights_data_project.util.constants import \
+    FILE_NAME_ANSIRH_CLEAN_DATA
+from reproductive_rights_data_project.util.functions import \
+    translate_code_to_state, to_json
 
 
 def clean_and_save():

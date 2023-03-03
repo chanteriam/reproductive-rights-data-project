@@ -3,7 +3,7 @@ Creates functions for multiple use across files.
 """
 import json
 import pandas as pd
-from util.constants import STANDARD_ENCODING
+from reproductive_rights_data_project.util.constants import STANDARD_ENCODING
 
 
 def to_json(data, file_names):

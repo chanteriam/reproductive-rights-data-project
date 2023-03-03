@@ -3,7 +3,8 @@ This file contains helper functions for generating data visualizations.
 """
 
 import json
-from util.constants import FILE_NAME_ANSIRH_CLEAN_DATA, STANDARD_ENCODING
+from reproductive_rights_data_project.util.constants import \
+    FILE_NAME_ANSIRH_CLEAN_DATA, STANDARD_ENCODING
 
 # Maybe not good for testability
 with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
@@ -51,7 +52,7 @@ def get_city_clinic_counts():
                     continue
                 city_state = ", ".join([clinic["city"].title(), state])
                 count_city_clinics[city_state] = (
-                    count_city_clinics.get(city_state, 0) + 1
+                        count_city_clinics.get(city_state, 0) + 1
                 )
 
     # sort by number of clinics
