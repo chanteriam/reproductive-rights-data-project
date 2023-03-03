@@ -4,6 +4,7 @@ Creates functions for multiple use across files.
 import json
 import pandas as pd
 from reproductive_rights_data_project.util.constants import (
+    FILE_NAME_STATE_ABBREVIATIONS,
     STANDARD_ENCODING,
 )
 
@@ -42,8 +43,7 @@ def translate_code_to_state(state_abr):
     """
     # TODO: Will refactor with csv in the near future
     # Read in state abbreviation data
-    file_name = "./data/state_abbreviations.csv"
-    state = pd.read_csv(file_name)
+    state = pd.read_csv(FILE_NAME_STATE_ABBREVIATIONS)
 
     # Convert to full state name
     state_name = state["state"][state["code"] == state_abr.upper()].values[0]
