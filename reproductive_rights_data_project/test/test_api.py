@@ -5,6 +5,7 @@ This file contains all testing functions for the api package.
 import json
 from http import HTTPStatus
 import responses
+import os
 
 from reproductive_rights_data_project.api.github.open_data_se import (
     get_state_zip_code_geo_json,
@@ -20,6 +21,8 @@ from reproductive_rights_data_project.api.abortion_policy_api import (
     URL_AP_MINORS,
     URL_AP_WAITING_PERIODS,
 )
+from reproductive_rights_data_project.util.constants import BASE_DATA_DIR
+from reproductive_rights_data_project.util.functions import to_json
 
 # API data stubs
 # Author(s): Michael Plunkett, Chanteria Milner
@@ -155,14 +158,15 @@ def test_get_api_data():
 
 
 @responses.activate
-def test_get_state_zip_code_geo_json():
+def test_get_state_zip_code_geo_json_first_call():
     """
     Author(s): Michael Plunkett
     """
     test_data = json.dumps({"data": "here it is"})
+    file_name = "nas_not_a_state_zip_codes_geo.min.json"
     test_url = (
-        "https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON"
-        "/master/ny_new_york_zip_codes_geo.min.json"
+        f"https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON"
+        f"/master/{file_name}"
     )
 
     responses.add(
@@ -173,10 +177,48 @@ def test_get_state_zip_code_geo_json():
         status=HTTPStatus.OK,
     )
 
-    test_result = get_state_zip_code_geo_json("NY", "NeW YorK")
+    test_result = get_state_zip_code_geo_json("NaS", "Not a State")
 
     assert test_result == test_data
     assert responses.assert_call_count(test_url, 1) is True
+    assert os.path.exists(BASE_DATA_DIR + file_name)
+
+    os.remove(BASE_DATA_DIR + file_name)
+
+    assert not os.path.exists(BASE_DATA_DIR + file_name)
+
+
+@responses.activate
+def test_get_state_zip_code_geo_json_not_first_call():
+    """
+    Author(s): Michael Plunkett
+    """
+    test_data = json.dumps({"data": "here it be"})
+    file_name = "naz_not_a_zebra_zip_codes_geo.min.json"
+    test_url = (
+        f"https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON"
+        f"/master/{file_name}"
+    )
+
+    responses.add(
+        responses.GET,
+        test_url,
+        headers=HEADERS,
+        json=test_data,
+        status=HTTPStatus.OK,
+    )
+
+    to_json([test_data], [BASE_DATA_DIR + file_name])
+
+    test_result = get_state_zip_code_geo_json("NaZ", "Not a Zebra")
+
+    assert test_result == test_data
+    assert responses.assert_call_count(test_url, 0) is True
+    assert os.path.exists(BASE_DATA_DIR + file_name)
+
+    os.remove(BASE_DATA_DIR + file_name)
+
+    assert not os.path.exists(BASE_DATA_DIR + file_name)
 
 
 def test_set_default_types():
