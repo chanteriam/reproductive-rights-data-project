@@ -15,8 +15,9 @@ from reproductive_rights_data_project.util.functions import to_json
 
 def get_state_zip_code_geo_json(state_abbrev, state_name):
     """
-    This function calls the OpenDataSE State-zip-code-GeoJSON GitHub repository
-    and returns a given state's zip code geo json file.
+    This function gets the OpenDataSE State-zip-code-GeoJSON data from the
+    GitHub repository or local file, depending on if that state has been
+    requested previously.
 
     Author(s): Michael Plunkett
 
