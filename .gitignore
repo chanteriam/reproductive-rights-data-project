@@ -3,10 +3,10 @@
 .vscode
 
 # Stored data
-reproductive_rights_data_project/data/*
-!reproductive_rights_data_project/data/states.txt
-!reproductive_rights_data_project/data/state_abbreviations.csv
-!reproductive_rights_data_project/data/zip_code_database.csv
+src/reproductive_rights_data_project/data/*
+!src/reproductive_rights_data_project/data/states.txt
+!src/reproductive_rights_data_project/data/state_abbreviations.csv
+!src/reproductive_rights_data_project/data/zip_code_database.csv
 
 # Misc.
 **/.DS_Store

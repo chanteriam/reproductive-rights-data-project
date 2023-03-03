@@ -8,7 +8,8 @@ from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 
 # import the abstract classes for the visualizations
-from reproductive_rights_data_project.visualization.functions import read_state
+from src.reproductive_rights_data_project.visualization.functions import \
+    read_state
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 

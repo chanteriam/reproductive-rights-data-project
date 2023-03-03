@@ -4,9 +4,8 @@ packages based on the flags that are passed to it.
 """
 
 import argparse
-import reproductive_rights_data_project.visualization.service
-import reproductive_rights_data_project.api.service
-import reproductive_rights_data_project.data_handling.service
+import src.reproductive_rights_data_project.api.service
+import src.reproductive_rights_data_project.data_handling.service
 
 if __name__ == "__main__":
     """
@@ -39,10 +38,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.api:
-        reproductive_rights_data_project.api.service.main()
+        src.reproductive_rights_data_project.api.service.main()
 
     if args.parse_data:
-        reproductive_rights_data_project.data_handling.service.main()
+        src.reproductive_rights_data_project.data_handling.service.main()
 
     if args.visualize:
-        reproductive_rights_data_project.visualization.service.main()
+        src.reproductive_rights_data_project.visualization.service.main()

@@ -1,5 +1,5 @@
 # Author(s): Michael Plunkett
-BASEDIR=./reproductive_rights_data_project
+BASEDIR=./src/reproductive_rights_data_project
 
 # Author(s): Michael Plunkett
 .PHONY: format
