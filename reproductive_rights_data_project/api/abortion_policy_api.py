@@ -10,6 +10,7 @@ from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ABORTION_POLICY_API_INSURANCE,
     FILE_NAME_ABORTION_POLICY_API_MINORS,
     FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
+    FILE_NAME_STATE_NAMES,
     FILTERED_CHARACTERS_REGEX,
     TYPE_DEFAULTS,
     STANDARD_ENCODING,
@@ -109,7 +110,7 @@ def clean(state_policies):
     # Get list of states for data cleaning
     states = []
 
-    with open("data/states.txt", "r", encoding=STANDARD_ENCODING) as f:
+    with open(FILE_NAME_STATE_NAMES, "r", encoding=STANDARD_ENCODING) as f:
         for state in f:
             states.append(state.strip())
 

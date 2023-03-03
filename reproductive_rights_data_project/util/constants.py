@@ -10,7 +10,8 @@ STANDARD_ENCODING = "utf-8"
 
 # File Names
 # Author(s): Michael Plunkett
-base_data_dir = "/src/reproductive_rights_data_project/data/"
+base_data_dir = "reproductive_rights_data_project/data/"
+FILE_NAME_STATE_NAMES = base_data_dir + "states.txt"
 FILE_NAME_ABORTION_POLICY_API_GESTATION = (
     base_data_dir + "abortion_policy_api_gestational.json"
 )

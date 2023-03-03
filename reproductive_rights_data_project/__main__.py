@@ -1,11 +1,12 @@
 """
-The __main__.py file serves as the project running file and calls on particular
-packages based on the flags that are passed to it.
+The main.py file serves as the project running file and calls on
+particular packages based on the flags that are passed to it.
 """
 
 import argparse
 import reproductive_rights_data_project.api.service
 import reproductive_rights_data_project.data_handling.service
+import reproductive_rights_data_project.visualization.service
 
 
 def main():
@@ -45,7 +46,7 @@ def main():
         reproductive_rights_data_project.data_handling.service.main()
 
     if args.visualize:
-        src.reproductive_rights_data_project.visualization.service.main()
+        reproductive_rights_data_project.visualization.service.main()
 
 
 if __name__ == "__main__":

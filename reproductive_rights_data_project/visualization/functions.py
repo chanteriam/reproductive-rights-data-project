@@ -5,12 +5,9 @@ This file contains helper functions for generating data visualizations.
 import json
 from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ANSIRH_CLEAN_DATA,
+    FILE_NAME_STATE_NAMES,
     STANDARD_ENCODING,
 )
-
-# Maybe not good for testability
-with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
-    NATIONAL_CLINICS = json.load(f)
 
 
 def get_state_clinic_counts():
@@ -22,6 +19,10 @@ def get_state_clinic_counts():
     Returns:
         (dict): state: clinic count
     """
+
+    # Maybe not good for testability
+    with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
+        NATIONAL_CLINICS = json.load(f)
 
     count_state_clinics = {}
 
@@ -43,6 +44,10 @@ def get_city_clinic_counts():
     Returns:
         (dict): zipcode: clinic count
     """
+
+    # Maybe not good for testability
+    with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
+        NATIONAL_CLINICS = json.load(f)
 
     count_city_clinics = {}
     for state, zipcodes in NATIONAL_CLINICS.items():
@@ -70,6 +75,10 @@ def get_zipcode_clinic_counts():
     Returns:
         (dict): zipcode: clinic count
     """
+
+    # Maybe not good for testability
+    with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
+        NATIONAL_CLINICS = json.load(f)
 
     count_zipcode_clinics = {}
     for _, zipcodes in NATIONAL_CLINICS.items():
@@ -112,6 +121,6 @@ def read_state():
         (list) list of states in alphabetical order
     """
 
-    with open("./data/states.txt", encoding=STANDARD_ENCODING) as state:
+    with open(FILE_NAME_STATE_NAMES, encoding=STANDARD_ENCODING) as state:
         state_lst = [line.strip() for line in state.readlines()]
     return state_lst
