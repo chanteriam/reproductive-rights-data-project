@@ -3,10 +3,10 @@
 *py @michplunkett @ehabich
 
 # Author(s): Michael Plunkett
-./reproductive_rights_data_project/test @chanteriam @michplunkett @ehabich @necabotheking
-./reproductive_rights_data_project/util @chanteriam @michplunkett @ehabich @necabotheking
+/reproductive_rights_data_project/test @chanteriam @michplunkett @ehabich @necabotheking
+/reproductive_rights_data_project/util @chanteriam @michplunkett @ehabich @necabotheking
 
 # Author(s): Michael Plunkett
-./reproductive_rights_data_project/api @chanteriam @necabotheking
-./reproductive_rights_data_project/data_handling @ehabich @chanteriam
-./reproductive_rights_data_project/visualization @necabotheking @michplunkett
+/reproductive_rights_data_project/api @chanteriam @necabotheking
+/reproductive_rights_data_project/data_handling @ehabich @chanteriam
+/reproductive_rights_data_project/visualization @necabotheking @michplunkett
