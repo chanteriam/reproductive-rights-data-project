@@ -54,7 +54,7 @@ def get_city_clinic_counts():
                     continue
                 city_state = ", ".join([clinic["city"].title(), state])
                 count_city_clinics[city_state] = (
-                        count_city_clinics.get(city_state, 0) + 1
+                    count_city_clinics.get(city_state, 0) + 1
                 )
 
     # sort by number of clinics
