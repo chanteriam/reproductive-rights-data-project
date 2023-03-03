@@ -5,6 +5,7 @@ This file contains all testing functions for the data_handling package.
 import pandas as pd
 from math import isnan
 from reproductive_rights_data_project.util.constants import (
+    FILE_NAME_STATE_ABBREVIATIONS,
     STANDARD_ENCODING,
 )
 from reproductive_rights_data_project.data_handling.ansirh.clean import (
@@ -67,8 +68,7 @@ CORRECT_DEFAULT_TYPES = {
 DF = pd.DataFrame(DATA)
 STATES = []
 STATE_ABRVS = []
-states_file_name = "data/state_abbreviations.csv"
-with open(states_file_name, "r", encoding=STANDARD_ENCODING) as f:
+with open(FILE_NAME_STATE_ABBREVIATIONS, "r", encoding=STANDARD_ENCODING) as f:
     for line in f:
         line = line.strip()
         state, abbrev, code = line.split(",")
