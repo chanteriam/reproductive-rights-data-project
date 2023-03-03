@@ -3,8 +3,9 @@ Process ANSIRH data into JSON files binned by state.
 """
 
 import pandas as pd
-from src.reproductive_rights_data_project.data_handling.ansirh.clean import \
-    clean
+from src.reproductive_rights_data_project.data_handling.ansirh.clean import (
+    clean,
+)
 from src.reproductive_rights_data_project.util.constants import (
     FILE_NAME_ANSIRH_CLEAN_DATA,
 )

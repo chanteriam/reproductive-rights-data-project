@@ -9,8 +9,9 @@ import json
 from src.reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
 )
-from src.reproductive_rights_data_project.util.constants import \
-    STANDARD_ENCODING
+from src.reproductive_rights_data_project.util.constants import (
+    STANDARD_ENCODING,
+)
 
 
 class StateSummary(Visualization):
@@ -21,12 +22,12 @@ class StateSummary(Visualization):
     """
 
     def __init__(
-            self,
-            gestational_info_file_name,
-            insurance_info_file_name,
-            locations_file_name,
-            minors_info_file_name,
-            waiting_period_info_file_name,
+        self,
+        gestational_info_file_name,
+        insurance_info_file_name,
+        locations_file_name,
+        minors_info_file_name,
+        waiting_period_info_file_name,
     ):
         """
         Author(s): Michael Plunkett
@@ -50,7 +51,7 @@ class StateSummary(Visualization):
         Author(s): Aïcha Camara
         """
         with open(
-                self._gestational_info_file_name, encoding=STANDARD_ENCODING
+            self._gestational_info_file_name, encoding=STANDARD_ENCODING
         ) as gestational, open(
             self._insurance_info_file_name, encoding=STANDARD_ENCODING
         ) as insurance, open(

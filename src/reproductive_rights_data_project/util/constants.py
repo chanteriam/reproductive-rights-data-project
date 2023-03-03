@@ -10,19 +10,22 @@ STANDARD_ENCODING = "utf-8"
 
 # File Names
 # Author(s): Michael Plunkett
+base_data_dir = "/src/reproductive_rights_data_project/data/"
 FILE_NAME_ABORTION_POLICY_API_GESTATION = (
-    "data/abortion_policy_api_gestational.json"
+    base_data_dir + "abortion_policy_api_gestational.json"
 )
 FILE_NAME_ABORTION_POLICY_API_INSURANCE = (
-    "data/abortion_policy_api_insurance.json"
+    base_data_dir + "abortion_policy_api_insurance.json"
 )
-FILE_NAME_ABORTION_POLICY_API_MINORS = "data/abortion_policy_api_minors.json"
+FILE_NAME_ABORTION_POLICY_API_MINORS = (
+    base_data_dir + "abortion_policy_api_minors.json"
+)
 FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD = (
-    "data/abortion_policy_api_waiting.json"
+    base_data_dir + "abortion_policy_api_waiting.json"
 )
-FILE_NAME_ANSIRH_CLEAN_DATA = "data/clean_ansirh.json"
+FILE_NAME_ANSIRH_CLEAN_DATA = base_data_dir + "clean_ansirh.json"
 
-FILE_NAME_STATE_ABBREVIATIONS = "data/state_abbreviations.csv"
+FILE_NAME_STATE_ABBREVIATIONS = base_data_dir + "state_abbreviations.csv"
 
 # API Variables
 # Author(s): Michael Plunkett

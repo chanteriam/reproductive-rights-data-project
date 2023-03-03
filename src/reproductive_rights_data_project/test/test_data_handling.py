@@ -4,8 +4,9 @@ This file contains all testing functions for the data_handling package.
 
 import pandas as pd
 from math import isnan
-from src.reproductive_rights_data_project.util.constants import \
-    STANDARD_ENCODING
+from src.reproductive_rights_data_project.util.constants import (
+    STANDARD_ENCODING,
+)
 from src.reproductive_rights_data_project.data_handling.ansirh.clean import (
     clean,
     set_default_types,
