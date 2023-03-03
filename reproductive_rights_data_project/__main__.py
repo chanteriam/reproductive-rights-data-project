@@ -8,9 +8,7 @@ import reproductive_rights_data_project.api.service
 import reproductive_rights_data_project.data_handling.service
 import reproductive_rights_data_project.visualization.service
 
-"""
-Author(s): Michael Plunkett, Kate Habich
-"""
+# Author(s): Michael Plunkett, Kate Habich
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
