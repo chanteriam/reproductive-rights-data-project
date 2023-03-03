@@ -3,13 +3,13 @@
 .vscode
 
 # Stored data
-data/*
-!data/states.txt
-!data/state_abbreviations.csv
-!data/zip_code_database.csv
+reproductive_rights_data_project/data/*
+!reproductive_rights_data_project/data/states.txt
+!reproductive_rights_data_project/data/state_abbreviations.csv
+!reproductive_rights_data_project/data/zip_code_database.csv
 
 # Misc.
-.DS_Store
+**/.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
