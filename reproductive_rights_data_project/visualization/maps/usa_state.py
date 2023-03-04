@@ -158,9 +158,14 @@ class USAState(Visualization):
         within this function to make a request for the geojson and then
         use that data in the visualization below? Or should another means be 
         used?
+        
+        That is correct! You should be sending in the state abbreviation and
+        name and you will get the GeoJSON data base from the request. If you 
+        have requested the state before, it will pull from a file instead of
+        the API to save processing time and API calls.
         """
 
-        #geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
+        # geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
 
         test_df = self.construct_data()
 
