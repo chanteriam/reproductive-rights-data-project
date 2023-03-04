@@ -127,11 +127,11 @@ class USAMap(Visualization):
             state_df,
             locations="code",
             hover_name="state",
-            hover_data=[
-                "count",
-                "exception_life",
-                "banned_after_weeks_since_LMP",
-            ],
+            hover_data={
+                "count": True,
+                "exception_life": True,
+                "banned_after_weeks_since_LMP": True,
+            },
             locationmode="USA-states",
             labels={
                 "count": "Clinic Count: ",
@@ -141,6 +141,10 @@ class USAMap(Visualization):
             },
             scope="usa",
         )
+
+        # fig.update_traces(hovertemplate = 'Clinic Count = count <br> \
+        #                 Exception for life at risk?=%{exception_life} <br> \
+        #                 Abortion banned after %{banned_after_weeks_since_LMP} weeks<extra></extra>'),
 
         fig.update_geos(
             visible=False,

@@ -144,7 +144,7 @@ class USAState(Visualization):
 
         return waiting_df
 
-    def create_visual(self, state_abbrev, state_name):
+    def create_visual(self):
         """
         Creates the map of a United States state using the data from the construct
         function and returns the plotly map of a state.
@@ -160,7 +160,7 @@ class USAState(Visualization):
         used?
         """
 
-        geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
+        #geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
 
         test_df = self.construct_data()
 
