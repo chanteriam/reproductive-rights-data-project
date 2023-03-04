@@ -48,9 +48,9 @@ def main():
     state_map = USAState(
         FILE_NAME_ABORTION_POLICY_API_GESTATION,
         FILE_NAME_ABORTION_POLICY_API_INSURANCE,
+        FILE_NAME_ANSIRH_CLEAN_DATA,
         FILE_NAME_ABORTION_POLICY_API_MINORS,
         FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
-        FILE_NAME_ANSIRH_CLEAN_DATA,
     )
 
     build_dash(country_chart, country_map, state_map)
