@@ -193,13 +193,14 @@ class StateSummary(Visualization):
                     header=dict(
                         values=list(state_summary_df.columns),
                         fill_color="silver",
+                        line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=state_summary_df.transpose().values.tolist(),
-                        fill_color="white",
+                        fill_color="whitesmoke",
                         line_color="darkslategray",
-                        align="center",
+                        align="center", 
                     ),
                 )
             ]
