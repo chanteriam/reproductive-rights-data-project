@@ -32,6 +32,11 @@ parse-data:
 	python -m reproductive_rights_data_project --parse-data
 
 # Author(s): Michael Plunkett
-.PHONY:visualize
+.PHONY: visualize
 visualize:
 	python -m reproductive_rights_data_project --visualize
+
+# Author(s): Kate Habich
+.PHONY: run
+run:
+	make api parse-data visualize
