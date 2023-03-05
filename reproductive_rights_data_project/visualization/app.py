@@ -141,20 +141,24 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                 children=[
                     html.Br(),
                     html.P(
-                        "We would like to thank the following organizations for providing our reference data: "
+                        "We would like to thank the following organizations "
+                        "for providing our reference data: "
                     ),
                     html.P(
-                        "Abortion Policy API: https://www.abortionpolicyapi.com/"
+                        "Abortion Policy API: "
+                        "https://www.abortionpolicyapi.com/ "
                     ),
                     html.P(
-                        "ANSIRH Abortion Facility Database: https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"
+                        "ANSIRH Abortion Facility Database: "
+                        "https://abortionfacilitydatabase-ucsf.hub.arcgis.com/ "
                     ),
                     html.P("i need an a: https://www.ineedana.com/"),
                     html.P(
                         "United States Census Bureau: https://data.census.gov/"
                     ),
                     html.P(
-                        "OpenDataSE: https://github.com/OpenDataDE/State-zip-code-GeoJSON"
+                        "OpenDataSE: https://github.com/OpenDataDE/State-zip"
+                        "-code-GeoJSON "
                     ),
                     html.Br(),
                 ],
