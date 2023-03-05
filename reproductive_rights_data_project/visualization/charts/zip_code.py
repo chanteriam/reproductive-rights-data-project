@@ -9,9 +9,7 @@ import plotly.graph_objects as go
 from reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
 )
-from reproductive_rights_data_project.visualization.functions import (
-    sort_by_count,
-)
+from reproductive_rights_data_project.visualization.util import sort_by_count
 from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
