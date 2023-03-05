@@ -31,13 +31,13 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.Br(),
-                    html.H4(
+                    html.P(
                         """
                         Author(s): Aïcha Camara, Kate Habich, 
                         Chanteria Milner, Michael Plunkett
                         """
                     ),
-                    html.H4(
+                    html.P(
                         "If you or someone you love needs an abortion, \
                     you can find up-to-date help at ineedana.com. ❤️"
                     ),
@@ -47,7 +47,9 @@ def build_dash(country_chart, country_map, state_map):
             ),
             html.Div(
                 children=[
-                    html.B("This box will hold the map of the United States"),
+                    html.Br(), 
+                    html.H6(children=["2023 US Reproductive Rights (Hover for Information)"],
+                            style={"text-align": "center"}),
                     dcc.Graph(
                         id="usa-graph", figure=country_map.create_visual()
                     ),
@@ -62,8 +64,6 @@ def build_dash(country_chart, country_map, state_map):
             ),
             html.Div(
                 children=[
-                    html.B("This box will contain the state level analyses"),
-                    dcc.Graph(figure=state_map.create_visual()),
                     dcc.Dropdown(
                         options=read_state(),
                         id="example-dropdown",
@@ -73,6 +73,7 @@ def build_dash(country_chart, country_map, state_map):
                         },
                     ),
                     html.Div(id="dd-output-container"),
+                    dcc.Graph(figure=state_map.create_visual())
                 ],
                 style={
                     "float": "right",
@@ -84,7 +85,6 @@ def build_dash(country_chart, country_map, state_map):
             ),
             html.Div(
                 children=[
-                    html.B("This is where the charts will go"),
                     dcc.Graph(figure=country_chart.create_visual()),
                 ],
                 style={

@@ -142,6 +142,7 @@ class USAMap(Visualization):
             scope="usa",
         )
 
+
         fig.update_geos(
             visible=False,
             resolution=110,
