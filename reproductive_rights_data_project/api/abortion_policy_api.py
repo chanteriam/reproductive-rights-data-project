@@ -20,8 +20,8 @@ from reproductive_rights_data_project.util.functions import to_json
 import re
 
 # Author(s): Chanteria Milner, Michael Plunkett
-APIKEY = os.environ.get("ABORTION_POLICY_API_KEY")
-HEADERS = {"token": APIKEY}
+ABORTION_POLICY_API_KEY = os.environ.get("ABORTION_POLICY_API_KEY")
+HEADERS = {"token": ABORTION_POLICY_API_KEY}
 
 # URLs have been made constants for testing purposes
 # Author(s): Chanteria Milner, Michael Plunkett
