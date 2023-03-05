@@ -14,14 +14,7 @@ from reproductive_rights_data_project.visualization.functions import (
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
-dark_theme = {
-    "main-background": "#000000",
-    "header-text": "#ff7575",
-    "sub-text": "#ffd175",
-}
-
-
-def build_dash(country_chart, country_map, state_map):
+def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
     Author(s): Aïcha Camara
     """
@@ -71,25 +64,24 @@ def build_dash(country_chart, country_map, state_map):
             ),
             html.Div(
                 children=[
-                    html.P(children=["Please select a state for more information"],
+                    html.Br(),
+                    html.H6(children=["Top Cities by Clinic Count"],
                             style={"text-align": "center"}),
-                    dcc.Dropdown(
-                        options=read_state(),
-                        id="example-dropdown",
-                        style={
-                            #"width": "500px",
-                            "padding-left": "1px",
-                            "padding-right": "1px"
-                            # adds padding to the dropdown bar
-                        },
-                    ),
-                    html.Div(id="dd-output-container"), # this is where the figure will be to be updated
+                    # dcc.Dropdown(
+                    #     options=read_state(),
+                    #     id="example-dropdown",
+                    #     style={
+                    #         #"width": "500px",
+                    #         "padding-left": "1px",
+                    #         "padding-right": "1px"
+                    #         # adds padding to the dropdown bar
+                    #     },
+                    # ),
+                    # html.Div(id="dd-output-container"), # this is where the figure will be to be updated
                     # id= usa_state_map usa_state_map(state_name="Alabama", abbrev="AL")
                     # set default with those values
                     html.Br(),
-                    html.H6(children=["State Map by Zipcode (Hover for more information)"],
-                            style={"text-align": "center"}),
-                    dcc.Graph(figure=state_map.create_visual())
+                    dcc.Graph(figure=city_bar.create_visual())
                 ],
                 style={
                     "float": "right",
@@ -106,8 +98,8 @@ def build_dash(country_chart, country_map, state_map):
                 children=[
                     html.Br(),
                     html.H6(children=["Clinics By Zipcode"],
-                            style={"text-align": "center"})
-                    #dcc.Graph(figure=country_chart.create_visual()),
+                            style={"text-align": "center"}),
+                    dcc.Graph(figure=zip_chart.create_visual()),
                 ],
                 style={
                     "float": "right",
@@ -161,14 +153,14 @@ def build_dash(country_chart, country_map, state_map):
     )
 
 
-@DASH_INSTANCE.callback(
-    Output("dd-output-container", "children"),
-    Input("example-dropdown", "value"),
-)
-def update_output(value):
-    """
-    Function for the app.callback above; update_output() is a test
-    function that updates the output of the navigation when another state
-    is selected.
-    """
-    return f"{value} was selected"
+# @DASH_INSTANCE.callback(
+#     Output("dd-output-container", "children"),
+#     Input("example-dropdown", "value"),
+# )
+# def update_output(value):
+#     """
+#     Function for the app.callback above; update_output() is a test
+#     function that updates the output of the navigation when another state
+#     is selected.
+#     """
+#     return f"{value} was selected"
