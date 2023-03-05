@@ -10,6 +10,7 @@ reproductive_rights_data_project/data/*
 
 # Misc.
 **/.DS_Store
+*.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
