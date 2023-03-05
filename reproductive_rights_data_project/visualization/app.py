@@ -105,7 +105,7 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.Br(),
-                    html.H6(children=["State Information Chart"],
+                    html.H6(children=["Clinics By Zipcode"],
                             style={"text-align": "center"})
                     #dcc.Graph(figure=country_chart.create_visual()),
                 ],
