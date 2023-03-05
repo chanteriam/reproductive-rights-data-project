@@ -27,10 +27,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                 children=[
                     html.Br(),
                     html.P(
-                        """
-                        Author(s): Aïcha Camara, Kate Habich, 
-                        Chanteria Milner, Michael Plunkett
-                        """
+                        "Author(s): Aïcha Camara, Kate Habich, "
+                        "Chanteria Milner, Michael Plunkett"
                     ),
                     html.P(
                         "If you or someone you love needs an abortion, \
@@ -45,7 +43,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     html.Br(),
                     html.H6(
                         children=[
-                            "2023 US Reproductive Rights (Hover for Information)"
+                            "2023 US Reproductive Rights (Hover for "
+                            "Information) "
                         ],
                         style={"text-align": "center"},
                     ),
@@ -69,19 +68,6 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         children=["Top Cities by Clinic Count"],
                         style={"text-align": "center"},
                     ),
-                    # dcc.Dropdown(
-                    #     options=read_state(),
-                    #     id="example-dropdown",
-                    #     style={
-                    #         #"width": "500px",
-                    #         "padding-left": "1px",
-                    #         "padding-right": "1px"
-                    #         # adds padding to the dropdown bar
-                    #     },
-                    # ),
-                    # html.Div(id="dd-output-container"), # this is where the figure will be to be updated
-                    # id= usa_state_map usa_state_map(state_name="Alabama", abbrev="AL")
-                    # set default with those values
                     html.Br(),
                     dcc.Graph(figure=city_bar.create_visual()),
                 ],
@@ -165,19 +151,4 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                 style={"text-align": "left", "padding-left": "5px"},
             ),
         ],
-        # style={'background-color': '#1f2630'}
-        # put things here to style the main div
     )
-
-
-# @DASH_INSTANCE.callback(
-#     Output("dd-output-container", "children"),
-#     Input("example-dropdown", "value"),
-# )
-# def update_output(value):
-#     """
-#     Function for the app.callback above; update_output() is a test
-#     function that updates the output of the navigation when another state
-#     is selected.
-#     """
-#     return f"{value} was selected"

@@ -22,11 +22,11 @@ def get_state_clinic_counts():
 
     # Maybe not good for testability
     with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
-        NATIONAL_CLINICS = json.load(f)
+        national_clinics = json.load(f)
 
     count_state_clinics = {}
 
-    for state, zipcodes in NATIONAL_CLINICS.items():
+    for state, zipcodes in national_clinics.items():
         clinic_count = 0
         for _, clinics in zipcodes.items():
             clinic_count += len(clinics)
@@ -47,10 +47,10 @@ def get_city_clinic_counts():
 
     # Maybe not good for testability
     with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
-        NATIONAL_CLINICS = json.load(f)
+        national_clinics = json.load(f)
 
     count_city_clinics = {}
-    for state, zipcodes in NATIONAL_CLINICS.items():
+    for state, zipcodes in national_clinics.items():
         for zipcode, clinics in zipcodes.items():
             if zipcode == "0.0":  # missing value
                 continue
@@ -78,10 +78,10 @@ def get_zipcode_clinic_counts():
 
     # Maybe not good for testability
     with open(FILE_NAME_ANSIRH_CLEAN_DATA, encoding=STANDARD_ENCODING) as f:
-        NATIONAL_CLINICS = json.load(f)
+        national_clinics = json.load(f)
 
     count_zipcode_clinics = {}
-    for _, zipcodes in NATIONAL_CLINICS.items():
+    for _, zipcodes in national_clinics.items():
         for zipcode, clinics in zipcodes.items():
             if zipcode == "0.0":
                 continue

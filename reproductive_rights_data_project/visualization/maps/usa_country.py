@@ -100,7 +100,7 @@ class USAMap(Visualization):
 
         return final_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USA country visual.
@@ -121,7 +121,7 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara
         """
 
-        state_df = self.construct_data()
+        state_df = self._construct_data()
 
         fig = px.choropleth(
             state_df,

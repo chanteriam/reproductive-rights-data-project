@@ -14,7 +14,7 @@ class Visualization(ABC):
     """
 
     @abstractmethod
-    def construct_data(self):
+    def _construct_data(self):
         """
         This method pulls and constructs all the information needed for the
         class to render the visualization.

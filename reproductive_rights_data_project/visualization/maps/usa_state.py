@@ -132,7 +132,7 @@ class USAState(Visualization):
 
         return waiting_period_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USAState visual.
@@ -167,7 +167,7 @@ class USAState(Visualization):
 
         # geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
 
-        test_df = self.construct_data()
+        test_df = self._construct_data()
 
         # fig = px.choropleth(state_df, #Should be indexed by the state selected!
         #                     geojson=geojson,

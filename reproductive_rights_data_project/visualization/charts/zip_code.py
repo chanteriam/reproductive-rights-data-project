@@ -77,7 +77,7 @@ class ZipChart(Visualization):
 
         return zip_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USAState visual.
@@ -96,7 +96,7 @@ class ZipChart(Visualization):
         Author(s): Aïcha Camara
         """
 
-        zip_df = self.construct_data()
+        zip_df = self._construct_data()
 
         fig = go.Figure(
             data=[

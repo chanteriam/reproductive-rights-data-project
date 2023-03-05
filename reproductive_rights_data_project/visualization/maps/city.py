@@ -75,7 +75,7 @@ class CityBar(Visualization):
 
         return city_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USA country state-by-state chart.
@@ -93,7 +93,7 @@ class CityBar(Visualization):
 
         Author(s): Aïcha Camara, Chanteria Milner
         """
-        city_df = self.construct_data()
+        city_df = self._construct_data()
 
         fig = px.bar(city_df[-25:], x="Clinic Count", y="City", orientation="h")
 

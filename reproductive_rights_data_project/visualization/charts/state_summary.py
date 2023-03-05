@@ -167,7 +167,7 @@ class StateSummary(Visualization):
 
         return final_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USA country state-by-state chart.
@@ -185,7 +185,7 @@ class StateSummary(Visualization):
 
         Author(s): Aïcha Camara
         """
-        state_summary_df = self.construct_data()
+        state_summary_df = self._construct_data()
 
         fig = go.Figure(
             data=[
