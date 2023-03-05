@@ -27,9 +27,7 @@ def clean_and_save():
         Writes JSON file with cleaned and formatted ANSIRH data.
     """
     # TODO: Will refactor with csv in the near future
-    ansirh_data = pd.read_csv(
-        FILE_NAME_ANSIRH_BASE_DATA
-    )
+    ansirh_data = pd.read_csv(FILE_NAME_ANSIRH_BASE_DATA)
 
     # Drop empty column
     ansirh_data = ansirh_data.drop(["Unnamed: 2"], axis=1)

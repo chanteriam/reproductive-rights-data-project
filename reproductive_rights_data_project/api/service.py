@@ -18,6 +18,7 @@ def main():
         Writes JSON file with cleaned and formatted application data.
     """
 
+    # Require the Abortion Policy API key for the api package to run.
     assert ABORTION_POLICY_API_KEY != ""
 
     get_and_save_abortion_policy_api_data()
