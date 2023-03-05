@@ -95,12 +95,12 @@ class CityBar(Visualization):
         """
         city_df = self._construct_data()
 
-        fig = px.bar(city_df[-25:], x="Clinic Count", y="City", orientation="h")
+        fig = px.bar(city_df[-20:], x="Clinic Count", y="City", orientation="h")
 
         fig.update_layout(
             autosize=False,
-            width=510,
-            height=500,
+            width=500,
+            height=450,
             margin=dict(l=0, r=0, t=0, b=0),
         )
 

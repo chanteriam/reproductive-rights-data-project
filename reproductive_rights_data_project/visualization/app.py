@@ -65,11 +65,16 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                 children=[
                     html.Br(),
                     html.H6(
-                        children=["Top Cities by Clinic Count"],
+                        children=["Top 20 Cities by Clinic Count"],
                         style={"text-align": "center"},
                     ),
                     html.Br(),
-                    dcc.Graph(figure=city_bar.create_visual()),
+                    dcc.Graph(figure=city_bar.create_visual(), 
+                            style={'align': 'center',
+                                   "justify" : "center",
+                                   "display": "inline-block",
+                                   "padding-right": "10px",
+                                   'horizontal-align': 'center'}),
                 ],
                 style={
                     "float": "right",
