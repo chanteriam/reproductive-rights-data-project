@@ -12,9 +12,6 @@ from reproductive_rights_data_project.visualization.abstract_visualization impor
 from reproductive_rights_data_project.api.github.open_data_se import (
     get_state_zip_code_geo_json,
 )
-from reproductive_rights_data_project.visualization.functions import (
-    sort_by_count,
-)
 from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
@@ -118,17 +115,17 @@ class USAState(Visualization):
                 count_zipcode_clinics[zipcode] = len(clinics)
 
         # Sort by count
-        count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
-
-        # create the zipcode dataframe
-        zip_df = (
-            pd.DataFrame.from_dict(count_zipcode_clinics, orient="index")
-            .reset_index()
-            .rename(columns={"index": "zipcode", 0: "clinic count"})
-        )
+        # count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
+        #
+        # # create the zipcode dataframe
+        # zip_df = (
+        #     pd.DataFrame.from_dict(count_zipcode_clinics, orient="index")
+        #     .reset_index()
+        #     .rename(columns={"index": "zipcode", 0: "clinic count"})
+        # )
 
         # Goal: join the zipcode count dataframe and check the state that the
-        # the zipcode is in
+        # zipcode is in
 
         return waiting_period_df
 
@@ -151,20 +148,6 @@ class USAState(Visualization):
 
         Author(s): Aïcha Camara
         """
-
-        """
-        Note: How should we set up the callback for the state? Should the state
-        name annd abbreviation be used as a parameter to then be utilized
-        within this function to make a request for the geojson and then
-        use that data in the visualization below? Or should another means be 
-        used?
-        
-        That is correct! You should be sending in the state abbreviation and
-        name and you will get the GeoJSON data base from the request. If you 
-        have requested the state before, it will pull from a file instead of
-        the API to save processing time and API calls.
-        """
-
         # geojson = get_state_zip_code_geo_json(state_name, state_abbrev)
 
         test_df = self._construct_data()
