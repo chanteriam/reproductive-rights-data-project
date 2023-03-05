@@ -7,6 +7,7 @@ from reproductive_rights_data_project.data_handling.ansirh.clean import (
     clean,
 )
 from reproductive_rights_data_project.util.constants import (
+    FILE_NAME_ANSIRH_BASE_DATA,
     FILE_NAME_ANSIRH_CLEAN_DATA,
 )
 from reproductive_rights_data_project.util.functions import (
@@ -27,7 +28,7 @@ def clean_and_save():
     """
     # TODO: Will refactor with csv in the near future
     ansirh_data = pd.read_csv(
-        "reproductive_rights_data_project/data/AFD_2021_for_ArcGIS_Upload.csv"
+        FILE_NAME_ANSIRH_BASE_DATA
     )
 
     # Drop empty column
@@ -96,7 +97,7 @@ def split_by_zip(state_dict):
             else:
                 zip_dict[row["zip code"]].append(row)
 
-        # Set state value to be dicitonary of zip codes
+        # Set state value to be dictionary of zip codes
         # containing list of row dictionaries
         complete_dict[state] = zip_dict
 
