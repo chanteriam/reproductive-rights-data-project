@@ -26,8 +26,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
             html.Div(
                 children=[
                     html.Br(),
-                    html.P(
-                        "Author(s): Aïcha Camara, Kate Habich, "
+                    html.B(
+                        "Author(s): Aïcha Camara, Kate Habich,"
                         "Chanteria Milner, Michael Plunkett"
                     ),
                     html.P(
@@ -36,7 +36,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     ),
                     html.Br(),
                 ],
-                style={"textAlign": "center"},
+                style={"textAlign": "center", 'font-weight': 'bold', "color":"black" },
             ),
             html.Div(
                 children=[
@@ -135,25 +135,18 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         "We would like to thank the following organizations "
                         "for providing our reference data: "
                     ),
-                    html.P(
-                        "Abortion Policy API: "
-                        "https://www.abortionpolicyapi.com/ "
-                    ),
-                    html.P(
-                        "ANSIRH Abortion Facility Database: "
-                        "https://abortionfacilitydatabase-ucsf.hub.arcgis.com/ "
-                    ),
-                    html.P("i need an a: https://www.ineedana.com/"),
-                    html.P(
-                        "United States Census Bureau: https://data.census.gov/"
-                    ),
-                    html.P(
-                        "OpenDataSE: https://github.com/OpenDataDE/State-zip"
-                        "-code-GeoJSON "
-                    ),
+                    html.A("Abortion Policy API", href="https://www.abortionpolicyapi.com/"),
+                    html.Br(),
+                    html.A("ANSIRH Abortion Facility Database", href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"),
+                    html.Br(),
+                    html.A("i need an a ❤️", href="https://www.ineedana.com/"),
+                    html.Br(),
+                    html.A("United States Census Bureau", href="https://data.census.gov/"),
+                    html.Br(),
+                    html.A("OpenDataSE", href="https://github.com/OpenDataDE/State-zip-code-GeoJSON"),
                     html.Br(),
                 ],
-                style={"text-align": "left", "padding-left": "5px"},
+                style={"text-align": "center", "padding-left": "5px", "font-size": 12},
             ),
         ],
     )
