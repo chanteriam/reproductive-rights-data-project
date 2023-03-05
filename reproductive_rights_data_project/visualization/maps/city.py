@@ -13,6 +13,7 @@ from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
 
+
 class CityBar(Visualization):
     """
     This class represents a table with information on each state.
@@ -62,10 +63,12 @@ class CityBar(Visualization):
                     city_state = ", ".join([clinic["city"].title(), state])
                     count_city_clinics[city_state] = (
                         count_city_clinics.get(city_state, 0) + 1
-                )
+                    )
 
-        #count_city_clinics = dict(sorted(count_city_clinics.items()))
-        count_city_clinics = dict(sorted(count_city_clinics.items(), key=lambda x: x[1]))
+        # count_city_clinics = dict(sorted(count_city_clinics.items()))
+        count_city_clinics = dict(
+            sorted(count_city_clinics.items(), key=lambda x: x[1])
+        )
         city_df = pd.DataFrame(
             count_city_clinics.items(), columns=["City", "Clinic Count"]
         )
@@ -92,12 +95,13 @@ class CityBar(Visualization):
         """
         city_df = self.construct_data()
 
-        fig = px.bar(city_df[-25:], x="Clinic Count", y="City", orientation="h") 
+        fig = px.bar(city_df[-25:], x="Clinic Count", y="City", orientation="h")
 
-        fig.update_layout(autosize=False,
-                  width=510,
-                  height=500,
-                  margin=dict(l=0, r=0, t=0, b=0)
-                )
+        fig.update_layout(
+            autosize=False,
+            width=510,
+            height=500,
+            margin=dict(l=0, r=0, t=0, b=0),
+        )
 
         return fig

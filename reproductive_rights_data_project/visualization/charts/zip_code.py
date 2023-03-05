@@ -35,7 +35,6 @@ class ZipChart(Visualization):
 
         self._locations_file_name = locations_file_name
         self._locations = None
- 
 
     def _import_files(self):
         """
@@ -48,7 +47,6 @@ class ZipChart(Visualization):
             self._locations_file_name, encoding=STANDARD_ENCODING
         ) as locations:
             self._locations = json.load(locations)
-
 
     def _sort_files(self):
         """
@@ -75,8 +73,7 @@ class ZipChart(Visualization):
             .reset_index()
             .rename(columns={"index": "Zipcode", 0: "Clinic Count"})
         )
-        zip_df = zip_df.sort_values(by=['Zipcode'], ascending=True)
-
+        zip_df = zip_df.sort_values(by=["Zipcode"], ascending=True)
 
         return zip_df
 
@@ -120,9 +117,10 @@ class ZipChart(Visualization):
             ]
         )
 
-        fig.update_layout(autosize=False,
-                  width=515,
-                  height=500,
-                  margin=dict(l=0, r=0, t=0, b=0)
-                )
+        fig.update_layout(
+            autosize=False,
+            width=515,
+            height=500,
+            margin=dict(l=0, r=0, t=0, b=0),
+        )
         return fig

@@ -192,7 +192,7 @@ class USAState(Visualization):
                 )
             ]
         )
-        #fig.update_layout(width=500, height=600)
+        # fig.update_layout(width=500, height=600)
         # fig.update_layout(autosize=False,
         #           width=500,
         #           height=400,

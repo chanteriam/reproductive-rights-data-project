@@ -10,6 +10,7 @@ from reproductive_rights_data_project.visualization.app import (
 from reproductive_rights_data_project.visualization.maps.usa_country import (
     USAMap as USAMap,
 )
+
 # from reproductive_rights_data_project.visualization.maps.usa_state import (
 #     USAState as USAState,
 # )
@@ -17,10 +18,10 @@ from reproductive_rights_data_project.visualization.charts.state_summary import 
     StateSummary as StateSummary,
 )
 from reproductive_rights_data_project.visualization.charts.zip_code import (
-    ZipChart as ZipChart
+    ZipChart as ZipChart,
 )
 from reproductive_rights_data_project.visualization.maps.city import (
-    CityBar as CityBar
+    CityBar as CityBar,
 )
 from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ABORTION_POLICY_API_GESTATION,
@@ -59,13 +60,9 @@ def main():
     #     FILE_NAME_ABORTION_POLICY_API_WAITING_PERIOD,
     # )
 
-    zip_chart = ZipChart(
-        FILE_NAME_ANSIRH_CLEAN_DATA
-    )
+    zip_chart = ZipChart(FILE_NAME_ANSIRH_CLEAN_DATA)
 
-    city_bar = CityBar(
-        FILE_NAME_ANSIRH_CLEAN_DATA
-    )
+    city_bar = CityBar(FILE_NAME_ANSIRH_CLEAN_DATA)
 
     build_dash(country_chart, country_map, zip_chart, city_bar)
 

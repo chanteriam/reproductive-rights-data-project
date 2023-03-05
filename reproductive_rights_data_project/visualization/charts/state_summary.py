@@ -206,10 +206,11 @@ class StateSummary(Visualization):
             ]
         )
 
-        fig.update_layout(autosize=False,
-                  width=900,
-                  height=500,
-                  margin=dict(l=0, r=0, t=0, b=0)
-                )
+        fig.update_layout(
+            autosize=False,
+            width=900,
+            height=500,
+            margin=dict(l=0, r=0, t=0, b=0),
+        )
 
         return fig
