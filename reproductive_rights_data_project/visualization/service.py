@@ -8,20 +8,16 @@ from reproductive_rights_data_project.visualization.app import (
     build_dash,
 )
 from reproductive_rights_data_project.visualization.maps.usa_country import (
-    USAMap as USAMap,
+    USAMap,
 )
-
-# from reproductive_rights_data_project.visualization.maps.usa_state import (
-#     USAState as USAState,
-# )
 from reproductive_rights_data_project.visualization.charts.state_summary import (
-    StateSummary as StateSummary,
+    StateSummary,
 )
 from reproductive_rights_data_project.visualization.charts.zip_code import (
-    ZipChart as ZipChart,
+    ZipChart,
 )
 from reproductive_rights_data_project.visualization.maps.city import (
-    CityBar as CityBar,
+    CityBar,
 )
 from reproductive_rights_data_project.util.constants import (
     FILE_NAME_ABORTION_POLICY_API_GESTATION,

@@ -4,13 +4,8 @@ Creates Plotly Dash Visualization to map the cleaned data
 Author(s): Aïcha Camara
 """
 
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-
-# import the abstract classes for the visualizations
-from reproductive_rights_data_project.visualization.functions import (
-    read_state,
-)
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
