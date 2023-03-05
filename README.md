@@ -6,7 +6,7 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 ## Project Requirements
 - [Poetry](https://python-poetry.org/docs/basic-usage/)
 - An API key from [Abortion Policy API](https://www.abortionpolicyapi.com/) stored as an environment variable called `ABORTION_POLICY_API_KEY`.
-  - The developers of this project stored it in our `.zshrc` file, but you may opt for a `.env` file if that is more comfortable.
+  - The developers of this project stored it in our `.zshrc` file, but you may opt for an `.env` file if that is more comfortable.
 
 ## Technical Notes
 - Any modules should be added via the `poetry add [module]` command.
