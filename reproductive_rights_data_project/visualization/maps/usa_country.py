@@ -154,6 +154,9 @@ class USAMap(Visualization):
             subunitcolor="Black",
         )
 
-        fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        #fig.update_layout(height=650, margin=dict(l=0, r=0, t=0, b=0))
+        fig.update_layout(autosize=False, height=500, \
+                        margin={'l': 0, 'r': 0, 't': 0, 'b': 0}, width=875)
 
+  
         return fig

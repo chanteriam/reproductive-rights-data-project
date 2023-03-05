@@ -155,10 +155,10 @@ class StateSummary(Visualization):
                 "count": "Clinic Count",
                 "exception_life": "Exception for Life Risk",
                 "banned_after_weeks_since_LMP": "Weeks until banned",
-                "requires_coverage": "Insurance Coverage?",
+                "requires_coverage": "Insurance Coverage",
                 "medicaid_exception_life": "Medicaid Coverage if Life Risk",
-                "below_age": "Age Requirement",
-                "parental_consent_required": "Parental Consent Needed?",
+                "below_age": "Min Age",
+                "parental_consent_required": "Parental Consent Needed",
                 "allows_minor_to_consent_to_abortion": "Can Minors Consent",
                 "waiting_period_hours": "Waiting Period (Hrs)",
                 "counseling_visits": "Counseling Visits",
@@ -205,5 +205,11 @@ class StateSummary(Visualization):
                 )
             ]
         )
+
+        fig.update_layout(autosize=False,
+                  width=900,
+                  height=500,
+                  margin=dict(l=0, r=0, t=0, b=0)
+                )
 
         return fig
