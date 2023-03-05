@@ -1,7 +1,5 @@
 """
 This file works as the central point for running the visualization package.
-
-Author(s): Michael Plunkett and Aïcha Camara
 """
 from reproductive_rights_data_project.visualization.app import (
     DASH_INSTANCE,
@@ -28,7 +26,9 @@ from reproductive_rights_data_project.util.constants import (
 
 def main():
     """
-    Author(s): Michael Plunkett and Aïcha Camara
+    This function serves as the central function for the visualization package.
+
+    Author(s): Michael Plunkett, Aïcha Camara
     """
 
     country_chart = StateSummary(
