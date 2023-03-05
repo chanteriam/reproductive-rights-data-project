@@ -126,26 +126,26 @@ class USAMap(Visualization):
         fig = px.choropleth(
             state_df,
             locations="code",
-            hover_name=state_df['state'],
+            hover_name=state_df["state"],
             hover_data={
                 "count": True,
                 "exception_life": True,
                 "banned_after_weeks_since_LMP": True,
-                "code": False
+                "code": False,
             },
             locationmode="USA-states",
-            labels={ 
+            labels={
                 "count": "Clinic Count ",
                 "exception_life": "Exception for life at risk ",
                 "banned_after_weeks_since_LMP": "Weeks Abortion Banned ",
             },
             scope="usa",
-        ) 
+        )
 
         fig.update_geos(
             visible=False,
             resolution=110,
-            bgcolor='White',
+            bgcolor="White",
             scope="usa",
             showcountries=True,
             countrycolor="Black",

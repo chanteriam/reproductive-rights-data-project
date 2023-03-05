@@ -200,7 +200,7 @@ class StateSummary(Visualization):
                         values=state_summary_df.transpose().values.tolist(),
                         fill_color="whitesmoke",
                         line_color="darkslategray",
-                        align="center", 
+                        align="center",
                     ),
                 )
             ]
