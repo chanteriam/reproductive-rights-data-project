@@ -23,9 +23,9 @@ dark_theme = {
 
 def build_dash(country_chart, country_map, state_map):
     """
-    Author(s): Aïcha Camara, Michael Plunkett
+    Author(s): Aïcha Camara
     """
-    # Creates the layout for the Plotly Dashboard
+
     DASH_INSTANCE.layout = html.Div(
         className="main-div",
         children=[
@@ -83,7 +83,9 @@ def build_dash(country_chart, country_map, state_map):
                             # adds padding to the dropdown bar
                         },
                     ),
-                    html.Div(id="dd-output-container"),
+                    html.Div(id="dd-output-container"), # this is where the figure will be to be updated
+                    # id= usa_state_map usa_state_map(state_name="Alabama", abbrev="AL")
+                    # set default with those values
                     html.Br(),
                     html.H6(children=["State Map by Zipcode (Hover for more information)"],
                             style={"text-align": "center"}),
