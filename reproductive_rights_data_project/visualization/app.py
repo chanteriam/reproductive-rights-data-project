@@ -140,7 +140,7 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
         children=[
         html.Br(),
-        html.P("We would like to thank the following organizations for providing our reference data"),
+        html.P("We would like to thank the following organizations for providing our reference data: "),
         html.P("Abortion Policy API: https://www.abortionpolicyapi.com/"),
         html.P("ANSIRH Abortion Facility Database: https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"),
         html.P("i need an a: https://www.ineedana.com/"),
