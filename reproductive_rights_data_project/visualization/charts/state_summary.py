@@ -185,7 +185,7 @@ class StateSummary(Visualization):
 
         Author(s): Aïcha Camara
         """
-        state_summary_df = self._sort_files()
+        state_summary_df = self.construct_data()
 
         fig = go.Figure(
             data=[

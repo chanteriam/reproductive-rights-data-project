@@ -63,7 +63,7 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.B("This box will contain the state level analyses"),
-                    dcc.Graph(state_map.create_visual()),
+                    dcc.Graph(figure=state_map.create_visual()),
                     dcc.Dropdown(
                         options=read_state(),
                         id="example-dropdown",
@@ -85,7 +85,7 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.B("This is where the charts will go"),
-                    dcc.Graph(country_chart.create_visual()),
+                    dcc.Graph(figure=country_chart.create_visual()),
                 ],
                 style={
                     "float": "right",
