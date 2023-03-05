@@ -9,9 +9,6 @@ import plotly.graph_objects as go
 from reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
 )
-from reproductive_rights_data_project.api.github.open_data_se import (
-    get_state_zip_code_geo_json,
-)
 from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )
