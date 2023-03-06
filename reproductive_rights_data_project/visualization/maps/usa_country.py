@@ -100,7 +100,7 @@ class USAMap(Visualization):
 
         return final_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USA country visual.
@@ -121,23 +121,23 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara
         """
 
-        state_df = self.construct_data()
+        state_df = self._construct_data()
 
         fig = px.choropleth(
             state_df,
             locations="code",
-            hover_name="state",
-            hover_data=[
-                "count",
-                "exception_life",
-                "banned_after_weeks_since_LMP",
-            ],
+            hover_name=state_df["state"],
+            hover_data={
+                "count": True,
+                "exception_life": True,
+                "banned_after_weeks_since_LMP": True,
+                "code": False,
+            },
             locationmode="USA-states",
             labels={
-                "count": "Clinic Count: ",
-                "exception_life": "Exception for life at risk? ",
-                "banned_after_weeks_since_LMP": "Abortion banned after how "
-                "many weeks? ",
+                "count": "Clinic Count ",
+                "exception_life": "Exception for life at risk ",
+                "banned_after_weeks_since_LMP": "Weeks Abortion Banned ",
             },
             scope="usa",
         )
@@ -145,6 +145,7 @@ class USAMap(Visualization):
         fig.update_geos(
             visible=False,
             resolution=110,
+            bgcolor="White",
             scope="usa",
             showcountries=True,
             countrycolor="Black",
@@ -152,6 +153,12 @@ class USAMap(Visualization):
             subunitcolor="Black",
         )
 
-        fig.update_layout(height=650, margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        # fig.update_layout(height=650, margin=dict(l=0, r=0, t=0, b=0))
+        fig.update_layout(
+            autosize=False,
+            height=500,
+            margin={"l": 0, "r": 0, "t": 0, "b": 0},
+            width=875,
+        )
 
         return fig

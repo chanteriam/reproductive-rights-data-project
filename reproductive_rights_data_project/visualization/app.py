@@ -4,26 +4,21 @@ Creates Plotly Dash Visualization to map the cleaned data
 Author(s): Aïcha Camara
 """
 
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-
-# import the abstract classes for the visualizations
-from reproductive_rights_data_project.visualization.functions import (
-    read_state,
-)
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 
-def build_dash(country_chart, country_map, state_map):
+def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
     Author(s): Aïcha Camara, Michael Plunkett
     """
-    # Creates the layout for the Plotly Dashboard
+
     DASH_INSTANCE.layout = html.Div(
-        className="webpage",
+        className="main-div",
         children=[
-            html.Br(),  # html.Br() adds a line break
+            html.Br(),
             html.H1(
                 children="Reproductive Rights Mapping Dashboard",
                 style={"textAlign": "center"},
@@ -31,48 +26,75 @@ def build_dash(country_chart, country_map, state_map):
             html.Div(
                 children=[
                     html.Br(),
-                    html.H4(
-                        """
-                        Author(s): Aïcha Camara, Kate Habich, 
-                        Chanteria Milner, Michael Plunkett
-                        """
+                    html.B(
+                        "Author(s): Aïcha Camara, Kate Habich,"
+                        "Chanteria Milner, Michael Plunkett"
                     ),
-                    html.H4(
+                    html.P(
                         "If you or someone you love needs an abortion, \
                     you can find up-to-date help at ineedana.com. ❤️"
                     ),
                     html.Br(),
                 ],
-                style={"textAlign": "center"},
+                style={"textAlign": "center", 'font-weight': 'bold', "color":"black" },
             ),
             html.Div(
                 children=[
-                    html.B("This box will hold the map of the United States"),
+                    html.Br(),
+                    html.H6(
+                        children=[
+                            "2023 US Reproductive Rights (Hover for "
+                            "Information) "
+                        ],
+                        style={"text-align": "center"},
+                    ),
                     dcc.Graph(
                         id="usa-graph", figure=country_map.create_visual()
                     ),
                 ],
                 style={
                     "float": "left",
-                    "height": "1020px",
+                    "height": "550px",
                     "width": "900px",
                     "border": "1px solid black",
                     "margin": "5px",
+                    "padding-left": "1px",
                 },
             ),
             html.Div(
                 children=[
-                    html.B("This box will contain the state level analyses"),
-                    dcc.Graph(state_map.create_visual()),
-                    dcc.Dropdown(
-                        options=read_state(),
-                        id="example-dropdown",
-                        style={
-                            "width": "500px"
-                            # adds padding to the dropdown bar
-                        },
+                    html.Br(),
+                    html.H6(
+                        children=["Top 20 Cities by Clinic Count"],
+                        style={"text-align": "center"},
                     ),
-                    html.Div(id="dd-output-container"),
+                    html.Br(),
+                    dcc.Graph(figure=city_bar.create_visual(), 
+                            style={'align': 'center',
+                                   "justify" : "center",
+                                   "display": "inline-block",
+                                   "padding-right": "10px",
+                                   'horizontal-align': 'center'}),
+                ],
+                style={
+                    "float": "right",
+                    "height": "550px",
+                    "width": "515px",
+                    "border": "1px solid black",
+                    "margin": "5px",
+                    "display": "inline-block",
+                    "vertical-align": "middle",
+                    "overflow": "scroll",
+                },
+            ),
+            html.Div(
+                children=[
+                    html.Br(),
+                    html.H6(
+                        children=["Clinics By Zipcode"],
+                        style={"text-align": "center"},
+                    ),
+                    dcc.Graph(figure=zip_chart.create_visual()),
                 ],
                 style={
                     "float": "right",
@@ -80,33 +102,51 @@ def build_dash(country_chart, country_map, state_map):
                     "width": "515px",
                     "border": "1px solid black",
                     "margin": "5px",
+                    "display": "inline-block",
+                    "vertical-align": "middle",
+                    "overflow": "scroll",
                 },
             ),
             html.Div(
                 children=[
-                    html.B("This is where the charts will go"),
-                    dcc.Graph(country_chart.create_visual()),
+                    html.Br(),
+                    html.H6(
+                        children=["2023 US Reproductive Rights Chart"],
+                        style={"text-align": "center"},
+                    ),
+                    dcc.Graph(figure=country_chart.create_visual()),
                 ],
                 style={
-                    "float": "right",
-                    "height": "510px",
-                    "width": "515px",
+                    "float": "left",
+                    "height": "500px",
+                    "width": "900px",
                     "border": "1px solid black",
                     "margin": "5px",
+                    "display": "inline-block",
+                    "vertical-align": "middle",
+                    "overflow": "scroll",
+                    "padding-left": "1px",
                 },
+            ),
+            html.Div(
+                children=[
+                    html.Br(),
+                    html.P(
+                        "We would like to thank the following organizations "
+                        "for providing our reference data: "
+                    ),
+                    html.A("Abortion Policy API", href="https://www.abortionpolicyapi.com/"),
+                    html.Br(),
+                    html.A("ANSIRH Abortion Facility Database", href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"),
+                    html.Br(),
+                    html.A("i need an a ❤️", href="https://www.ineedana.com/"),
+                    html.Br(),
+                    html.A("United States Census Bureau", href="https://data.census.gov/"),
+                    html.Br(),
+                    html.A("OpenDataSE", href="https://github.com/OpenDataDE/State-zip-code-GeoJSON"),
+                    html.Br(),
+                ],
+                style={"text-align": "center", "padding-left": "5px", "font-size": 12},
             ),
         ],
     )
-
-
-@DASH_INSTANCE.callback(
-    Output("dd-output-container", "children"),
-    Input("example-dropdown", "value"),
-)
-def update_output(value):
-    """
-    Function for the app.callback above; update_output() is a test
-    function that updates the output of the navigation when another state
-    is selected.
-    """
-    return f"{value} was selected"
