@@ -85,12 +85,16 @@ class USAMap(Visualization):
             count_state_clinics[state] = clinic_count
 
         count_state_clinics = dict(sorted(count_state_clinics.items()))
-        state_df = pd.DataFrame(count_state_clinics.items(), columns=["state", "count"])
+        state_df = pd.DataFrame(
+            count_state_clinics.items(), columns=["state", "count"]
+        )
         state_df = state_df.join(extracted_abbrev)
 
         final_df = pd.merge(
             state_df,
-            gest_df[["state", "exception_life", "banned_after_weeks_since_LMP"]],
+            gest_df[
+                ["state", "exception_life", "banned_after_weeks_since_LMP"]
+            ],
             on="state",
         )
 

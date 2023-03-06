@@ -58,8 +58,9 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                             "color": "#E0DFDF",
                         },
                     ),
-                    dcc.Graph(id="usa-graph",
-                              figure=country_map.create_visual()),
+                    dcc.Graph(
+                        id="usa-graph", figure=country_map.create_visual()
+                    ),
                 ],
                 style={
                     "float": "left",

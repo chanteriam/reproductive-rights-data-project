@@ -41,7 +41,9 @@ class ZipChart(Visualization):
 
         Author(s): Aïcha Camara
         """
-        with open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations:
+        with open(
+            self._locations_file_name, encoding=STANDARD_ENCODING
+        ) as locations:
             self._locations = json.load(locations)
 
     def _sort_files(self):
