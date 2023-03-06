@@ -6,12 +6,14 @@ Utility functions for the visualization package.
 def sort_by_count(clinic_counts):
     """
     Sorts a dictionary of clinic counts in descending order.
+
     Author(s): Chanteria Milner
 
     Inputs:
         clinic_counts (dict): count of clinics by either state, zipcode, or city
-    Returns:
-        (dict): sorted dictionary
+
+    Returns (dict):
+        Returns a sorted dictionary.
     """
 
     clinic_counts = dict(

@@ -1,6 +1,7 @@
 """
 This file contains all testing functions for the util package.
 """
+
 from reproductive_rights_data_project.util.constants import (
     STANDARD_ENCODING,
 )

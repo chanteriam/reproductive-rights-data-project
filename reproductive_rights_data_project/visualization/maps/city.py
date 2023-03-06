@@ -49,6 +49,9 @@ class CityBar(Visualization):
         the visualization
 
         Author(s): Chanteria Milner, Aicha Camara
+
+        Returns (DataFrame):
+            The Pandas Dataframe contaning data on clinic counts by US city.
         """
 
         # sorts locations data to get counts by state
@@ -70,8 +73,8 @@ class CityBar(Visualization):
 
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:
-            (dict) city, state: clinic count
+        Returns (dict):
+            The Dictionary containing clinic count by city, state.
         """
 
         count_city_clinics = {}
@@ -94,6 +97,9 @@ class CityBar(Visualization):
         the USA country state-by-state chart.
 
         Author(s): Aïcha Camara
+
+        Returns (DataFrame):
+            The Pandas Dataframe containing data on clinic counts by US city.
         """
         self._import_files()
         city_df = self._sort_files()
@@ -105,6 +111,9 @@ class CityBar(Visualization):
         Creates the state summary chart
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (Figure):
+            The Table displaying abortion clinic count data by US city.
         """
         city_df = self._construct_data()
 

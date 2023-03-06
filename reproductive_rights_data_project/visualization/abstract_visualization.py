@@ -24,7 +24,7 @@ class Visualization(ABC):
     @abstractmethod
     def create_visual(self):
         """
-        This method takes the data from the construct_data function and returns
+        This method takes the data from the _construct_data function and returns
         a visual object.
         """
         pass

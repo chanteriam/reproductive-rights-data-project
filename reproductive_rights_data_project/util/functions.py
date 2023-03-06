@@ -1,6 +1,7 @@
 """
 Creates functions for multiple use across files.
 """
+
 import json
 import csv
 from reproductive_rights_data_project.util.constants import (

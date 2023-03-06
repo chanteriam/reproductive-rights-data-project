@@ -52,6 +52,9 @@ class ZipChart(Visualization):
         the visualization.
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (DataFrame):
+            The Pandas Dataframe of abortion data by zip code.
         """
 
         # sorts locations data to get counts by zipcode
@@ -76,8 +79,8 @@ class ZipChart(Visualization):
 
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:
-            (dict) zipcode: clinic count
+        Returns (dict):
+            The Dictionary containing zipcodes and clinic counts.
         """
 
         count_zipcode_clinics = {}
@@ -94,6 +97,9 @@ class ZipChart(Visualization):
         the USAState visual.
 
         Author(s): Aïcha Camara
+
+        Returns (DataFrame):
+            The Pandas Dataframe containing zip code and clinic count data.
         """
         self._import_files()
         zip_df = self._sort_files()
@@ -105,6 +111,9 @@ class ZipChart(Visualization):
         Creates the zip code level summary of clinic counts
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (Figure):
+            The Table representing zipcode and clinic count data.
         """
 
         zip_df = self._construct_data()

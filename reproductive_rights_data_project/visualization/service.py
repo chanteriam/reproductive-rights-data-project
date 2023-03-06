@@ -1,6 +1,7 @@
 """
 This file works as the central point for running the visualization package.
 """
+
 from reproductive_rights_data_project.visualization.app import (
     DASH_INSTANCE,
     build_dash,
