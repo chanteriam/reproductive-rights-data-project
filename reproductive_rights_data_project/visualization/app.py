@@ -1,7 +1,5 @@
 """
 Creates Plotly Dash Visualization to map the cleaned data
-
-Author(s): Aïcha Camara
 """
 
 from dash import Dash, html, dcc
