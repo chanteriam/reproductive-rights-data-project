@@ -104,7 +104,7 @@ class ZipChart(Visualization):
         """
         Creates the zip code level summary of clinic counts
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
         zip_df = self._construct_data()
@@ -114,13 +114,14 @@ class ZipChart(Visualization):
                 go.Table(
                     header=dict(
                         values=list(zip_df.columns),
-                        fill_color="silver",
+                        fill_color="#300608",
+                        font_color="#E0DFDF",
                         line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=zip_df.transpose().values.tolist(),
-                        fill_color="whitesmoke",
+                        fill_color=[["#c0ccd8", "#eff2f5"] * len(zip_df)],
                         line_color="darkslategray",
                         align="center",
                     ),

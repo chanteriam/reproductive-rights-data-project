@@ -117,7 +117,7 @@ class USAMap(Visualization):
         Creates the map of a United States state using the data from the
         construct function and returns the plotly map of a state.
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
         state_df = self._construct_data()
@@ -139,17 +139,15 @@ class USAMap(Visualization):
                 "banned_after_weeks_since_LMP": "Weeks Abortion Banned ",
             },
             scope="usa",
+            color="count",
+            color_continuous_scale=["#E0DFDF", "#300608"],
         )
 
         fig.update_geos(
             visible=False,
             resolution=110,
-            bgcolor="White",
+            bgcolor="#1f2630",
             scope="usa",
-            showcountries=True,
-            countrycolor="Black",
-            showsubunits=True,
-            subunitcolor="Black",
         )
 
         fig.update_layout(
@@ -157,6 +155,8 @@ class USAMap(Visualization):
             height=500,
             margin={"l": 0, "r": 0, "t": 0, "b": 0},
             width=875,
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="#E0DFDF",
         )
 
         return fig

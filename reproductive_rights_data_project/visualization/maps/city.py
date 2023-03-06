@@ -1,5 +1,5 @@
 """
-This file contains the functions and functionality needed to display a 
+This file contains the functions and functionality needed to display a
 visualization of the top 25 cities with abortion clinics
 """
 import json
@@ -115,6 +115,21 @@ class CityBar(Visualization):
             width=500,
             height=450,
             margin=dict(l=0, r=0, t=0, b=0),
+            plot_bgcolor="#1f2630",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="#E0DFDF",
         )
+
+        fig.update_xaxes(
+            linewidth=2,
+            linecolor="#1c1412",
+            gridcolor="#1c1412",
+        )
+
+        fig.update_yaxes(
+            linewidth=2,
+            linecolor="#1c1412",
+        )
+        fig.update_traces(marker_color="#300608")
 
         return fig
