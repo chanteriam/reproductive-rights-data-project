@@ -183,7 +183,7 @@ class StateSummary(Visualization):
         """
         Creates the state summary chart
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
         state_summary_df = self._construct_data()
 
@@ -192,13 +192,16 @@ class StateSummary(Visualization):
                 go.Table(
                     header=dict(
                         values=list(state_summary_df.columns),
-                        fill_color="silver",
+                        fill_color="#300608",
+                        font_color="#E0DFDF",
                         line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=state_summary_df.transpose().values.tolist(),
-                        fill_color="whitesmoke",
+                        fill_color=[
+                            ["#c0ccd8", "#eff2f5"] * len(state_summary_df)
+                        ],
                         line_color="darkslategray",
                         align="center",
                     ),
