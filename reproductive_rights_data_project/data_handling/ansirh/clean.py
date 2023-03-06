@@ -23,13 +23,13 @@ def clean(rows):
         List of cleaned ANSIRH row dictionaries.
     """
 
-    # instantiating
+    # instantiate
     clean_row_list = []
     default_col_types = set_default_types(rows)
     zipcode_len = 5
 
     for row in rows:
-        # setting certain floats to str of standard length
+        # set certain floats to str of standard format
         zipcode = str(row["zip code"]).split(".", maxsplit=1)[0]
 
         if len(zipcode) < zipcode_len:
@@ -42,11 +42,11 @@ def clean(rows):
         }
 
         for col_name, value in row.items():
-            # if nan, set to correct default type
+            # set correct default types
             if not value or (not isinstance(value, str) and isnan(value)):
                 clean_row[col_name] = default_col_types[col_name]
 
-            # if string type, clean it up
+            # clean strings, convert some to bool
             elif isinstance(value, str):
                 value = value.strip('"').strip().lower()
                 if value == "yes":
@@ -56,7 +56,6 @@ def clean(rows):
                 else:
                     clean_row[col_name] = value
 
-            # if no cleaning happens, transfer data over as is
             elif col_name not in clean_row:
                 clean_row[col_name] = value
 

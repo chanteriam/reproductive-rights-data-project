@@ -2,7 +2,7 @@
 Creates functions for multiple use across files.
 """
 import json
-import pandas as pd
+import csv
 from reproductive_rights_data_project.util.constants import (
     FILE_NAME_STATE_ABBREVIATIONS,
     STANDARD_ENCODING,
@@ -41,11 +41,16 @@ def translate_code_to_state(state_abr):
     Returns (str):
         Full state name.
     """
-    # TODO: Will refactor with csv in the near future
     # Read in state abbreviation data
-    state = pd.read_csv(FILE_NAME_STATE_ABBREVIATIONS)
+    with open(
+        FILE_NAME_STATE_ABBREVIATIONS, "r", encoding=STANDARD_ENCODING
+    ) as f:
+        reader = csv.DictReader(f)
 
-    # Convert to full state name
-    state_name = state["state"][state["code"] == state_abr.upper()].values[0]
+        # Convert to full state name
+        state_name = None
+        for row in reader:
+            if row["code"] == state_abr.upper():
+                state_name = row["state"]
 
     return state_name

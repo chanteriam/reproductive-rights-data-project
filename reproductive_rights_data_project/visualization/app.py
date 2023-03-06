@@ -10,7 +10,21 @@ DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
+    Builds dashboard with multiple visualizations.
+
     Author(s): Aïcha Camara, Chanteria Milner, Michael Plunkett
+
+    Inputs:
+        country_chart (StateSummary): plotly table of current US
+            reproductive rights
+        country_map (USAMap): plotly choropleth map of current US
+            reproductive rights
+        zip_chart (ZipChart): plot table of zip code clinic count data
+        city_bar (CityBar): plotly barchart of top twenty cities
+            by clinic count
+
+    Returns (Plotly Dash Instance):
+        The Plotly dashboard containing abortion-related charts and maps.
     """
 
     DASH_INSTANCE.layout = html.Div(

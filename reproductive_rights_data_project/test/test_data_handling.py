@@ -82,6 +82,8 @@ STATE_ABRVS.pop(0)
 
 def test_make_row_dicts():
     """
+    Tests functionality of data_handling.ansirh.process.make_row_dicts().
+
     Author(s): Chanteria Milner
     """
     rows = make_row_dicts(DF)
@@ -95,6 +97,8 @@ def test_make_row_dicts():
 
 def test_set_default_types():
     """
+    Tests functionality of data_handling.ansirh.clean.set_default_types().
+
     Author(s): Chanteria Milner
     """
     assert set_default_types(ROWS) == CORRECT_DEFAULT_TYPES
@@ -102,6 +106,8 @@ def test_set_default_types():
 
 def test_clean_ansirh():
     """
+    Tests functionality of data_handling.ansirh.clean.clean().
+
     Author(s): Chanteria Milner
     """
     clean_rows = [
@@ -130,6 +136,8 @@ def test_clean_ansirh():
 
 def test_translate_code_to_state():
     """
+    Tests functionality of util.functions.translate_code_to_state().
+
     Author(s): Chanteria Milner
     """
     for i, abr in enumerate(STATE_ABRVS):
@@ -138,6 +146,8 @@ def test_translate_code_to_state():
 
 def test_split_by_state():
     """
+    Tests functionality of data_handling.ansirh.process.split_by_state().
+
     Author(s): Chanteria Milner
     """
     clean_rows = [
@@ -211,6 +221,8 @@ def test_split_by_state():
 
 def test_split_by_zip():
     """
+    Tests functionality of data_handling.ansirh.process.split_by_zip().
+
     Author(s): Chanteria Milner
     """
     split_rows_state = {

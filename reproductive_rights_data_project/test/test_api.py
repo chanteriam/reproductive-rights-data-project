@@ -107,6 +107,8 @@ waiting_data = json.dumps(
 @responses.activate
 def test_get_api_data():
     """
+    Tests functionality of abortion_policy_api.get_data().
+
     Author(s): Michael Plunkett
     """
     responses.add(
@@ -160,6 +162,9 @@ def test_get_api_data():
 @responses.activate
 def test_get_state_zip_code_geo_json_first_call():
     """
+    Tests functionality of open_data_se.get_state_zip_code_geo_json()'s first
+    call.
+
     Author(s): Michael Plunkett
     """
     test_data = json.dumps({"data": "here it is"})
@@ -191,6 +196,9 @@ def test_get_state_zip_code_geo_json_first_call():
 @responses.activate
 def test_get_state_zip_code_geo_json_not_first_call():
     """
+    Tests functionality of open_data_se.get_state_zip_code_geo_json() beyond
+    its first call.
+
     Author(s): Michael Plunkett
     """
     test_data = json.dumps({"data": "here it be"})
@@ -223,6 +231,8 @@ def test_get_state_zip_code_geo_json_not_first_call():
 
 def test_set_default_types():
     """
+    Tests functionality of abortion_policy_api.set_default_types().
+
     Author(s): Chanteria Milner
     """
     policies = {
@@ -252,6 +262,8 @@ def test_set_default_types():
 
 def test_fill_in_missing_data():
     """
+    Tests functionality of abortion_policy_api.fill_in_missing_data().
+
     Author(s): Chanteria Milner
     """
     policies = {
@@ -277,6 +289,8 @@ def test_fill_in_missing_data():
 
 def test_add_missing_states():
     """
+    Tests functionality of abortion_policy_api.add_missing_states().
+
     Author(s): Chanteria Milner
     """
     states = ["A state", "Another state"]
