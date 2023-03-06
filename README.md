@@ -29,8 +29,8 @@ There are two ways that you can run this application, one of them is to run all 
 
 #### Run with one command
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command from the base repository directory: `poetry shell`
-2. Run the command `poetry install` to install the package dependencies within the project.
-3. Run the `make run` command, and you will run the `api`, `data-parsing`, and `visualization` layers in serial. This will spin up a web page you can access via the URL `localhost:8005`.
+2. Run the `poetry install` command to install the package dependencies within the project.
+3. Run the `make run` command to run the application. This will spin up a web page you can access via the URL `localhost:8005`.
 
 #### Run each package individually
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command from the base repository directory: `poetry shell`
