@@ -1,7 +1,5 @@
 """
-Creates Plotly Dash Visualization to map the cleaned data
-
-Author(s): Aïcha Camara
+Creates Plotly Dash Visualization to map the cleaned data.
 """
 
 from dash import Dash, html, dcc
@@ -12,7 +10,7 @@ DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
-    Author(s): Aïcha Camara, Michael Plunkett
+    Author(s): Aïcha Camara, Chanteria Milner, Michael Plunkett
     """
 
     DASH_INSTANCE.layout = html.Div(
