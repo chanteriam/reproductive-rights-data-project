@@ -155,10 +155,10 @@ class StateSummary(Visualization):
                 "count": "Clinic Count",
                 "exception_life": "Exception for Life Risk",
                 "banned_after_weeks_since_LMP": "Weeks until banned",
-                "requires_coverage": "Insurance Coverage?",
+                "requires_coverage": "Insurance Coverage",
                 "medicaid_exception_life": "Medicaid Coverage if Life Risk",
-                "below_age": "Age Requirement",
-                "parental_consent_required": "Parental Consent Needed?",
+                "below_age": "Min Age",
+                "parental_consent_required": "Parental Consent Needed",
                 "allows_minor_to_consent_to_abortion": "Can Minors Consent",
                 "waiting_period_hours": "Waiting Period (Hrs)",
                 "counseling_visits": "Counseling Visits",
@@ -167,7 +167,7 @@ class StateSummary(Visualization):
 
         return final_df
 
-    def construct_data(self):
+    def _construct_data(self):
         """
         This function calls and constructs the information needed to construct
         the USA country state-by-state chart.
@@ -185,7 +185,7 @@ class StateSummary(Visualization):
 
         Author(s): Aïcha Camara
         """
-        state_summary_df = self._sort_files()
+        state_summary_df = self._construct_data()
 
         fig = go.Figure(
             data=[
@@ -193,16 +193,24 @@ class StateSummary(Visualization):
                     header=dict(
                         values=list(state_summary_df.columns),
                         fill_color="silver",
+                        line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=state_summary_df.transpose().values.tolist(),
-                        fill_color="white",
+                        fill_color="whitesmoke",
                         line_color="darkslategray",
                         align="center",
                     ),
                 )
             ]
+        )
+
+        fig.update_layout(
+            autosize=False,
+            width=900,
+            height=500,
+            margin=dict(l=0, r=0, t=0, b=0),
         )
 
         return fig
