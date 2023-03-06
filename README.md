@@ -6,12 +6,15 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 ## Project Requirements
 - [Poetry](https://python-poetry.org/docs/basic-usage/)
 - An API key from [Abortion Policy API](https://www.abortionpolicyapi.com/) stored as an environment variable called `ABORTION_POLICY_API_KEY`.
+  - To get access to an API key for [Abortion Policy API](https://www.abortionpolicyapi.com/), please [go to this link](https://www.abortionpolicyapi.com/request-access) and fill out the form.
   - The developers of this project stored it in our `.zshrc` file, but you may opt for an `.env` file if that is more comfortable.
+- You will also need abortion location data from [ANSIRH](https://abortionfacilitydatabase-ucsf.hub.arcgis.com/), which you can request from their website.
+  - Please update the `FILE_NAME_ANSIRH_BASE_DATA` variable in the `./reproductive_rights_data_project/data/util/constants.py` file with the name of your ANSIRH file name.
 
 ## Technical Notes
 - Any modules should be added via the `poetry add [module]` command.
   - Example: `poetry add pytest`
-- Data from external APIs should be saved in JSON format in the `./reproductive_rights_data_project/data` folder. It will have to be pulled by each dev individually as various data sources required for this project cannot be saved in a public repository, as per our agreements.
+- Data from external sources is saved in JSON format in the `./reproductive_rights_data_project/data` folder. It will have to be pulled by each dev individually as various data sources required for this project cannot be saved in a public repository, as per our agreements.
 
 ## Standard Commands
 - `make format`: Formats the python files within the project using the Python formatter [Black](https://github.com/psf/black)
