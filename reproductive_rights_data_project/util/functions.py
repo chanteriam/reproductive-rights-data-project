@@ -42,9 +42,10 @@ def translate_code_to_state(state_abr):
         Full state name.
     """
     # Read in state abbreviation data
-    with open(FILE_NAME_STATE_ABBREVIATIONS) as f:
+    with open(FILE_NAME_STATE_ABBREVIATIONS, "r", encoding=STANDARD_ENCODING) \
+        as f:
         reader = csv.DictReader(f)
-        
+
         # Convert to full state name
         state_name = None
         for row in reader:

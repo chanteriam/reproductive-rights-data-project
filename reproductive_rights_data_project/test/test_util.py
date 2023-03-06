@@ -12,7 +12,7 @@ import os
 def test_to_json():
     """
     Tests functionality of util.to_json().
-    
+
     Author(s): Chanteria Milner, Michael Plunkett
     """
     rows = [

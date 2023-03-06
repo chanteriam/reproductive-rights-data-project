@@ -162,7 +162,7 @@ def test_get_api_data():
 @responses.activate
 def test_get_state_zip_code_geo_json_first_call():
     """
-    Tests functionality of open_data_se.get_state_zip_code_geo_json()'s first 
+    Tests functionality of open_data_se.get_state_zip_code_geo_json()'s first
     call.
 
     Author(s): Michael Plunkett
@@ -196,7 +196,7 @@ def test_get_state_zip_code_geo_json_first_call():
 @responses.activate
 def test_get_state_zip_code_geo_json_not_first_call():
     """
-    Tests functionality of open_data_se.get_state_zip_code_geo_json() beyond 
+    Tests functionality of open_data_se.get_state_zip_code_geo_json() beyond
     its first call.
 
     Author(s): Michael Plunkett

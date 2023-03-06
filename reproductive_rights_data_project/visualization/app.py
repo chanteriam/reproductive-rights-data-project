@@ -17,8 +17,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
     Author(s): Aïcha Camara, Michael Plunkett
 
     Inputs:
-        country_chart (): 
-        country_map (): 
+        country_chart ():
+        country_map ():
         state_map ():
     """
 
