@@ -2,7 +2,7 @@
 [tool.poetry]
 name = "reproductive-rights-data-project"
 version = "0.1.0"
-description = "A capstone project for UChicago's CAPP122 where abortion related data is taken from multiple sources and used to create intuitive visuals and searchable spreadsheets."
+description = "A capstone project for UChicago's CAPP122 course where state-wide abortion law and clinic data is taken from multiple sources and used to create intuitive visuals."
 authors = ["Aïcha Camara <aichacamara@ucicago.edu>", "Chanteria Milner <milnerca@uchicago.edu>",
     "Kate Habich <ehabich@uchicago.edu>", "Michael Plunkett <michplunkett@uchicago.edu>"]
 readme = "README.md"
