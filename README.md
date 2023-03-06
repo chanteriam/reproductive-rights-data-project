@@ -7,7 +7,7 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 - [Poetry](https://python-poetry.org/docs/basic-usage/)
 - An API key from [Abortion Policy API](https://www.abortionpolicyapi.com/) stored as an environment variable called `ABORTION_POLICY_API_KEY`.
   - To get access to an API key for [Abortion Policy API](https://www.abortionpolicyapi.com/), please [go to this link](https://www.abortionpolicyapi.com/request-access) and fill out the form.
-  - The developers of this project stored it in our `.zshrc` file, but you may opt for an `.env` file if that is more comfortable.
+  - The developers of this project stored the [API key in their `.zshrc` file.](https://linuxhint.com/set-environment-variable-zsh/)
 - You will also need abortion location data from [ANSIRH](https://abortionfacilitydatabase-ucsf.hub.arcgis.com/), which you can request from their website.
   - Please update the `FILE_NAME_ANSIRH_BASE_DATA` variable in the `./reproductive_rights_data_project/data/util/constants.py` file with the name of your ANSIRH file name.
 
