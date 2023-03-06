@@ -181,16 +181,3 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
             ),
         ],
     )
-
-
-@DASH_INSTANCE.callback(
-    Output("dd-output-container", "children"),
-    Input("example-dropdown", "value"),
-)
-def update_output(value):
-    """
-    Function for the app.callback above; update_output() is a test
-    function that updates the output of the navigation when another state
-    is selected.
-    """
-    return f"{value} was selected"
