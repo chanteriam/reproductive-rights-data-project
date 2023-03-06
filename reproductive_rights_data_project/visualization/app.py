@@ -34,8 +34,19 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         "Chanteria Milner, Michael Plunkett"
                     ),
                     html.P(
-                        "If you or someone you love needs an abortion, \
-                    you can find up-to-date help at ineedana.com. ❤️"
+                        [
+                            "If you or someone you love needs an abortion, \
+                    you can find up-to-date help at ",
+                            html.A(
+                                "ineedana.com",
+                                href="https://www.ineedana.com/",
+                                style={
+                                    "color": "#b1bfce",
+                                    "text-decoration": "none",
+                                },
+                            ),
+                            ". ❤️",
+                        ]
                     ),
                     html.Br(),
                 ],
