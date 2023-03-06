@@ -15,9 +15,16 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
     Author(s): Aïcha Camara, Michael Plunkett
 
     Inputs:
-        country_chart ():
-        country_map ():
-        state_map ():
+        country_chart (StateSummary): Plotly table of current US
+            reproductive rights
+        country_map (USAMap): Plotly choropleth map of current US
+            reproductive rights
+        zip_chart (ZipChart): Plot table of zip code clinic count data
+        city_bar (CityBar): Plotly barchart of top twenty cities
+            by clinic count
+
+    Returns:
+        (Plotly Dash Instance): "Reproductive Rights Mapping Dashboard"
     """
 
     DASH_INSTANCE.layout = html.Div(
