@@ -73,6 +73,9 @@ class StateSummary(Visualization):
         the visualization
 
         Author(s): Aïcha Camara
+
+        Returns (DataFrame):
+            final dataframe
         """
 
         # set up the dataframes and standardize the orientation
@@ -173,6 +176,9 @@ class StateSummary(Visualization):
         the USA country state-by-state chart.
 
         Author(s): Aïcha Camara
+
+        Returns (DataFrame):
+            DataFrame summarizing state abortion data
         """
         self._import_files()
         state_summary_df = self._sort_files()
@@ -184,6 +190,9 @@ class StateSummary(Visualization):
         Creates the state summary chart
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (Figure):
+            Table summarizing state abortion data
         """
         state_summary_df = self._construct_data()
 

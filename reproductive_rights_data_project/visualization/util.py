@@ -6,6 +6,7 @@ Utility functions for the visualization package.
 def sort_by_count(clinic_counts):
     """
     Sorts a dictionary of clinic counts in descending order.
+
     Author(s): Chanteria Milner
 
     Inputs:

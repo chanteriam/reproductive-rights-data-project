@@ -26,7 +26,7 @@ def clean_and_save():
     Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
     """
-    # TODO: Will refactor with csv in the near future
+
     ansirh_data = pd.read_csv(FILE_NAME_ANSIRH_BASE_DATA)
 
     # Drop empty column
@@ -116,5 +116,4 @@ def make_row_dicts(data):
     """
 
     row_dict = data.to_dict("records")
-
     return row_dict
