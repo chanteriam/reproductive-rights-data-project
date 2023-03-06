@@ -73,7 +73,6 @@ class USAMap(Visualization):
             self._gestational_info, orient="index"
         ).sort_index()
         gest_df = gest_df.reset_index().rename(columns={"index": "state"})
-        # extracted_gest = gest_df[['state','exception_life', 'banned_after_weeks_since_LMP']]
 
         # sorts locations data to get counts by state
         count_state_clinics = {}
@@ -153,7 +152,6 @@ class USAMap(Visualization):
             subunitcolor="Black",
         )
 
-        # fig.update_layout(height=650, margin=dict(l=0, r=0, t=0, b=0))
         fig.update_layout(
             autosize=False,
             height=500,

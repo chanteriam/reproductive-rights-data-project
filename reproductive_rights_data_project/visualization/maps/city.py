@@ -67,10 +67,10 @@ class CityBar(Visualization):
     def _count_by_city(self):
         """
         This method provides a count of abortion clinics by city.
-        
+
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:  
+        Returns:
             (dict) city, state: clinic count
         """
 
@@ -108,8 +108,7 @@ class CityBar(Visualization):
         """
         city_df = self._construct_data()
 
-        fig = px.bar(city_df[-20:], x="Clinic Count",
-                     y="City", orientation="h")
+        fig = px.bar(city_df[-20:], x="Clinic Count", y="City", orientation="h")
 
         fig.update_layout(
             autosize=False,

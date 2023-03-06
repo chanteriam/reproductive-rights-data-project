@@ -76,7 +76,7 @@ class ZipChart(Visualization):
 
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:  
+        Returns:
             (dict) zipcode: clinic count
         """
 

@@ -36,7 +36,11 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     ),
                     html.Br(),
                 ],
-                style={"textAlign": "center", 'font-weight': 'bold', "color":"black" },
+                style={
+                    "textAlign": "center",
+                    "font-weight": "bold",
+                    "color": "black",
+                },
             ),
             html.Div(
                 children=[
@@ -69,12 +73,16 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         style={"text-align": "center"},
                     ),
                     html.Br(),
-                    dcc.Graph(figure=city_bar.create_visual(), 
-                            style={'align': 'center',
-                                   "justify" : "center",
-                                   "display": "inline-block",
-                                   "padding-right": "10px",
-                                   'horizontal-align': 'center'}),
+                    dcc.Graph(
+                        figure=city_bar.create_visual(),
+                        style={
+                            "align": "center",
+                            "justify": "center",
+                            "display": "inline-block",
+                            "padding-right": "10px",
+                            "horizontal-align": "center",
+                        },
+                    ),
                 ],
                 style={
                     "float": "right",
@@ -135,18 +143,34 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         "We would like to thank the following organizations "
                         "for providing our reference data: "
                     ),
-                    html.A("Abortion Policy API", href="https://www.abortionpolicyapi.com/"),
+                    html.A(
+                        "Abortion Policy API",
+                        href="https://www.abortionpolicyapi.com/",
+                    ),
                     html.Br(),
-                    html.A("ANSIRH Abortion Facility Database", href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"),
+                    html.A(
+                        "ANSIRH Abortion Facility Database",
+                        href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/",
+                    ),
                     html.Br(),
                     html.A("i need an a ❤️", href="https://www.ineedana.com/"),
                     html.Br(),
-                    html.A("United States Census Bureau", href="https://data.census.gov/"),
+                    html.A(
+                        "United States Census Bureau",
+                        href="https://data.census.gov/",
+                    ),
                     html.Br(),
-                    html.A("OpenDataSE", href="https://github.com/OpenDataDE/State-zip-code-GeoJSON"),
+                    html.A(
+                        "OpenDataSE",
+                        href="https://github.com/OpenDataDE/State-zip-code-GeoJSON",
+                    ),
                     html.Br(),
                 ],
-                style={"text-align": "center", "padding-left": "5px", "font-size": 12},
+                style={
+                    "text-align": "center",
+                    "padding-left": "5px",
+                    "font-size": 12,
+                },
             ),
         ],
     )
