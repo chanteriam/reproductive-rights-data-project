@@ -22,9 +22,6 @@ def clean_and_save():
     JSON file.
 
     Author(s): Kate Habich
-
-    Returns (None):
-        Writes JSON file with cleaned and formatted ANSIRH data.
     """
 
     ansirh_data = pd.read_csv(FILE_NAME_ANSIRH_BASE_DATA)
