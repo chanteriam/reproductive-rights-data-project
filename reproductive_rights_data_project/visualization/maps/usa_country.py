@@ -63,6 +63,9 @@ class USAMap(Visualization):
         the visualization
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (DataFrame):
+            Dataframe containing abortion clinic count and policies by US state
         """
 
         # extract the abbreviations from the abbreviations column
@@ -105,6 +108,9 @@ class USAMap(Visualization):
         the USA country visual.
 
         Author(s): Aïcha Camara
+
+        Returns (DataFrame):
+            Dataframe containing abortion clinic count and policies by US state
         """
 
         self._import_files()
@@ -118,6 +124,10 @@ class USAMap(Visualization):
         construct function and returns the plotly map of a state.
 
         Author(s): Aïcha Camara, Chanteria Milner
+
+        Returns (Figure):
+            Choropleth map of the US containing hoverable data on abortion
+                clinic counts and select abortion access policies
         """
 
         state_df = self._construct_data()
