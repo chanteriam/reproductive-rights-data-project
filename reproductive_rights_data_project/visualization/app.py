@@ -17,7 +17,14 @@ DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 def build_dash(country_chart, country_map, state_map):
     """
+    Builds dashbord with multiple visualizations.
+
     Author(s): Aïcha Camara, Michael Plunkett
+
+    Inputs:
+        country_chart (): 
+        country_map (): 
+        state_map ():
     """
     # Creates the layout for the Plotly Dashboard
     DASH_INSTANCE.layout = html.Div(
@@ -108,5 +115,13 @@ def update_output(value):
     Function for the app.callback above; update_output() is a test
     function that updates the output of the navigation when another state
     is selected.
+
+    Author(s): 
+
+    Inputs:
+        value ():
+
+    Returns (str): selected state
+
     """
     return f"{value} was selected"

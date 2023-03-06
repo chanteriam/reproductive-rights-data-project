@@ -64,13 +64,13 @@ def get_and_save_abortion_policy_api_data():
 
 def get_data():
     """
-    Returns state policy data for: gestational limits, insurance coverage,
+    Retrieves state policy data for: gestational limits, insurance coverage,
     minors, and waiting periods
 
     Author(s): Chanteria Milner, Michael Plunkett
 
-    Returns (tuple):
-        Tuple of dictionaries for each state and policy type.
+    Returns (list):
+        List of dictionaries for each state and policy type.
     """
 
     # Get API response objects

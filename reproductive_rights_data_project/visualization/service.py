@@ -28,6 +28,8 @@ from reproductive_rights_data_project.util.constants import (
 
 def main():
     """
+    Runs entire visualization module to build the dashboard.
+
     Author(s): Michael Plunkett and Aïcha Camara
     """
 

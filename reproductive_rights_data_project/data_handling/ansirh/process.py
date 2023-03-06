@@ -25,7 +25,6 @@ def clean_and_save():
     Returns (None):
         Writes JSON file with cleaned and formatted ANSIRH data.
     """
-    # TODO: Will refactor with csv in the near future
     ansirh_data = pd.read_csv(
         "reproductive_rights_data_project/data/AFD_2021_for_ArcGIS_Upload.csv"
     )

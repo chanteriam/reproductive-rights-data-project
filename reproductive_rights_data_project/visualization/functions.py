@@ -39,6 +39,7 @@ def get_state_clinic_counts():
 def get_city_clinic_counts():
     """
     Gets count of abortion clinics in each city.
+
     Author(s): Chanteria Milner
 
     Returns:
@@ -70,6 +71,7 @@ def get_city_clinic_counts():
 def get_zipcode_clinic_counts():
     """
     Gets count of abortion clinics in each zipcode.
+
     Author(s): Chanteria Milner
 
     Returns:
@@ -95,6 +97,7 @@ def get_zipcode_clinic_counts():
 def sort_by_count(clinic_counts):
     """
     Sorts a dictionary of clinic counts in descending order.
+
     Author(s): Chanteria Milner
 
     Inputs:
@@ -112,8 +115,8 @@ def sort_by_count(clinic_counts):
 
 def read_state():
     """
-    Creates an alphabetical list of states for
-    the state downdown navigation bar
+    Creates an alphabetical list of states for the state navigation 
+    bar.
 
     Author(s): Aïcha Camara
 
