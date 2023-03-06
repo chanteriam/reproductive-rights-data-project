@@ -75,7 +75,7 @@ class StateSummary(Visualization):
         Author(s): Aïcha Camara
 
         Returns (DataFrame):
-            final dataframe
+            The Pandas Dataframe of sorted information for the visualization.
         """
 
         # set up the dataframes and standardize the orientation
@@ -178,7 +178,7 @@ class StateSummary(Visualization):
         Author(s): Aïcha Camara
 
         Returns (DataFrame):
-            DataFrame summarizing state abortion data
+            The Pandas DataFrame summarizing state abortion data.
         """
         self._import_files()
         state_summary_df = self._sort_files()
@@ -192,7 +192,7 @@ class StateSummary(Visualization):
         Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (Figure):
-            Table summarizing state abortion data
+            The Table summarizing state abortion data.
         """
         state_summary_df = self._construct_data()
 
