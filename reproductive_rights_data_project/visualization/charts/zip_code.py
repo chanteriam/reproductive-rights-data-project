@@ -41,9 +41,7 @@ class ZipChart(Visualization):
 
         Author(s): Aïcha Camara
         """
-        with open(
-            self._locations_file_name, encoding=STANDARD_ENCODING
-        ) as locations:
+        with open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations:
             self._locations = json.load(locations)
 
     def _sort_files(self):
@@ -76,7 +74,7 @@ class ZipChart(Visualization):
 
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:  
+        Returns:
             (dict) zipcode: clinic count
         """
 
@@ -114,13 +112,14 @@ class ZipChart(Visualization):
                 go.Table(
                     header=dict(
                         values=list(zip_df.columns),
-                        fill_color="silver",
+                        fill_color="#300608",
+                        font_color="#E0DFDF",
                         line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=zip_df.transpose().values.tolist(),
-                        fill_color="whitesmoke",
+                        fill_color=[["#c0ccd8", "#eff2f5"] * len(zip_df)],
                         line_color="darkslategray",
                         align="center",
                     ),

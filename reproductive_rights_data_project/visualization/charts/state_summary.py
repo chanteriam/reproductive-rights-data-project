@@ -84,16 +84,12 @@ class StateSummary(Visualization):
         insurance_df = pd.DataFrame.from_dict(
             self._insurance_info, orient="index"
         ).sort_index()
-        insurance_df = insurance_df.reset_index().rename(
-            columns={"index": "state"}
-        )
+        insurance_df = insurance_df.reset_index().rename(columns={"index": "state"})
 
         minors_info_df = pd.DataFrame.from_dict(
             self._minors_info, orient="index"
         ).sort_index()
-        minors_info_df = minors_info_df.reset_index().rename(
-            columns={"index": "state"}
-        )
+        minors_info_df = minors_info_df.reset_index().rename(columns={"index": "state"})
 
         waiting_period_df = pd.DataFrame.from_dict(
             self._waiting_period_info, orient="index"
@@ -112,22 +108,16 @@ class StateSummary(Visualization):
             count_state_clinics[state] = clinic_count
 
         count_state_clinics = dict(sorted(count_state_clinics.items()))
-        state_df = pd.DataFrame(
-            count_state_clinics.items(), columns=["state", "count"]
-        )
+        state_df = pd.DataFrame(count_state_clinics.items(), columns=["state", "count"])
 
         final_df = (
             pd.merge(
                 state_df,
-                gest_df[
-                    ["state", "exception_life", "banned_after_weeks_since_LMP"]
-                ],
+                gest_df[["state", "exception_life", "banned_after_weeks_since_LMP"]],
                 on="state",
             )
             .merge(
-                insurance_df[
-                    ["state", "requires_coverage", "medicaid_exception_life"]
-                ],
+                insurance_df[["state", "requires_coverage", "medicaid_exception_life"]],
                 on="state",
             )
             .merge(
@@ -192,13 +182,14 @@ class StateSummary(Visualization):
                 go.Table(
                     header=dict(
                         values=list(state_summary_df.columns),
-                        fill_color="silver",
+                        fill_color="#300608",
+                        font_color="#E0DFDF",
                         line_color="darkslategray",
                         align="center",
                     ),
                     cells=dict(
                         values=state_summary_df.transpose().values.tolist(),
-                        fill_color="whitesmoke",
+                        fill_color=[["#c0ccd8", "#eff2f5"] * len(state_summary_df)],
                         line_color="darkslategray",
                         align="center",
                     ),

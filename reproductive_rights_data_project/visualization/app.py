@@ -21,7 +21,10 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
             html.Br(),
             html.H1(
                 children="Reproductive Rights Mapping Dashboard",
-                style={"textAlign": "center"},
+                style={
+                    "textAlign": "center",
+                    "color": "#E0DFDF",
+                },
             ),
             html.Div(
                 children=[
@@ -36,21 +39,27 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     ),
                     html.Br(),
                 ],
-                style={"textAlign": "center", 'font-weight': 'bold', "color":"black" },
+                style={
+                    "textAlign": "center",
+                    "font-weight": "bold",
+                    "color": "#E0DFDF",
+                },
             ),
             html.Div(
                 children=[
                     html.Br(),
                     html.H6(
                         children=[
-                            "2023 US Reproductive Rights (Hover for "
-                            "Information) "
+                            """2023 US Reproductive Rights 
+                            (Hover for " "Information) """
                         ],
-                        style={"text-align": "center"},
+                        style={
+                            "text-align": "center",
+                            "color": "#E0DFDF",
+                        },
                     ),
-                    dcc.Graph(
-                        id="usa-graph", figure=country_map.create_visual()
-                    ),
+                    dcc.Graph(id="usa-graph",
+                              figure=country_map.create_visual()),
                 ],
                 style={
                     "float": "left",
@@ -59,6 +68,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     "border": "1px solid black",
                     "margin": "5px",
                     "padding-left": "1px",
+                    "color": "#E0DFDF",
+                    "background": "#1f2630",
                 },
             ),
             html.Div(
@@ -66,15 +77,23 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     html.Br(),
                     html.H6(
                         children=["Top 20 Cities by Clinic Count"],
-                        style={"text-align": "center"},
+                        style={
+                            "text-align": "center",
+                            "color": "#E0DFDF",
+                        },
                     ),
                     html.Br(),
-                    dcc.Graph(figure=city_bar.create_visual(), 
-                            style={'align': 'center',
-                                   "justify" : "center",
-                                   "display": "inline-block",
-                                   "padding-right": "10px",
-                                   'horizontal-align': 'center'}),
+                    dcc.Graph(
+                        figure=city_bar.create_visual(),
+                        style={
+                            "align": "center",
+                            "justify": "center",
+                            "display": "inline-block",
+                            "padding-right": "10px",
+                            "horizontal-align": "center",
+                            "text-color": "#E0DFDF",
+                        },
+                    ),
                 ],
                 style={
                     "float": "right",
@@ -85,6 +104,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     "display": "inline-block",
                     "vertical-align": "middle",
                     "overflow": "scroll",
+                    "background": "#1f2630",
                 },
             ),
             html.Div(
@@ -92,7 +112,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     html.Br(),
                     html.H6(
                         children=["Clinics By Zipcode"],
-                        style={"text-align": "center"},
+                        style={"text-align": "center", "color": "#E0DFDF"},
                     ),
                     dcc.Graph(figure=zip_chart.create_visual()),
                 ],
@@ -105,6 +125,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     "display": "inline-block",
                     "vertical-align": "middle",
                     "overflow": "scroll",
+                    "color": "#E0DFDF",
+                    "background": "#1f2630",
                 },
             ),
             html.Div(
@@ -112,7 +134,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     html.Br(),
                     html.H6(
                         children=["2023 US Reproductive Rights Chart"],
-                        style={"text-align": "center"},
+                        style={"text-align": "center", "color": "#E0DFDF"},
                     ),
                     dcc.Graph(figure=country_chart.create_visual()),
                 ],
@@ -126,6 +148,8 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     "vertical-align": "middle",
                     "overflow": "scroll",
                     "padding-left": "1px",
+                    "color": "#E0DFDF",
+                    "background": "#1f2630",
                 },
             ),
             html.Div(
@@ -135,18 +159,46 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                         "We would like to thank the following organizations "
                         "for providing our reference data: "
                     ),
-                    html.A("Abortion Policy API", href="https://www.abortionpolicyapi.com/"),
+                    html.A(
+                        "Abortion Policy API",
+                        href="https://www.abortionpolicyapi.com/",
+                        style={"color": "#b1bfce"},
+                    ),
                     html.Br(),
-                    html.A("ANSIRH Abortion Facility Database", href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/"),
+                    html.A(
+                        "ANSIRH Abortion Facility Database\t",
+                        href="https://abortionfacilitydatabase-ucsf.hub.arcgis.com/",
+                        style={"color": "#b1bfce"},
+                    ),
                     html.Br(),
-                    html.A("i need an a ❤️", href="https://www.ineedana.com/"),
+                    html.A(
+                        "i need an a ❤️",
+                        href="https://www.ineedana.com/",
+                        style={"color": "#b1bfce"},
+                    ),
                     html.Br(),
-                    html.A("United States Census Bureau", href="https://data.census.gov/"),
+                    html.A(
+                        "United States Census Bureau",
+                        href="https://data.census.gov/",
+                        style={"color": "#b1bfce"},
+                    ),
                     html.Br(),
-                    html.A("OpenDataSE", href="https://github.com/OpenDataDE/State-zip-code-GeoJSON"),
+                    html.A(
+                        "OpenDataSE",
+                        href="https://github.com/OpenDataDE/State-zip-code-GeoJSON",
+                        style={"color": "#b1bfce"},
+                    ),
                     html.Br(),
                 ],
-                style={"text-align": "center", "padding-left": "5px", "font-size": 12},
+                style={
+                    "text-align": "center",
+                    "padding-left": "5px",
+                    "font-size": 12,
+                    "color": "#b1bfce",
+                },
             ),
         ],
+        style={
+            "background": "#1c1412",
+        },
     )

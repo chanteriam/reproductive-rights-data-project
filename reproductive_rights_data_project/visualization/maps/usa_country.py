@@ -85,16 +85,12 @@ class USAMap(Visualization):
             count_state_clinics[state] = clinic_count
 
         count_state_clinics = dict(sorted(count_state_clinics.items()))
-        state_df = pd.DataFrame(
-            count_state_clinics.items(), columns=["state", "count"]
-        )
+        state_df = pd.DataFrame(count_state_clinics.items(), columns=["state", "count"])
         state_df = state_df.join(extracted_abbrev)
 
         final_df = pd.merge(
             state_df,
-            gest_df[
-                ["state", "exception_life", "banned_after_weeks_since_LMP"]
-            ],
+            gest_df[["state", "exception_life", "banned_after_weeks_since_LMP"]],
             on="state",
         )
 
@@ -140,17 +136,15 @@ class USAMap(Visualization):
                 "banned_after_weeks_since_LMP": "Weeks Abortion Banned ",
             },
             scope="usa",
+            color="count",
+            color_continuous_scale=["#E0DFDF", "#300608"],
         )
 
         fig.update_geos(
             visible=False,
             resolution=110,
-            bgcolor="White",
+            bgcolor="#1f2630",
             scope="usa",
-            showcountries=True,
-            countrycolor="Black",
-            showsubunits=True,
-            subunitcolor="Black",
         )
 
         # fig.update_layout(height=650, margin=dict(l=0, r=0, t=0, b=0))
@@ -159,6 +153,8 @@ class USAMap(Visualization):
             height=500,
             margin={"l": 0, "r": 0, "t": 0, "b": 0},
             width=875,
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="#E0DFDF",
         )
 
         return fig

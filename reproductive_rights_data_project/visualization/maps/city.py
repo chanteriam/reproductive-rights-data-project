@@ -38,9 +38,7 @@ class CityBar(Visualization):
 
         Author(s): Aïcha Camara
         """
-        with open(
-            self._locations_file_name, encoding=STANDARD_ENCODING
-        ) as locations:
+        with open(self._locations_file_name, encoding=STANDARD_ENCODING) as locations:
             self._locations = json.load(locations)
 
     def _sort_files(self):
@@ -67,10 +65,10 @@ class CityBar(Visualization):
     def _count_by_city(self):
         """
         This method provides a count of abortion clinics by city.
-        
+
         Author(s): Chanteria Milner, Aicha Camara
 
-        Returns:  
+        Returns:
             (dict) city, state: clinic count
         """
 
@@ -108,14 +106,28 @@ class CityBar(Visualization):
         """
         city_df = self._construct_data()
 
-        fig = px.bar(city_df[-20:], x="Clinic Count",
-                     y="City", orientation="h")
+        fig = px.bar(city_df[-20:], x="Clinic Count", y="City", orientation="h")
 
         fig.update_layout(
             autosize=False,
             width=500,
             height=450,
             margin=dict(l=0, r=0, t=0, b=0),
+            plot_bgcolor="#1f2630",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font_color="#E0DFDF",
         )
+
+        fig.update_xaxes(
+            linewidth=2,
+            linecolor="#1c1412",
+            gridcolor="#1c1412",
+        )
+
+        fig.update_yaxes(
+            linewidth=2,
+            linecolor="#1c1412",
+        )
+        fig.update_traces(marker_color="#300608")
 
         return fig
