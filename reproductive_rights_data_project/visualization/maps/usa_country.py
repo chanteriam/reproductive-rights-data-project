@@ -65,7 +65,7 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (DataFrame):
-            The Pandas Dataframe containing abortion clinic count and policies by 
+            The Pandas Dataframe containing abortion clinic count and policies by
             US state.
         """
 
@@ -111,7 +111,7 @@ class USAMap(Visualization):
         Author(s): Aïcha Camara
 
         Returns (DataFrame):
-            The Pandas Dataframe containing abortion clinic count and policies by 
+            The Pandas Dataframe containing abortion clinic count and policies by
             US state.
         """
 
