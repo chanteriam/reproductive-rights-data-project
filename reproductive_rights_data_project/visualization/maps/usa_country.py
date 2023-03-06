@@ -117,7 +117,7 @@ class USAMap(Visualization):
         Creates the map of a United States state using the data from the
         construct function and returns the plotly map of a state.
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
         state_df = self._construct_data()

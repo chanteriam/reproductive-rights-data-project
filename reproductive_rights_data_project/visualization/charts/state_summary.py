@@ -183,7 +183,7 @@ class StateSummary(Visualization):
         """
         Creates the state summary chart
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
         state_summary_df = self._construct_data()
 

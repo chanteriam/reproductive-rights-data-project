@@ -104,7 +104,7 @@ class ZipChart(Visualization):
         """
         Creates the zip code level summary of clinic counts
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
         zip_df = self._construct_data()
