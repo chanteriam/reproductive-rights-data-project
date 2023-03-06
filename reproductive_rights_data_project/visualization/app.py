@@ -12,7 +12,7 @@ DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
 def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
-    Builds dashbord with multiple visualizations.
+    Builds dashboard with multiple visualizations.
 
     Author(s): Aïcha Camara, Michael Plunkett
 
