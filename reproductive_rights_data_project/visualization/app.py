@@ -60,7 +60,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                     html.H6(
                         children=[
                             """2023 US Reproductive Rights
-                            (Hover for " "Information) """
+                            (Hover for More Information) """
                         ],
                         style={
                             "text-align": "center",
