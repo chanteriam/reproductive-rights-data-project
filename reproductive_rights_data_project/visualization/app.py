@@ -30,7 +30,7 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
                 children=[
                     html.Br(),
                     html.B(
-                        "Author(s): Aïcha Camara, Kate Habich,"
+                        "Author(s): Aïcha Camara, Kate Habich, "
                         "Chanteria Milner, Michael Plunkett"
                     ),
                     html.P(
