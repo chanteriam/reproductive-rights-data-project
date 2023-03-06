@@ -36,7 +36,7 @@ There are two ways that you can run this application, one of them is to run all 
 1. After you have installed [Poetry](https://python-poetry.org/docs/basic-usage/), run the command from the base repository directory: `poetry shell`
 2. Run the command `poetry install` to install the package dependencies within the project.
 3. Run the `make api` command to get the data from the _Abortion Policy API_.
-4. Run the `make parse-data` command to parse the data so that we can have our data fit the format needed for the next step.
+4. Run the `make parse-data` command to parse the data so that we can have our data in the format needed for the visualizations.
 5. Run the `make visualize` command to start the [Flask](https://flask.palletsprojects.com/en/2.2.x/) server, accessible via the URL `localhost:8005`, so that we can visualize the data we have pulled and parsed!
    - For the `make visualize` command, you must have called the two commands that are referenced before it for it to run successfully.
      - Without the data from `make api` and `make parse-data`, `make visualize` has nothing to act on.
