@@ -1,5 +1,5 @@
 """
-This file contains the functions and functionality needed to display a 
+This file contains the functions and functionality needed to display a
 visualization of the top 25 cities with abortion clinics
 """
 import json
