@@ -51,16 +51,11 @@ class ZipChart(Visualization):
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization.
 
-        Author(s): Aïcha Camara
+        Author(s): Aïcha Camara, Chanteria Milner
         """
 
         # sorts locations data to get counts by zipcode
-        count_zipcode_clinics = {}
-        for _, zipcodes in self._locations.items():
-            for zipcode, clinics in zipcodes.items():
-                if zipcode == "0.0":
-                    continue
-                count_zipcode_clinics[zipcode] = len(clinics)
+        count_zipcode_clinics = self._count_by_zipcode()
 
         # Sort by count
         count_zipcode_clinics = sort_by_count(count_zipcode_clinics)
@@ -74,6 +69,24 @@ class ZipChart(Visualization):
         zip_df = zip_df.sort_values(by=["Zipcode"], ascending=True)
 
         return zip_df
+
+    def _count_by_zipcode(self):
+        """
+        This method provides a count of abortion clinics by zipcode.
+
+        Author(s): Chanteria Milner, Aicha Camara
+
+        Returns:  
+            (dict) zipcode: clinic count
+        """
+
+        count_zipcode_clinics = {}
+        for _, zipcodes in self._locations.items():
+            for zipcode, clinics in zipcodes.items():
+                if zipcode == "0.0":
+                    continue
+                count_zipcode_clinics[zipcode] = len(clinics)
+        return count_zipcode_clinics
 
     def _construct_data(self):
         """

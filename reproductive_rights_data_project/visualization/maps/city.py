@@ -48,10 +48,32 @@ class CityBar(Visualization):
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
 
-        Author(s): Aïcha Camara, Chanteria Milner
+        Author(s): Chanteria Milner, Aicha Camara
         """
 
         # sorts locations data to get counts by state
+        count_city_clinics = self._count_by_city()
+
+        # count_city_clinics = dict(sorted(count_city_clinics.items()))
+        count_city_clinics = dict(
+            sorted(count_city_clinics.items(), key=lambda x: x[1])
+        )
+        city_df = pd.DataFrame(
+            count_city_clinics.items(), columns=["City", "Clinic Count"]
+        )
+
+        return city_df
+
+    def _count_by_city(self):
+        """
+        This method provides a count of abortion clinics by city.
+        
+        Author(s): Chanteria Milner, Aicha Camara
+
+        Returns:  
+            (dict) city, state: clinic count
+        """
+
         count_city_clinics = {}
         for state, zipcodes in self._locations.items():
             for zipcode, clinics in zipcodes.items():
@@ -64,16 +86,7 @@ class CityBar(Visualization):
                     count_city_clinics[city_state] = (
                         count_city_clinics.get(city_state, 0) + 1
                     )
-
-        # count_city_clinics = dict(sorted(count_city_clinics.items()))
-        count_city_clinics = dict(
-            sorted(count_city_clinics.items(), key=lambda x: x[1])
-        )
-        city_df = pd.DataFrame(
-            count_city_clinics.items(), columns=["City", "Clinic Count"]
-        )
-
-        return city_df
+        return count_city_clinics
 
     def _construct_data(self):
         """
@@ -95,7 +108,8 @@ class CityBar(Visualization):
         """
         city_df = self._construct_data()
 
-        fig = px.bar(city_df[-20:], x="Clinic Count", y="City", orientation="h")
+        fig = px.bar(city_df[-20:], x="Clinic Count",
+                     y="City", orientation="h")
 
         fig.update_layout(
             autosize=False,
