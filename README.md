@@ -23,6 +23,7 @@ A capstone project for UChicago's CAPP122 where abortion related data is taken f
 - `make api`: Runs the `api` portion of the codebase
 - `make parse-data`: Parses the data output of the `api` layer
 - `make visualize`: Takes the data produced from the `parse-data` layer and creates the project's visualizations
+- `make run`: Runs the whole application by running `make api`, `make parse-data`, and `make visualize` in serial
 
 ## How do we run this thing?
 There are two ways that you can run this application, one of them is to run all components of it at once and the other is to run each component individually. I will give you the instructions for both methods below.
