@@ -19,17 +19,12 @@ class ZipChart(Visualization):
     """
     This class represents all the methods needed to construct the zipcode chart
     in Plotly
-
-    Author(s): Aïcha Camara
     """
 
     def __init__(
         self,
         locations_file_name,
     ):
-        """
-        Author(s): Aïcha Camara
-        """
 
         self._locations_file_name = locations_file_name
         self._locations = None
@@ -38,8 +33,6 @@ class ZipChart(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
-
-        Author(s): Aïcha Camara
         """
         with open(
             self._locations_file_name, encoding=STANDARD_ENCODING
@@ -50,8 +43,6 @@ class ZipChart(Visualization):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization.
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (DataFrame):
             The Pandas Dataframe of abortion data by zip code.
@@ -77,8 +68,6 @@ class ZipChart(Visualization):
         """
         This method provides a count of abortion clinics by zipcode.
 
-        Author(s): Chanteria Milner, Aicha Camara
-
         Returns (dict):
             The Dictionary containing zipcodes and clinic counts.
         """
@@ -96,8 +85,6 @@ class ZipChart(Visualization):
         This function calls and constructs the information needed to construct
         the USAState visual.
 
-        Author(s): Aïcha Camara
-
         Returns (DataFrame):
             The Pandas Dataframe containing zip code and clinic count data.
         """
@@ -109,8 +96,6 @@ class ZipChart(Visualization):
     def create_visual(self):
         """
         Creates the zip code level summary of clinic counts
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (Figure):
             The Table representing zipcode and clinic count data.

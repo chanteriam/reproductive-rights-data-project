@@ -12,8 +12,6 @@ import reproductive_rights_data_project.visualization.service
 def main():
     """
     This function serves as the primary function that runs the application.
-
-    Author(s): Michael Plunkett, Kate Habich
     """
     parser = argparse.ArgumentParser()
 

@@ -17,8 +17,6 @@ from reproductive_rights_data_project.util.constants import (
 class StateSummary(Visualization):
     """
     This class represents a table with information on each state.
-
-    Author(s): Aïcha Camara, Michael Plunkett
     """
 
     def __init__(
@@ -29,9 +27,6 @@ class StateSummary(Visualization):
         minors_info_file_name,
         waiting_period_info_file_name,
     ):
-        """
-        Author(s): Michael Plunkett
-        """
         self._gestational_info_file_name = gestational_info_file_name
         self._gestational_info = None
         self._insurance_info_file_name = insurance_info_file_name
@@ -47,8 +42,6 @@ class StateSummary(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
-
-        Author(s): Aïcha Camara
         """
         with open(
             self._gestational_info_file_name, encoding=STANDARD_ENCODING
@@ -71,8 +64,6 @@ class StateSummary(Visualization):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
-
-        Author(s): Aïcha Camara
 
         Returns (DataFrame):
             The Pandas Dataframe of sorted information for the visualization.
@@ -175,8 +166,6 @@ class StateSummary(Visualization):
         This function calls and constructs the information needed to construct
         the USA country state-by-state chart.
 
-        Author(s): Aïcha Camara
-
         Returns (DataFrame):
             The Pandas DataFrame summarizing state abortion data.
         """
@@ -188,8 +177,6 @@ class StateSummary(Visualization):
     def create_visual(self):
         """
         Creates the state summary chart
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (Figure):
             The Table summarizing state abortion data.

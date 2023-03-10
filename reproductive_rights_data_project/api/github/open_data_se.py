@@ -19,8 +19,6 @@ def get_state_zip_code_geo_json(state_abbrev, state_name):
     GitHub repository or local file, depending on if that state has been
     requested previously.
 
-    Author(s): Michael Plunkett
-
     Inputs:
         state_abbrev (string): the abbreviation for the state you are seeking
         state_name (string): the name of the state you are seeking

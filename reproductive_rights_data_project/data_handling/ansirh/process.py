@@ -20,8 +20,6 @@ def clean_and_save():
     """
     Creates state dictionary of data from ANSIRH and saves its output to a
     JSON file.
-
-    Author(s): Kate Habich
     """
 
     ansirh_data = pd.read_csv(FILE_NAME_ANSIRH_BASE_DATA)
@@ -44,8 +42,6 @@ def clean_and_save():
 def split_by_state(rows):
     """
     Creates dictionary of states containing list of row dictionaries.
-
-    Author(s): Kate Habich
 
     Inputs:
         rows (list): list of row dictionaries
@@ -71,8 +67,6 @@ def split_by_state(rows):
 def split_by_zip(state_dict):
     """
     Splits state dictionary by zip.
-
-    Author(s): Kate Habich
 
     Inputs:
         state_dict (dict): dictionary of states with values set to list of
@@ -102,8 +96,6 @@ def split_by_zip(state_dict):
 def make_row_dicts(data):
     """
     Creates dictionary from column name and information of each row.
-
-    Author(s): Kate Habich
 
     Inputs:
         data (df): data containing information on each healthcare clinic
