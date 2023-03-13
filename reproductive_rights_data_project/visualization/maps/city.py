@@ -17,17 +17,12 @@ from reproductive_rights_data_project.util.constants import (
 class CityBar(Visualization):
     """
     This class represents a table with information on each state.
-
-    Author(s): Aïcha Camara
     """
 
     def __init__(
         self,
         locations_file_name,
     ):
-        """
-        Author(s): Aïcha Camara
-        """
         self._locations_file_name = locations_file_name
         self._locations = None
 
@@ -35,8 +30,6 @@ class CityBar(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
-
-        Author(s): Aïcha Camara
         """
         with open(
             self._locations_file_name, encoding=STANDARD_ENCODING
@@ -47,8 +40,6 @@ class CityBar(Visualization):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
-
-        Author(s): Chanteria Milner, Aicha Camara
 
         Returns (DataFrame):
             The Pandas Dataframe contaning data on clinic counts by US city.
@@ -70,8 +61,6 @@ class CityBar(Visualization):
     def _count_by_city(self):
         """
         This method provides a count of abortion clinics by city.
-
-        Author(s): Chanteria Milner, Aicha Camara
 
         Returns (dict):
             The Dictionary containing clinic count by city, state.
@@ -96,8 +85,6 @@ class CityBar(Visualization):
         This function calls and constructs the information needed to construct
         the USA country state-by-state chart.
 
-        Author(s): Aïcha Camara
-
         Returns (DataFrame):
             The Pandas Dataframe containing data on clinic counts by US city.
         """
@@ -109,8 +96,6 @@ class CityBar(Visualization):
     def create_visual(self):
         """
         Creates the state summary chart
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (Figure):
             The Table displaying abortion clinic count data by US city.

@@ -25,7 +25,6 @@ from reproductive_rights_data_project.util.constants import BASE_DATA_DIR
 from reproductive_rights_data_project.util.functions import to_json
 
 # API data stubs
-# Author(s): Michael Plunkett, Chanteria Milner
 CORRECT_KEY_DEFAULTS = {
     "exception_rape_or_incest": False,
     "exception_health": None,
@@ -35,7 +34,6 @@ CORRECT_KEY_DEFAULTS = {
     "exception_fetal": False,
 }
 
-# Author(s): Michael Plunkett
 gestational_data = json.dumps(
     {
         "A state": {
@@ -49,7 +47,6 @@ gestational_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett
 insurance_data = json.dumps(
     {
         "A state": {
@@ -75,7 +72,6 @@ insurance_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett
 minors_data = json.dumps(
     {
         "A state": {
@@ -90,7 +86,6 @@ minors_data = json.dumps(
     }
 )
 
-# Author(s): Michael Plunkett
 waiting_data = json.dumps(
     {
         "A state": {
@@ -108,8 +103,6 @@ waiting_data = json.dumps(
 def test_get_api_data():
     """
     Tests functionality of abortion_policy_api.get_data().
-
-    Author(s): Michael Plunkett
     """
     responses.add(
         responses.GET,
@@ -164,8 +157,6 @@ def test_get_state_zip_code_geo_json_first_call():
     """
     Tests functionality of open_data_se.get_state_zip_code_geo_json()'s first
     call.
-
-    Author(s): Michael Plunkett
     """
     test_data = json.dumps({"data": "here it is"})
     file_name = "nas_not_a_state_zip_codes_geo.min.json"
@@ -198,8 +189,6 @@ def test_get_state_zip_code_geo_json_not_first_call():
     """
     Tests functionality of open_data_se.get_state_zip_code_geo_json() beyond
     its first call.
-
-    Author(s): Michael Plunkett
     """
     test_data = json.dumps({"data": "here it be"})
     file_name = "naz_not_a_zebra_zip_codes_geo.min.json"
@@ -232,8 +221,6 @@ def test_get_state_zip_code_geo_json_not_first_call():
 def test_set_default_types():
     """
     Tests functionality of abortion_policy_api.set_default_types().
-
-    Author(s): Chanteria Milner
     """
     policies = {
         "State1": {
@@ -263,8 +250,6 @@ def test_set_default_types():
 def test_fill_in_missing_data():
     """
     Tests functionality of abortion_policy_api.fill_in_missing_data().
-
-    Author(s): Chanteria Milner
     """
     policies = {
         "A state": {
@@ -290,8 +275,6 @@ def test_fill_in_missing_data():
 def test_add_missing_states():
     """
     Tests functionality of abortion_policy_api.add_missing_states().
-
-    Author(s): Chanteria Milner
     """
     states = ["A state", "Another state"]
 

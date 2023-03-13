@@ -20,7 +20,6 @@ from reproductive_rights_data_project.data_handling.ansirh.process import (
 )
 
 # Data for testing
-# Author(s): Chanteria Milner
 DATA = {
     "facility ID": [1, 2],
     "name": ["Clinic 1", "Clinic 2"],
@@ -31,7 +30,6 @@ DATA = {
     "provided abortions in 2021": [" YES", "no"],
 }
 
-# Author(s): Chanteria Milner
 ROWS = [
     {
         "facility ID": 1,
@@ -53,7 +51,6 @@ ROWS = [
     },
 ]
 
-# Author(s): Chanteria Milner
 CORRECT_DEFAULT_TYPES = {
     "facility ID": 0,
     "name": None,
@@ -64,7 +61,6 @@ CORRECT_DEFAULT_TYPES = {
     "provided abortions in 2021": None,
 }
 
-# Author(s): Chanteria Milner
 DF = pd.DataFrame(DATA)
 STATES = []
 STATE_ABRVS = []
@@ -83,8 +79,6 @@ STATE_ABRVS.pop(0)
 def test_make_row_dicts():
     """
     Tests functionality of data_handling.ansirh.process.make_row_dicts().
-
-    Author(s): Chanteria Milner
     """
     rows = make_row_dicts(DF)
     for i, row in enumerate(ROWS):
@@ -99,7 +93,6 @@ def test_set_default_types():
     """
     Tests functionality of data_handling.ansirh.clean.set_default_types().
 
-    Author(s): Chanteria Milner
     """
     assert set_default_types(ROWS) == CORRECT_DEFAULT_TYPES
 
@@ -107,8 +100,6 @@ def test_set_default_types():
 def test_clean_ansirh():
     """
     Tests functionality of data_handling.ansirh.clean.clean().
-
-    Author(s): Chanteria Milner
     """
     clean_rows = [
         {
@@ -137,8 +128,6 @@ def test_clean_ansirh():
 def test_translate_code_to_state():
     """
     Tests functionality of util.functions.translate_code_to_state().
-
-    Author(s): Chanteria Milner
     """
     for i, abr in enumerate(STATE_ABRVS):
         assert translate_code_to_state(abr) == STATES[i]
@@ -147,8 +136,6 @@ def test_translate_code_to_state():
 def test_split_by_state():
     """
     Tests functionality of data_handling.ansirh.process.split_by_state().
-
-    Author(s): Chanteria Milner
     """
     clean_rows = [
         {
@@ -222,8 +209,6 @@ def test_split_by_state():
 def test_split_by_zip():
     """
     Tests functionality of data_handling.ansirh.process.split_by_zip().
-
-    Author(s): Chanteria Milner
     """
     split_rows_state = {
         "Illinois": [

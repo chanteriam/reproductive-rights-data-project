@@ -9,8 +9,6 @@ from abc import ABC, abstractmethod
 class Visualization(ABC):
     """
     This abstract class is the one that all visualizations will be built on.
-
-    Author(s): Kate Habich, Michael Plunkett
     """
 
     @abstractmethod

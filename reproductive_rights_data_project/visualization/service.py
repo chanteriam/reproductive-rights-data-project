@@ -31,8 +31,6 @@ from reproductive_rights_data_project.util.constants import (
 def main():
     """
     This function serves as the central function for the visualization package.
-
-    Author(s): Michael Plunkett, Aïcha Camara
     """
 
     country_chart = StateSummary(

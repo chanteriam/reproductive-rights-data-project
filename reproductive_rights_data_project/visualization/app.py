@@ -12,8 +12,6 @@ def build_dash(country_chart, country_map, zip_chart, city_bar):
     """
     Builds dashboard with multiple visualizations.
 
-    Author(s): Aïcha Camara, Chanteria Milner, Michael Plunkett
-
     Inputs:
         country_chart (StateSummary): plotly table of current US
             reproductive rights

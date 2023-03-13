@@ -14,8 +14,6 @@ def to_json(data, file_names):
     """
     Dumps data to json file(s).
 
-    Author(s): Chanteria Milner, Michael Plunkett
-
     Inputs:
         data (dict): list of dictionaries to output to JSON
         file_names (list): list of file names to export to
@@ -33,8 +31,6 @@ def to_json(data, file_names):
 def translate_code_to_state(state_abr):
     """
     Turns two-letter state code into the full state name.
-
-    Author(s): Kate Habich
 
     Inputs:
         state_abr (str): two letter state abbreviation

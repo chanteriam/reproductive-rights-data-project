@@ -18,8 +18,6 @@ class USAMap(Visualization):
     """
     This class is an extension of the Visualization abstract class and creates
     a map of the USA in plotly.
-
-    Author(s): Aïcha Camara, Michael Plunkett
     """
 
     def __init__(
@@ -28,9 +26,6 @@ class USAMap(Visualization):
         locations_file_name,
         state_abbrevs_file_name,
     ):
-        """
-        Author(s): Michael Plunkett
-        """
         self._gestational_info_file_name = gestational_info_file_name
         self._gestational_info = None
         self._locations_file_name = locations_file_name
@@ -42,8 +37,6 @@ class USAMap(Visualization):
         """
         This method accesses a JSON file(s) and returns a dictionary of data for
         the visualization.
-
-        Author(s): Aïcha Camara
         """
 
         with open(
@@ -61,8 +54,6 @@ class USAMap(Visualization):
         """
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (DataFrame):
             The Pandas Dataframe containing abortion clinic count and policies by
@@ -108,8 +99,6 @@ class USAMap(Visualization):
         This function calls and constructs the information needed to construct
         the USA country visual.
 
-        Author(s): Aïcha Camara
-
         Returns (DataFrame):
             The Pandas Dataframe containing abortion clinic count and policies by
             US state.
@@ -124,8 +113,6 @@ class USAMap(Visualization):
         """
         Creates the map of a United States state using the data from the
         construct function and returns the plotly map of a state.
-
-        Author(s): Aïcha Camara, Chanteria Milner
 
         Returns (Figure):
             The Choropleth map of the US containing hoverable data on abortion
