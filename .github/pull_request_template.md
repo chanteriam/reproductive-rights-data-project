@@ -13,5 +13,5 @@
 ```
 PUT THE `make test` OUTPUT HERE
 ```
-- [ ] I ran `make lint` and made the bulk of changes that it has requested.
+- [ ] I ran `make lint` and made the bulk of changes it requested.
 - [ ] I ran `make format` and pushed the changes.
