@@ -2,7 +2,8 @@ BASEDIR=./reproductive_rights_data_project
 
 .PHONY: format
 format:
-	black ${BASEDIR}/__main__.py ${BASEDIR}/api/ ${BASEDIR}/test/ ${BASEDIR}/visualization/ ${BASEDIR}/data_handling/ ${BASEDIR}/util --line-length=80
+	isort ${BASEDIR}/ --line-length=80 --profile=black
+	black ${BASEDIR}/ --line-length=80
 
 .PHONY: test
 test:
