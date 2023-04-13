@@ -2,12 +2,11 @@
 This file contains all testing functions for the util package.
 """
 
-from reproductive_rights_data_project.util.constants import (
-    STANDARD_ENCODING,
-)
-from reproductive_rights_data_project.util.functions import to_json
 import json
 import os
+
+from reproductive_rights_data_project.util.constants import STANDARD_ENCODING
+from reproductive_rights_data_project.util.functions import to_json
 
 
 def test_to_json():

@@ -2,15 +2,14 @@
 This file contains the functions and functionality needed to render a
 map of the United States of America.
 """
-import plotly.express as px
-import pandas as pd
 import json
 
+import pandas as pd
+import plotly.express as px
+
+from reproductive_rights_data_project.util.constants import STANDARD_ENCODING
 from reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
-)
-from reproductive_rights_data_project.util.constants import (
-    STANDARD_ENCODING,
 )
 
 

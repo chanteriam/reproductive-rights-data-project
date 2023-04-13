@@ -2,15 +2,14 @@
 This file contains the functions and functionality needed to display a State
 summary of abortion-related data.
 """
-import plotly.graph_objects as go
-import pandas as pd
 import json
 
+import pandas as pd
+import plotly.graph_objects as go
+
+from reproductive_rights_data_project.util.constants import STANDARD_ENCODING
 from reproductive_rights_data_project.visualization.abstract_visualization import (
     Visualization,
-)
-from reproductive_rights_data_project.util.constants import (
-    STANDARD_ENCODING,
 )
 
 

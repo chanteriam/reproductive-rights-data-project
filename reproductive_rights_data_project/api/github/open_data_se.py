@@ -5,6 +5,7 @@ import json
 import os.path
 
 import requests
+
 from reproductive_rights_data_project.util.constants import (
     BASE_DATA_DIR,
     REQUEST_TIMEOUT,

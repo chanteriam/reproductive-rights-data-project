@@ -2,8 +2,8 @@
 Creates Plotly Dash Visualization to map the cleaned data.
 """
 
-from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
+from dash import Dash, dcc, html
 
 DASH_INSTANCE = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 

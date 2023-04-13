@@ -2,8 +2,9 @@
 Creates functions for multiple use across files.
 """
 
-import json
 import csv
+import json
+
 from reproductive_rights_data_project.util.constants import (
     FILE_NAME_STATE_ABBREVIATIONS,
     STANDARD_ENCODING,
