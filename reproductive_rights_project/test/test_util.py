@@ -34,7 +34,7 @@ def test_to_json():
         },
     ]
 
-    file_name = "reproductive_rights_data_project/data/test_file1.json"
+    file_name = "reproductive_rights_project/data/test_file1.json"
 
     to_json([rows], [file_name])
 
