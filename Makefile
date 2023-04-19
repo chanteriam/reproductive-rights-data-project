@@ -1,4 +1,4 @@
-BASEDIR=./reproductive_rights_data_project
+BASEDIR=./reproductive_rights_project
 
 .PHONY: format
 format:
