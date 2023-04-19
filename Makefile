@@ -2,8 +2,8 @@ BASEDIR=./reproductive_rights_data_project
 
 .PHONY: format
 format:
-	isort ${BASEDIR}/ --line-length=80 --profile=black
-	black ${BASEDIR}/ --line-length=80
+	isort ${BASEDIR}/
+	black ${BASEDIR}/
 
 .PHONY: test
 test:
