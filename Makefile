@@ -19,15 +19,15 @@ lint:
 
 .PHONY: api
 api:
-	python -m reproductive_rights_data_project --api
+	python -m reproductive_rights_project --api
 
 .PHONY: parse-data
 parse-data:
-	python -m reproductive_rights_data_project --parse-data
+	python -m reproductive_rights_project --parse-data
 
 .PHONY: visualize
 visualize:
-	python -m reproductive_rights_data_project --visualize
+	python -m reproductive_rights_project --visualize
 
 .PHONY: run
 run:
