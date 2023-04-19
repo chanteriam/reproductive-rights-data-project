@@ -5,12 +5,13 @@ import json
 import os.path
 
 import requests
-from reproductive_rights_data_project.util.constants import (
+
+from reproductive_rights_project.util.constants import (
     BASE_DATA_DIR,
     REQUEST_TIMEOUT,
     STANDARD_ENCODING,
 )
-from reproductive_rights_data_project.util.functions import to_json
+from reproductive_rights_project.util.functions import to_json
 
 
 def get_state_zip_code_geo_json(state_abbrev, state_name):

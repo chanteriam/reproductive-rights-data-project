@@ -4,7 +4,8 @@ Clean ANSIRH data to be munged.
 
 import re
 from math import isnan
-from reproductive_rights_data_project.util.constants import (
+
+from reproductive_rights_project.util.constants import (
     FILTERED_CHARACTERS_REGEX,
     TYPE_DEFAULTS,
 )

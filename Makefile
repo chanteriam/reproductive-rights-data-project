@@ -1,8 +1,9 @@
-BASEDIR=./reproductive_rights_data_project
+BASEDIR=./reproductive_rights_project
 
 .PHONY: format
 format:
-	black ${BASEDIR}/__main__.py ${BASEDIR}/api/ ${BASEDIR}/test/ ${BASEDIR}/visualization/ ${BASEDIR}/data_handling/ ${BASEDIR}/util --line-length=80
+	isort ${BASEDIR}/
+	black ${BASEDIR}/
 
 .PHONY: test
 test:
@@ -18,15 +19,15 @@ lint:
 
 .PHONY: api
 api:
-	python -m reproductive_rights_data_project --api
+	python -m reproductive_rights_project --api
 
 .PHONY: parse-data
 parse-data:
-	python -m reproductive_rights_data_project --parse-data
+	python -m reproductive_rights_project --parse-data
 
 .PHONY: visualize
 visualize:
-	python -m reproductive_rights_data_project --visualize
+	python -m reproductive_rights_project --visualize
 
 .PHONY: run
 run:

@@ -4,9 +4,10 @@ particular packages based on the flags that are passed to it.
 """
 
 import argparse
-import reproductive_rights_data_project.api.service
-import reproductive_rights_data_project.data_handling.service
-import reproductive_rights_data_project.visualization.service
+
+import reproductive_rights_project.api.service
+import reproductive_rights_project.data_handling.service
+import reproductive_rights_project.visualization.service
 
 
 def main():
@@ -40,13 +41,13 @@ def main():
     args = parser.parse_args()
 
     if args.api:
-        reproductive_rights_data_project.api.service.main()
+        reproductive_rights_project.api.service.main()
 
     if args.parse_data:
-        reproductive_rights_data_project.data_handling.service.main()
+        reproductive_rights_project.data_handling.service.main()
 
     if args.visualize:
-        reproductive_rights_data_project.visualization.service.main()
+        reproductive_rights_project.visualization.service.main()
 
 
 if __name__ == "__main__":

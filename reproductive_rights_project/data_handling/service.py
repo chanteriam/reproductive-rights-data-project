@@ -3,10 +3,10 @@ This file works as the central point for running the data_handling package.
 """
 import os
 
-from reproductive_rights_data_project.data_handling.ansirh.process import (
+from reproductive_rights_project.data_handling.ansirh.process import (
     clean_and_save,
 )
-from reproductive_rights_data_project.util.constants import (
+from reproductive_rights_project.util.constants import (
     FILE_NAME_ANSIRH_BASE_DATA,
 )
 

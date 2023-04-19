@@ -3,14 +3,13 @@ This file contains the functions and functionality needed to display a
 visualization of the top 25 cities with abortion clinics
 """
 import json
-import plotly.express as px
-import pandas as pd
 
-from reproductive_rights_data_project.visualization.abstract_visualization import (
+import pandas as pd
+import plotly.express as px
+
+from reproductive_rights_project.util.constants import STANDARD_ENCODING
+from reproductive_rights_project.visualization.abstract_visualization import (
     Visualization,
-)
-from reproductive_rights_data_project.util.constants import (
-    STANDARD_ENCODING,
 )
 
 

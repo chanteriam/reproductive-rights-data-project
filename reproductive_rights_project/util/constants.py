@@ -8,7 +8,7 @@ TYPE_DEFAULTS = {"str": None, "bool": False, "int": 0, "float": 0.0}
 STANDARD_ENCODING = "utf-8"
 
 # File Names
-BASE_DATA_DIR = "reproductive_rights_data_project/data/"
+BASE_DATA_DIR = "reproductive_rights_project/data/"
 FILE_NAME_ABORTION_POLICY_API_GESTATION = (
     BASE_DATA_DIR + "abortion_policy_api_gestational.json"
 )
