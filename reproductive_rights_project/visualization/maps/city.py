@@ -7,8 +7,8 @@ import json
 import pandas as pd
 import plotly.express as px
 
-from reproductive_rights_data_project.util.constants import STANDARD_ENCODING
-from reproductive_rights_data_project.visualization.abstract_visualization import (
+from reproductive_rights_project.util.constants import STANDARD_ENCODING
+from reproductive_rights_project.visualization.abstract_visualization import (
     Visualization,
 )
 
