@@ -15,7 +15,7 @@ test-and-fail:
 
 .PHONY: lint
 lint:
-	ruff ${BASEDIR}/ 
+	ruff ${BASEDIR}/
 
 .PHONY: api
 api:

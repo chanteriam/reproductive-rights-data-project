@@ -54,9 +54,8 @@ class USAMap(Visualization):
         This method utilizes the JSON file(s) to create a pandas dataframe for
         the visualization
 
-        Returns (DataFrame):
-            The Pandas Dataframe containing abortion clinic count and policies by
-            US state.
+        Returns (DataFrame): The Pandas Dataframe containing abortion clinic
+        count and policies by US state.
         """
 
         # extract the abbreviations from the abbreviations column
@@ -98,9 +97,8 @@ class USAMap(Visualization):
         This function calls and constructs the information needed to construct
         the USA country visual.
 
-        Returns (DataFrame):
-            The Pandas Dataframe containing abortion clinic count and policies by
-            US state.
+        Returns (DataFrame): The Pandas Dataframe containing abortion clinic
+        count and policies by US state.
         """
 
         self._import_files()
