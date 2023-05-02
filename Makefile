@@ -15,7 +15,7 @@ test-and-fail:
 
 .PHONY: lint
 lint:
-	pylint ${BASEDIR}/api/ ${BASEDIR}/test/ ${BASEDIR}/visualization/ ${BASEDIR}/ ${BASEDIR}/util
+	ruff ${BASEDIR}/
 
 .PHONY: api
 api:
