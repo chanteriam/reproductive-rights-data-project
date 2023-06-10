@@ -24,7 +24,6 @@ class ZipChart(Visualization):
         self,
         locations_file_name,
     ):
-
         self._locations_file_name = locations_file_name
         self._locations = None
 
